@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'fdaPDE'
-copyright = '2023, alessandro.palummo'
-author = 'alessandro.palummo'
+copyright = '2023, fdaPDE'
+author = 'The fdaPDE development team'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
