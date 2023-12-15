@@ -1,0 +1,507 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>fdaPDE  documentation</title>
+      
+    
+    
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.6ca6f7bca51c7424f.min.css?v=ac9fe992" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="#" title="fdaPDE  documentation" class="md-header__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fdaPDE  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Welcome to the fdaPDE’s alpha-testing!
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">Installation</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changelog" class="md-nav__link">
+    <span title="changelog (reference label)" class="md-ellipsis">Changelog</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bug-reports" class="md-nav__link">
+    <span class="md-ellipsis">Bug reports</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library-interface" class="md-nav__link">
+    <span class="md-ellipsis">Library interface</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Library interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-space" class="md-nav__link">
+    <span class="md-ellipsis">Functional Space</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdes" class="md-nav__link">
+    <span class="md-ellipsis">PDEs</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srpde-spatial-regression-models" class="md-nav__link">
+    <span class="md-ellipsis">SRPDE :<wbr> Spatial Regression models</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strpde-spatio-temporal-regression-models" class="md-nav__link">
+    <span class="md-ellipsis">STRPDE :<wbr> Spatio-<wbr>Temporal Regression models</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-fit-customization" class="md-nav__link">
+    <span class="md-ellipsis">Model fit customization</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcv" class="md-nav__link">
+    <span class="md-ellipsis">GCV</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                  
+
+
+<h1 id="welcome-to-the-fdapde-s-alpha-testing">Welcome to the fdaPDE’s alpha-testing!<a class="headerlink" href="#welcome-to-the-fdapde-s-alpha-testing" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>You can check the status of all open and closed issues, as well as known bugs, <a class="reference external" href="https://github.com/orgs/fdaPDE/projects/2/views/1">here</a></p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>In the following, we will refer with <cite>fdaPDE-CRAN</cite> to the version 1.1-16 of the library currently available on CRAN (<a class="reference external" href="https://cran.r-project.org/web/packages/fdaPDE/index.html">link</a>). <cite>fdaPDE-2.0</cite> refers to the new version which will replace the currently official one.</p>
+</div>
+<p>This page reports the guidelines to follow during the alpha-testing phase of <cite>fdaPDE-2.0</cite>. It also contains a <strong>not official</strong> draft of the <cite>R</cite> package documentation.
+Moreover, this document will be kept updated for the whole alpha-testing phase. Check the <a class="reference internal" href="#changelog"><span class="std std-ref">Changelog</span></a> for the latest updates.</p>
+<div class="important admonition">
+<p class="admonition-title">Important</p>
+<p><cite>fdaPDE-2.0</cite> is currently in active development. You should frequently reinstall the package. Moreover, ignore eventual warnings raised at compile and installation time. They will be fixed, if possible, before the release on CRAN. Interface changes can happen for the whole testing period, up to the official release on CRAN.</p>
+</div>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<p><cite>fdaPDE-2.0</cite> needs the following dependencies:</p>
+<ul class="simple">
+<li><p>a C++17 compiler</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Rcpp</span></code> and <code class="code docutils literal notranslate"><span class="pre">RcppEigen</span></code> (we plan to drop this dependency before the official release on CRAN)</p></li>
+</ul>
+<p>Then, to install the library on your system, under the name <code class="code docutils literal notranslate"><span class="pre">fdaPDE2</span></code>, you can either:</p>
+<ul>
+<li><p>use the devtools package. From the R console, execute</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="n">devtools</span><span class="p">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">&quot;fdaPDE/fdaPDE-R&quot;</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="s2">&quot;stable&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</li>
+<li><p>clone the <cite>fdaPDE-R</cite> repository and install. From a (linux) terminal, execute</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recurse</span><span class="o">-</span><span class="n">submodules</span> <span class="o">-</span><span class="n">b</span> <span class="n">stable</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">fdaPDE</span><span class="o">/</span><span class="n">fdaPDE</span><span class="o">-</span><span class="n">R</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">fdaPDE</span><span class="o">-</span><span class="n">R</span>
+</code></pre></div>
+</div>
+<p>then, install the package from the R console with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="n">NULL</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</li>
+</ul>
+<h2 id="changelog"><span id="id1"></span>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">30/11/23: release of the alpha-testing version.</div>
+<div class="line">06/11/23: code tested against the following compilers: gcc, clang, apple-clang (solves <a class="reference external" href="https://github.com/fdaPDE/fdaPDE-R/issues/3">fdaPDE-R#3</a>, package should install on macos systems).</div>
+<div class="line">10/11/23: quantile spatial regression exposed to the R layer via <code class="code docutils literal notranslate"><span class="pre">family=&quot;quantile&quot;</span></code> in SRPDE</div>
+</div>
+<h2 id="bug-reports">Bug reports<a class="headerlink" href="#bug-reports" title="Link to this heading">¶</a></h2>
+<p>If you find a bug, please notify it by opening a draft pull request <a class="reference external" href="https://github.com/orgs/fdaPDE/projects/2/views/1">here</a>. A bug report must contain a MWE (Minimal Working Example) which reproduces the error. Select also a severity level for the error.</p>
+<h2 id="library-interface">Library interface<a class="headerlink" href="#library-interface" title="Link to this heading">¶</a></h2>
+<p>This is just an informal presentation of the R interface. In particular, it is not an API specification.</p>
+<h3 id="functional-space">Functional Space<a class="headerlink" href="#functional-space" title="Link to this heading">¶</a></h3>
+<p>A functional space represents the concept of a functional basis over a given domain. Currently only Lagrangian basis are supported (aka finite element basis functions).</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">fdaPDE2</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">&quot;unit_square&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;fdaPDE2&quot;</span><span class="p">)</span>
+<span class="n">unit_square</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)</span>
+
+<span class="c1">## the functional space of finite element functions of order 1, over the unit square</span>
+<span class="n">Vh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FunctionSpace</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">fe_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="n">basis</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Vh</span><span class="o">$</span><span class="nf">get_basis</span><span class="p">()</span><span class="w"> </span><span class="c1">## recover the (lagrangian) basis system of Vh</span>
+
+<span class="c1">## evaluate the basis system on a given set of locations (compute Psi matrix)</span>
+<span class="n">locations</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">unit_square</span><span class="o">$</span><span class="n">nodes</span>
+<span class="n">Psi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">basis</span><span class="o">$</span><span class="nf">eval</span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pointwise&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locations</span><span class="p">)</span>
+
+<span class="c1">## integrate a function (expressed as basis expansion on Vh) over the domain</span>
+<span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">## x^2 + y^2</span>
+<span class="n">Vh</span><span class="o">$</span><span class="nf">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<h3 id="pdes">PDEs<a class="headerlink" href="#pdes" title="Link to this heading">¶</a></h3>
+<p>The new version of the library let you explicitly write differential operators in strong form. If you are going to define a statistical model, what reported below is not of any interest if you decide to default to a standard laplacian penalty.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">fdaPDE2</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">&quot;unit_square&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;fdaPDE2&quot;</span><span class="p">)</span>
+<span class="n">unit_square</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)</span>
+
+<span class="c1">## the functional space of finite element functions of order 1, over the unit square</span>
+<span class="n">Vh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FunctionSpace</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">fe_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="n">f</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Function</span><span class="p">(</span><span class="n">Vh</span><span class="p">)</span><span class="w"> </span><span class="c1">## a generic element of the space Vh</span>
+
+<span class="c1">## compose the differential operator (in strong form)</span>
+<span class="n">Lf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="o">-</span><span class="nf">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="nf">grad</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="w"> </span><span class="c1">## a costant coefficients advection-diffusion problem</span>
+<span class="c1">## define the forcing term</span>
+<span class="n">u</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">## create your penalty</span>
+<span class="n">penalty</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pde</span><span class="p">(</span><span class="n">Lf</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Supported operators are</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>operator</p></th>
+<th class="head"><p>code</p></th>
+<th class="head"><p>note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>laplacian</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">laplacian(f)</span></code></p></td>
+<td><p>observe that expressions are signed, <code class="code docutils literal notranslate"><span class="pre">laplacian(f)</span></code> is differnt from <code class="code docutils literal notranslate"><span class="pre">-laplacian(f)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>divergence</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">div(K*grad(f))</span></code></p></td>
+<td><p>the diffusion tensor K can be either a constant matrix, or a function returning a matrix (space-varying coefficient)</p></td>
+</tr>
+<tr class="row-even"><td><p>transport</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">dot(b,grad(f))</span></code></p></td>
+<td><p>the transport coefficient b can be either a constant vector or a vector field (space-varying coefficient)</p></td>
+</tr>
+<tr class="row-odd"><td><p>reaction</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">c*f</span></code></p></td>
+<td><p>the reaction coefficient c can be either a constant or a scalar field (space-varying coefficient)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">dt(f)</span></code></p></td>
+<td><p>specifies that the problem is time dependent (parabolic PDE)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><code><span class="c1">## general linear second order parabolic operator</span>
+<span class="n">Lf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">dt</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">div</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">grad</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="nf">grad</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span>
+</code></pre></div>
+</div>
+<p>More examples can be found on the <a class="reference external" href="https://fdapde.github.io/femR/articles/Introduction.html">femR documentation</a> or <a class="reference external" href="https://github.com/fdaPDE/femR/tree/stable/tests">on the test scripts</a>.</p>
+<h3 id="srpde-spatial-regression-models">SRPDE : Spatial Regression models<a class="headerlink" href="#srpde-spatial-regression-models" title="Link to this heading">¶</a></h3>
+<p>Here the interface for a general spatial regression model:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">fdaPDE2</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">&quot;unit_square&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;fdaPDE2&quot;</span><span class="p">)</span>
+<span class="n">unit_square</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)</span>
+
+<span class="n">data_frame</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="c1">## obtain your data in some way...</span>
+<span class="c1">## currently, the only requirement is data_frame to be a data.frame object, e.g.,</span>
+
+<span class="c1">##            y         x1         x2</span>
+<span class="c1">## 1 -0.04044303  0.1402058 0.00000000</span>
+<span class="c1">## 2  0.15079619  1.1989599 0.03447593</span>
+<span class="c1">## 3  0.02391597 -2.3299685 0.06891086</span>
+<span class="c1">## 4  0.38927632  0.5709451 0.10326387</span>
+<span class="c1">## 5  0.39417457  2.7482761 0.13749409</span>
+<span class="c1">## 6  0.33297548  1.7080400 0.17156085</span>
+
+<span class="c1">## a model is first described in an &quot;abstract&quot; way, think for instance to the continuous</span>
+<span class="c1">## functional J(f, \beta) we minimize when solving a smoothing problem</span>
+
+<span class="c1">## a nonparametric spatial regression model</span>
+<span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SRPDE</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data_frame</span><span class="p">,</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1e-6</span><span class="p">)</span>
+
+<span class="c1">## this will inject in the current environment a Function object named f, representing the</span>
+<span class="c1">## unknown spatial field and defined on a FunctionSpace(unit_square, fe_order = 1)</span>
+<span class="c1">## the name of the spatial field supplied in formula can be any</span>
+
+<span class="n">model</span><span class="o">$</span><span class="nf">fit</span><span class="p">()</span><span class="w"> </span><span class="c1">## fits the model</span>
+
+<span class="c1">## we can describe a semi-parametric spatial regression model as</span>
+<span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SRPDE</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data_frame</span><span class="p">,</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1e-6</span><span class="p">)</span>
+<span class="n">model</span><span class="o">$</span><span class="nf">fit</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>The following is an equivalent, but more general, way to describe the above model</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><code><span class="c1">## define the differential penalty</span>
+<span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Function</span><span class="p">(</span><span class="nf">FunctionSpace</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">fe_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+<span class="n">Lf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="o">-</span><span class="nf">laplace</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="c1">## simple laplacian penalty</span>
+<span class="n">u</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">## supply the penalty to the model and fit</span>
+<span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SRPDE</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">penalty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">PDE</span><span class="p">(</span><span class="n">Lf</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data_frame</span><span class="p">,</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1e-6</span><span class="p">)</span>
+<span class="n">model</span><span class="o">$</span><span class="nf">fit</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">SRPDE</span></code> exposes a <code class="code docutils literal notranslate"><span class="pre">family</span></code> parameter whose default is set to <code class="code docutils literal notranslate"><span class="pre">gaussian</span></code>, and which makes the model to behave as a linear spatial regression model, as described, for instance in <em>Sangalli, L.M. (2021), Spatial regression with partial differential equation regularization, International Statistical Review</em>. Possible values for the <code class="code docutils literal notranslate"><span class="pre">family</span></code> parameters are</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 85.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>family</p></th>
+<th class="head"><p>note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">poisson</span></code>, <code class="code docutils literal notranslate"><span class="pre">gamma</span></code>, <code class="code docutils literal notranslate"><span class="pre">bernulli</span></code>, <code class="code docutils literal notranslate"><span class="pre">exponential</span></code></p></td>
+<td><p>generalized spatial regression model, solved via FPIRLS, as detailed in <em>Wilhelm, M., Sangalli, L.M. (2016), Generalized Spatial Regression with Differential Regularization, Journal of Statistical Computation and Simulation</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">quantile</span></code></p></td>
+<td><p>quantile spatial regression model, solved via FPIRLS, as described in <em>De Sanctis, M., Di Battista, I., Spatial Quantile regression with Partial Differential Equation Regularization, PACS report</em></p></td>
+</tr>
+</tbody>
+</table>
+<h3 id="strpde-spatio-temporal-regression-models">STRPDE : Spatio-Temporal Regression models<a class="headerlink" href="#strpde-spatio-temporal-regression-models" title="Link to this heading">¶</a></h3>
+<p>TODO</p>
+<h3 id="model-fit-customization">Model fit customization<a class="headerlink" href="#model-fit-customization" title="Link to this heading">¶</a></h3>
+<h3 id="gcv">GCV<a class="headerlink" href="#gcv" title="Link to this heading">¶</a></h3>
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2023, alessandro.palummo.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    7.2.6.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+      
+        <script src="_static/sphinx_immaterial_theme.1b5b7a2d5891aec19.min.js?v=1e7b0789"></script>
+    
+  </body>
+</html>
