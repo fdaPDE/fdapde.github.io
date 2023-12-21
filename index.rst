@@ -1,5 +1,5 @@
-Welcome to the fdaPDE's alpha-testing!
-======================================
+Welcome to the fdaPDE 2.0's alpha-testing!
+==========================================
 
 .. toctree::
    :maxdepth: 2
@@ -45,15 +45,12 @@ Then, to install the library on your system, under the name :code:`fdaPDE2`, you
   .. code-block::
    
      install.packages(".", type="source", repos=NULL) 
-   
-.. _changelog:
 
 Changelog
 ---------
 
 | 30/11/23: release of the alpha-testing version.
-| 06/11/23: code tested against the following compilers: gcc, clang, apple-clang (solves `fdaPDE-R#3 <https://github.com/fdaPDE/fdaPDE-R/issues/3>`_, package should install on macos systems).
-| 10/11/23: quantile spatial regression exposed to the R layer via :code:`family="quantile"` in SRPDE
+| 06/12/23: code tested against the following compilers: gcc, clang, apple-clang (solves `fdaPDE-R#3 <https://github.com/fdaPDE/fdaPDE-R/issues/3>`_, package should install on macos systems).
 
 Bug reports
 -----------
@@ -212,10 +209,143 @@ The following is an equivalent, but more general, way to describe the above mode
 STRPDE : Spatio-Temporal Regression models
 ++++++++++++++++++++++++++++++++++++++++++
 
-TODO
+Coming soon
 
 Model fit customization
 +++++++++++++++++++++++
 
+When we write something like
+
+.. code-block:: R
+		
+   model <- SRPDE(y ~ f, penalty = PDE(Lf, u), data = data_frame, lambda = 1e-6)
+
+we are describing a model without fixing any computational detail regarding its resolution. Specifically, we are defining the estimation functional
+
+.. math::
+
+   J(\beta, f) = \sum_{i=1}^n (y_i - f(\boldsymbol{p}_i))^2 + \lambda_{\mathcal{D}} \int_{\mathcal{D}} (Lf - u)^2 d\mathcal{D}.
+
+We can customize the way a model is fit using the :code:`fit` method. The code below shows how to select the smoothing parameter via GCV minimization, using a grid approach.
+
+
+.. code-block:: R
+		
+   library(fdaPDE2)
+   data("unit_square", package = "fdaPDE2")
+   unit_square <- Mesh(unit_square)
+
+   data_frame <- ## obtain your data in some way...
+   model <- SRPDE(y ~ f, domain = unit_square, data = data_frame) ## do not fix any lambda...
+
+   ## ... because you might want to select it via GCV minimization!
+   lambda_grid = 10^seq(-4, -3, by = 0.1)
+   model$fit(
+      lambda = gcv(optimizer = "grid", lambda = lambda_grid)
+   )
+
+See :ref:`GCV` for more details on the use of the :code:`gcv()` method. The idea is extended to any other type of models. The snippet below shows how to customize the behaviour of the Functional Penalized Iterative Reweighted Least Square (FPIRLS) method used inside a generalized regression model
+
+.. code-block:: R
+		
+   library(fdaPDE2)
+   data("unit_square", package = "fdaPDE2")
+   unit_square <- Mesh(unit_square)
+
+   data_frame <- ## obtain your data in some way...
+   model <- SRPDE(y ~ f, domain = unit_square, data = data_frame, family = "poisson")
+   
+   lambda_grid = 10^seq(-4, -3, by = 0.1)
+   model$fit(
+      lambda = gcv(optimizer = "grid", lambda = lambda_grid),
+      fprils_params = list( ## customize FPIRLS execution
+         max_iterations = 100,
+         tolerance = 1e-6
+      )
+   )
+
+   ## you are not forced to set all the parameters, if you do not set some (or all) of them,
+   ## there will always be a default
+
+.. important::
+   
+   More on this must be explored and tested. Moreover any parameter should always have a default, so that :code:`model$fit()` is always well defined. Check the changelog to see updates in this direction.
+   
 GCV
 +++
+
+This sections shows the API provided by the :code:`gcv()` method, which can be used to tune the smoothing parameter in a regression model.
+
+.. code:: R
+
+   ## stochastic approximation of degrees of freedom, fast but approximate
+   model$fit(
+      lambda = gcv(
+         edf_computation = "stochastic",
+         seed = 143547654,    ## set seed in internal stochastic engine (for reproducibility)
+         n_mc_samples = 500,  ## number of mc samples in stochastic algorithm
+         optimizer = "...",
+         ... ## additional arguments forwarded to the optimizer
+   )
+
+   ## exact approximation of degrees of freedom, slow but exact
+   model$fit(
+      lambda = gcv(
+         edf_computation = "exact",
+         optimizer = "...",
+         ... ## additional arguments forwarded to the optimizer
+   )
+
+.. info::
+   
+   In case :code:`edf_computation = "stochastic"`, the following defaults are available:
+   * :code:`seed = NULL` forces a random initialization for the stochastic algorithm
+   * :code:`n_mc_samples = NULL` sets the number of monte carlo realizations to `100`
+
+The GCV objective can be optimizer using different methods, reported in the table below
+
+.. list-table:: 
+   :widths: 15 85
+   :header-rows: 1
+
+   * - optimizer
+     - note
+   * - :code:`grid`
+     - optimization on a fixed and user-defined grid of values. Currently the only possibility for space-time models. Requires
+
+       * :code:`lambda`: vector of smoothing parameters to explore
+   * - :code:`newton`
+     - Newton optimization. This is an iterative optimization method. Requires
+
+       * :code:`lambda`: starting point of the iterative method
+       * :code:`exact_derivative`: a boolean flag which, if set to false, enables the approximate computation of the GCV derivative via central finite differences (:code:`exact_derivatives = TRUE` currently not supported)
+       * :code:`tolerance` : tolearance on the error between consecutive iterations to stop the optimization
+       * :code:`step`: step value used in the Newton update (adaptve steps :code:`backtracking`, :code:`wolfe` currently not supported)
+   * - :code:`gradient_descent`
+     - Gradient descent optimization. This is an iterative optimization method.
+
+       .. warning::
+
+	  This optimization method has never been explored in the context of GCV minimization.
+
+       Requires
+	  
+       * :code:`lambda`: starting point of the iterative method
+       * :code:`exact_derivative`: a boolean flag which, if set to false, enables the approximate computation of the GCV derivative via central finite differences (:code:`exact_derivatives = TRUE` currently not supported)
+
+       * :code:`tolerance` : tolearance on the error between consecutive iterations to stop the optimization
+       * :code:`step`: step value used in the Newton update (adaptve steps :code:`backtracking`, :code:`wolfe` currently not supported)
+   * - :code:`bfgs`
+     - The method of Broyden–Fletcher–Goldfarb–Shanno for unconstrained nonlinear optimization. This is an iterative optimization method.
+
+       .. warning::
+
+	  This optimization method has never been explored in the context of GCV minimization.
+
+       Requires
+	  
+       * :code:`lambda`: starting point of the iterative method
+       * :code:`exact_derivative`: a boolean flag which, if set to false, enables the approximate computation of the GCV derivative via central finite differences (:code:`exact_derivatives = TRUE` currently not supported)
+
+       * :code:`tolerance` : tolearance on the error between consecutive iterations to stop the optimization
+       * :code:`step`: step value used in the Newton update (adaptve steps :code:`backtracking`, :code:`wolfe` currently not supported)

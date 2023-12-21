@@ -13,7 +13,7 @@ author = 'The fdaPDE development team'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_immaterial"]
+extensions = ["sphinx_immaterial", "sphinx.ext.mathjax", "sphinx.ext.autosectionlabel"]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -25,3 +25,4 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'sphinx_immaterial'
 html_static_path = ['_static']
+
