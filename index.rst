@@ -106,7 +106,7 @@ The new version of the library let you explicitly write differential operators i
    u <- function(points) { return(rep(1, times = nrow(points))) }
    
    ## create your penalty
-   penalty <- pde(Lf, u)
+   penalty <- PDE(Lf, u)
 
 Supported operators are
 
