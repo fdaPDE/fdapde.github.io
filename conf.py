@@ -30,18 +30,18 @@ html_theme_options = {
         "navigation.expand",
         # "navigation.tabs",
         # "toc.integrate",
-        "navigation.sections",
+        "navigation.sections"
         # "navigation.instant",
         # "header.autohide",
-        "navigation.top",
+        # "navigation.top",
         # "navigation.tracking",
         # "search.highlight",
-        "search.share",
-        "toc.follow",
-        "toc.sticky",
-        "content.tabs.link",
-        "announce.dismiss",
+        # "search.share",
+        # "toc.follow",
+        # "toc.sticky",
+        # "content.tabs.link",
+        # "announce.dismiss"
     ],
-    "toc_title_is_page_title": True,
+    "toc_title_is_page_title": False
 }
  
