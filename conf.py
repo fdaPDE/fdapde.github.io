@@ -13,7 +13,8 @@ author = 'The fdaPDE development team'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_immaterial", "sphinx.ext.mathjax", "sphinx.ext.autosectionlabel"]
+extensions = ["sphinx_immaterial", "sphinx.ext.mathjax", "sphinx.ext.autosectionlabel", "sphinxcontrib.bibtex"]
+bibtex_bibfiles = ['tutorials/bibliography.bib']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -30,7 +31,7 @@ html_theme_options = {
         "navigation.expand",
         # "navigation.tabs",
         # "toc.integrate",
-        "navigation.sections"
+        "navigation.sections",
         # "navigation.instant",
         # "header.autohide",
         # "navigation.top",
@@ -40,8 +41,13 @@ html_theme_options = {
         # "toc.follow",
         # "toc.sticky",
         # "content.tabs.link",
-        # "announce.dismiss"
+        # "announce.dismiss",
     ],
     "toc_title_is_page_title": False
 }
- 
+
+html_sidebars = {
+     '**': [
+        'localtoc.html'
+     ],
+}
