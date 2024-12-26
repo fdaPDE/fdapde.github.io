@@ -203,7 +203,7 @@ Introduction of several core API changes, which significantly alter the usage of
        0x0000000000001139 <+41>:    cvttsd2si %xmm0,%eax          // return computed sum
        0x000000000000113d <+45>:    ret
        End of assembler dump.
-
+       
     While fdaPDE was completely able to avoid any for loop at run-time (as it perfectly knows how to compute the for-loop at compile time), Eigen cannot, and must execute code (therefore, waste time) to produce a result. You will further notice the advantages of such data-types when involved in the much more involved math expressions. 
 
   Below a summary of the API exposed for constexpr dense linear algebra at the time of this update:

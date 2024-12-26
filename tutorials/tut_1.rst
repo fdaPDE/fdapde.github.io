@@ -46,19 +46,22 @@ As always, fdaPDE requires the weak formulation of the differential problem abov
 
    \int_{\Omega} \nabla u^{k+1} \cdot \nabla v + \alpha (1-u^k) u^{k+1} v - \int_{\Omega} \alpha u^k u^{k+1} v = \int_{\Omega} f - \alpha (u^k)^2 v \quad \forall v \in V_h
 
-which we iteratively solve for :math:`u^{k+1}` until convergence. Follows a step by step description of the program which enables us to find a solution to the considered problem in less than 50 lines of code.
+which we iteratively solve for :math:`u^{k+1}` until convergence.
 
-First we load the geometry (currently generated from some third party triangulator), enabling the cell caching. As we are going to iterate several times over the mesh is convinient to compute the cells once to obtain a fast re-access to the mesh.
+Implementation
+--------------
+
+The first step in any finite element code is the definition of the problem geometry. As we are going to iterate several times over the mesh is convinient to compute the cells once and cache them to obtain a fast re-access to the mesh. This option is enabled by activating the cell caching.
 
 .. code-block:: cpp
 
-   Triangulation<2, 2> unit_square = read_mesh<2, 2>("unit_square", cache_cells);
+   Triangulation<2, 2> unit_square = Triangulation<2, 2>::UnitSquare(60, cache_cells);
 
 Once we have a discretization of the domain :math:`\Omega`, we can instatiate a (linear) finite element space on it togheter with trial and test functions.
 
 .. code-block:: cpp
 
-   FiniteElementSpace Vh(unit_square, P1); // P1 denotes the space of linear finite elements
+   FeSpace Vh(unit_square, P1<1>); // piecewise linear continuous scalar finite elements
    TrialFunction u(Vh);
    TestFunction  v(Vh);
 
@@ -85,7 +88,7 @@ We then define the forcing term as a plain :code:`ScalarField` togheter with the
 
 .. code-block:: cpp
 
-   ScalarField<2, decltype([](const SVector<2>& p) {
+   ScalarField<2, decltype([](const PointT& p) {
        return -9*std::pow(p[0], 4) - 12*p[0]*p[0]*p[1]*p[1] + 3*p[0]*p[0] +
                2*p[1]*p[1] - 4*std::pow(p[1], 4) - 10;
    })> f;
@@ -95,7 +98,7 @@ Observe that we explicitly require an higher order quadrature specifying the 6 p
 
 .. code-block:: cpp
 		
-   ScalarField<2, decltype([](const SVector<2>& p) { return 3 * p[0] * p[0] + 2 * p[1] * p[1]; })> g;
+   ScalarField<2, decltype([](const PointT& p) { return 3 * p[0] * p[0] + 2 * p[1] * p[1]; })> g;
    DofHandler<2, 2>& dof_handler = Vh.dof_handler();
    dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
@@ -105,12 +108,12 @@ We can now find an initial point for the Newton scheme. To this end, we solve th
 
 .. code-block:: cpp
 
-   u_prev = DVector<double>::Zero(Vh.n_dofs());   // initial guess u = 0
-   SpMatrix<double> A = a.assemble();
-   DVector<double> v_ = F.assemble();
+   u_prev = Eigen::Matrix<double, Dynamic, 1>::Zero(Vh.n_dofs());   // initial guess u = 0
+   Eigen::SparseMatrix<double> A = a.assemble();
+   Eigen::Matrix<double, Dynamic, 1> v_ = F.assemble();
    dof_handler.enforce_constraints(A, v_);
    // linear system solve A*u_prev = v_ using Cholesky factorization
-   Eigen::SimplicialLLT<SpMatrix<double>> lin_solver(A);
+   Eigen::SimplicialLLT<Eigen::SparseMatrix<double>> lin_solver(A);
    u_prev = lin_solver.solve(v_);
       
 The code fragment above effectivelly assemble the discretization matrix :code:`A` for the bilinear form :math:`\int_{\Omega} \nabla u^0 \cdot \nabla v + u^0 v` togheter with the discretizing vector :code:`v_` of the forcing functional :math:`F`. Then, it sets the Dirichlet conditions at the boundary via the :code:`enforce_constaints` method of the :code:`dof_handler` object. Finally, observing that the bilinear form is SPD, solves the FEM linear system using a Cholesky factorization and sets :math:`u^0` to the solution of this linear system.
@@ -124,9 +127,9 @@ We can finally start looping until convergence, iteratively solving the recurren
 .. code-block:: cpp
 
    while (err > 1e-7) {
-      SpMatrix<double> A1 = a.assemble();
-      SpMatrix<double> A2 = b.assemble();
-      DVector<double> v = v_ + A2 * u_prev.coeff();
+      Eigen::SparseMatrix<double> A1 = a.assemble();
+      Eigen::SparseMatrix<double> A2 = b.assemble();
+      Eigen::Matrix<double, Dynamic, 1> v = v_ + A2 * u_prev.coeff();
       A = A1 + A2;
       dof_handler.enforce_constraints(A, v);
       lin_solver.compute(A);
@@ -144,17 +147,17 @@ The code just assembles :code:`A1` and :code:`A2`, updates the right hand side :
    .. code-block:: cpp
       :linenos:
 
-      #include <fdaPDE/fields.h>
-      #include <fdaPDE/geometry.h>
       #include <fdaPDE/finite_elements.h>
-
       using namespace fdapde;
       
       int main() {
-         // import mesh, enable cell caching for fast re-cycling
-	 Triangulation<2, 2> unit_square = read_mesh<2, 2>("unit_square", cache_cells);
+	 // useful typedef and constants definition
+	 constexpr int local_dim = 2;
+	 using PointT = Eigen::Matrix<double, local_dim, 1>;
+
+	 Triangulation<local_dim, local_dim> unit_square = Triangulation<2, 2>::UnitSquare(60, cache_cells);
 	 
-         FiniteElementSpace Vh(unit_square, P1);
+         FeSpace Vh(unit_square, P1<1>);
 	 // create trial and test functions
 	 TrialFunction u(Vh);
 	 TestFunction  v(Vh);
@@ -166,30 +169,30 @@ The code just assembles :code:`A1` and :code:`A2`, updates the right hand side :
 	 auto b = integral(unit_square)(-u_prev * u * v);
 	 
 	 // define forcing functional
-	 ScalarField<2, decltype([](const SVector<2>& p) {
+	 ScalarField<2, decltype([](const PointT& p) {
 	     return -9*std::pow(p[0], 4) - 12*p[0]*p[0]*p[1]*p[1] + 3*p[0]*p[0] + 2*p[1]*p[1] - 4*std::pow(p[1], 4) - 10;
 	 })> f;
 	 auto F = integral(unit_square, QS2D6P)(f * v);
 	 
 	 // define dirichlet data
-	 ScalarField<2, decltype([](const SVector<2>& p) { return 3 * p[0] * p[0] + 2 * p[1] * p[1]; })> g;
+	 ScalarField<2, decltype([](const PointT& p) { return 3 * p[0] * p[0] + 2 * p[1] * p[1]; })> g;
 	 DofHandler<2, 2>& dof_handler = Vh.dof_handler();
 	 dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
 	 // Newton scheme initialization (solve linearized problem with initial guess u = 0)
-	 u_prev = DVector<double>::Zero(Vh.n_dofs());   // initial guess u = 0
-	 SpMatrix<double> A = a.assemble();   // this actually assembles dot(grad(u), grad(v)) + u * v
-	 DVector<double> v_ = F.assemble();
+	 u_prev = Eigen::Matrix<double, Dynamic, 1>::Zero(Vh.n_dofs());   // initial guess u = 0
+	 Eigen::SparseMatrix<double> A = a.assemble();   // this actually assembles dot(grad(u), grad(v)) + u * v
+	 Eigen::Matrix<double, Dynamic, 1> v_ = F.assemble();
 	 dof_handler.enforce_constraints(A, v_);
 	 // linear system solve A*u_prev = v_ using Cholesky factorization
-	 Eigen::SimplicialLLT<SpMatrix<double>> lin_solver(A);
+	 Eigen::SimplicialLLT<Eigen::SparseMatrix<double>> lin_solver(A);
 	 u_prev = lin_solver.solve(v_);
     
 	 double err = std::numeric_limits<double>::max();
 	 while (err > 1e-7) {
-	     SpMatrix<double> A1 = a.assemble();
-             SpMatrix<double> A2 = b.assemble();
-             DVector<double> v = v_ + A2 * u_prev.coeff();    // update rhs
+	     Eigen::SparseMatrix<double> A1 = a.assemble();
+             Eigen::SparseMatrix<double> A2 = b.assemble();
+             Eigen::Matrix<double, Dynamic, 1> v = v_ + A2 * u_prev.coeff();    // update rhs
 	     A = A1 + A2;
              dof_handler.enforce_constraints(A, v);
              lin_solver.compute(A);

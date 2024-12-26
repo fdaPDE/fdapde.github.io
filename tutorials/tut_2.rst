@@ -47,21 +47,24 @@ We decide to solve it via the Crank-Nicolson method, which is a second order met
 
    M \frac{\boldsymbol{u}^{k+1} - \boldsymbol{u}^k}{\Delta t} + \frac{1}{2} A ( \boldsymbol{u}^{k+1} + \boldsymbol{u}^k) = \frac{1}{2} ( \boldsymbol{F}^{k+1} + \boldsymbol{F}^k)
 
-The above is solved iteratively for all the time steps :math:`k = 1, \ldots, N_T`. Follows a step by step description of the program which enables us to find a solution to the considered problem in less than 50 lines of code. For the first example we consider homogeneous Neumann and Dirichlet conditions on the domain boundary and a space-time depending forcing term.
+The above is solved iteratively for all the time steps :math:`k = 1, \ldots, N_T`.
 
-We initially load the geometry, define a finite element space and the Laplacian bilinear form (observe that (the bilinear form of) any elliptic operator could have been placed here, in case of general parabolic equations).
+Implementation
+--------------
+
+For the first example we consider homogeneous Neumann and Dirichlet conditions on the domain boundary and a space-time depending forcing term. We initially define the geometry, togheter with a finite element space and the definition of bilinear form of the laplace operator (observe that (the bilinear form of) any elliptic operator could have been placed here, in case of general parabolic equations).
 
 .. code-block:: cpp
 
-   Triangulation<2, 2> unit_square = read_mesh<2, 2>("../data/mesh/unit_square", cache_cells);   // import mesh
-   FiniteElementSpace Vh(unit_square, P1);
-   // create trial and test functions
+   Triangulation<2, 2> unit_square = Triangulation<2, 2>::UnitSquare(60, cache_cells);
+   FeSpace Vh(unit_square, P1<1>);   // piecewise linear continuous scalar finite elements
    TrialFunction u(Vh);
    TestFunction  v(Vh);;
-   // define bilinear form for laplacian operator
+   
+   // laplacian operator bilinear form
    auto a = integral(unit_square)(dot(grad(u), grad(v)));
 
-We then define the forcing term. Because we are dealing with a space-time problem, we use the specialized :code:`SpaceTimeField` type, which extends the :code:`ScalarField` capabilities to handle an explicit time coordinate. Specifically, the code above implements the following forcing term
+We then define the forcing term. Because we are dealing with a space-time problem, we use the specialized :code:`SpaceTimeField` type, which extends the :code:`ScalarField` capabilities to handle an explicit time coordinate. Specifically, the code below implements the forcing term
 
 .. math::
 
@@ -70,7 +73,7 @@ We then define the forcing term. Because we are dealing with a space-time proble
 .. code-block:: cpp
 
    // define forcing functional
-   SpaceTimeField<2, decltype([](const SVector<2>& p, double t) {
+   SpaceTimeField<2, decltype([](const PointT& p, double t) {
        if        (p[0] < 0.5 && p[1] < 0.5 && t >= 0.0 && t <= 0.2) {
            return 1;
        } else if (p[0] > 0.5 && p[1] > 0.5 && t >= 0.2 && t <= 0.4) {
@@ -84,7 +87,7 @@ You can fix the time coordinate calling :code:`f.at(t)`. Subsequent calls of :co
 
 .. code-block:: cpp
 
-   ScalarField<2, decltype([](const SVector<2>& p) { return 0; })> g;
+   ScalarField<2, decltype([](const PointT& p) { return 0; })> g;
    DofHandler<2, 2>& dof_handler = Vh.dof_handler();
    dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
@@ -92,15 +95,15 @@ Finally, we fix the time step :math:`\Delta t`, set up room for the solution fix
 
 .. code-block:: cpp
 		
-   SpMatrix<double> M = integral(unit_square)(u * v).assemble();    // mass matrix
-   SpMatrix<double> A = M / DeltaT + a.assemble() * 0.5;            // stiff matrix (SPD)
+   Eigen::SparseMatrix<double> M = integral(unit_square)(u * v).assemble();    // mass matrix
+   Eigen::SparseMatrix<double> A = M / DeltaT + a.assemble() * 0.5;            // stiff matrix (SPD)
 
    // discretize time-dependent forcing field
-   DMatrix<double> F(dof_handler.n_dofs(), n_times);
+   Eigen::Matrix<double, Dynamic, Dynamic> F(dof_handler.n_dofs(), n_times);
    for (int i = 0; i < n_times; ++i) { F.col(i) = integral(unit_square)(f.at(DeltaT * i) * v).assemble(); }
 
    dof_handler.enforce_constraints(A);    // set dirichlet constraints
-   Eigen::SimplicialLLT<SpMatrix<double>> lin_solver(A);
+   Eigen::SimplicialLLT<Eigen::SparseMatrix<double>> lin_solver(A);
 
    
 Finally, the crank-nicolson time integration loop can start:
@@ -108,7 +111,7 @@ Finally, the crank-nicolson time integration loop can start:
 .. code-block:: cpp
 
    for (int i = 1; i < n_times; ++i) {
-       DVector<double> b =
+       Eigen::Matrix<double, Dynamic, 1> b =
            (M / DeltaT - A / 2) * solution.col(i - 1) + 0.5 * (F.col(i) + F.col(i - 1));   // update rhs
        dof_handler.enforce_constraints(b);
        solution.col(i) = lin_solver.solve(b);
@@ -119,23 +122,19 @@ Finally, the crank-nicolson time integration loop can start:
    .. code-block:: cpp
       :linenos:
 
-      #include <fdaPDE/fields.h>
-      #include <fdaPDE/geometry.h>
       #include <fdaPDE/finite_elements.h>
-
       using namespace fdapde;
       
       int main() {
-         Triangulation<2, 2> unit_square = read_mesh<2, 2>("../data/mesh/unit_square", cache_cells);   // import mesh
-	 FiniteElementSpace Vh(unit_square, P1);
-	 // create trial and test functions
+	 Triangulation<local_dim, local_dim> unit_square = Triangulation<2, 2>::UnitSquare(60, cache_cells);
+	 
+         FeSpace Vh(unit_square, P1<1>);
 	 TrialFunction u(Vh);
-	 TestFunction  v(Vh);;
-	 // define bilinear form for laplacian operator
+	 TestFunction  v(Vh);
+	 // laplacian operator bilinear form
 	 auto a = integral(unit_square)(dot(grad(u), grad(v)));
-
-	 // define forcing functional
-	 SpaceTimeField<2, decltype([](const SVector<2>& p, double t) {
+	 // forcing functional
+	 SpaceTimeField<2, decltype([](const PointT& p, double t) {
 	     if        (p[0] < 0.5 && p[1] < 0.5 && t >= 0.0 && t <= 0.2) {
 	         return 1;
 	     } else if (p[0] > 0.5 && p[1] > 0.5 && t >= 0.2 && t <= 0.4) {
@@ -144,28 +143,27 @@ Finally, the crank-nicolson time integration loop can start:
 	         return 0;
 	     }	 
          })> f;
-
 	 // dirichlet data (homogeneous and fixed in time)
-	 ScalarField<2, decltype([](const SVector<2>& p) { return 0; })> g;
+	 ScalarField<2, decltype([](const PointT& p) { return 0; })> g;
 	 DofHandler<2, 2>& dof_handler = Vh.dof_handler();
 	 dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
+	 // crank-nicolson integration
 	 double T = 0.5, DeltaT = 0.02;
 	 int n_times = std::ceil(T/DeltaT);
-	 DMatrix<double> solution(dof_handler.n_dofs(), n_times);
-	 solution.col(0) = DVector<double>::Zero(dof_handler.n_dofs());   // zero initial condition
+	 Eigen::Matrix<double, Dynamic, Dynamic> solution(dof_handler.n_dofs(), n_times);
+	 solution.col(0) = Eigen::Matrix<double, Dynamic, 1>::Zero(dof_handler.n_dofs());   // zero initial condition
 
-	 // crank-nicolson integration
-	 SpMatrix<double> M = integral(unit_square)(u * v).assemble();    // mass matrix
-	 SpMatrix<double> A = M / DeltaT + a.assemble() * 0.5;            // stiff matrix (SPD)
+	 Eigen::SparseMatrix<double> M = integral(unit_square)(u * v).assemble();    // mass matrix
+	 Eigen::SparseMatrix<double> A = M / DeltaT + a.assemble() * 0.5;            // stiff matrix (SPD)
 	 dof_handler.enforce_constraints(A);
-	 Eigen::SimplicialLLT<SpMatrix<double>> lin_solver(A);
+	 Eigen::SimplicialLLT<Eigen::SparseMatrix<double>> lin_solver(A);
 	 // discretize time-dependent forcing field
-	 DMatrix<double> F(dof_handler.n_dofs(), n_times);
+	 Eigen::Matrix<double, Dynamic, Dynamic> F(dof_handler.n_dofs(), n_times);
 	 for (int i = 0; i < n_times; ++i) { F.col(i) = integral(unit_square)(f.at(DeltaT * i) * v).assemble(); }
     
 	 for (int i = 1; i < n_times; ++i) {
-             DVector<double> b =
+             Eigen::Matrix<double, Dynamic, 1> b =
                  (M / DeltaT - A / 2) * solution.col(i - 1) + 0.5 * (F.col(i) + F.col(i - 1));   // update rhs
 	     dof_handler.enforce_constraints(b);
 	     solution.col(i) = lin_solver.solve(b);
@@ -218,14 +216,11 @@ The script is mostly similar to the Crank-Nicolson time-stepping scheme implemen
    .. code-block:: cpp
       :linenos:
 
-      #include <fdaPDE/fields.h>
-      #include <fdaPDE/geometry.h>
       #include <fdaPDE/finite_elements.h>
-
       using namespace fdapde;
       
       int main() {
-         Triangulation<2, 2> unit_square = read_mesh<2, 2>("../data/mesh/unit_square", cache_cells);   // import mesh
+	 Triangulation<local_dim, local_dim> unit_square = Triangulation<2, 2>::UnitSquare(60, cache_cells);	 
 	 // label boundary
 	 unit_square.mark_boundary(/* as = */ 0);    // mark all nodes as zero
 	 // mark left side of square (where we will impose non-homegenous Neumann BCs) with 1
@@ -233,34 +228,32 @@ The script is mostly similar to the Crank-Nicolson time-stepping scheme implemen
 	     return (e.node(0)[0] == 0 && e.node(1)[0] == 0); 
 	 });
 	 
-	 FiniteElementSpace Vh(unit_square, P1);
-	 // create trial and test functions
+	 FeSpace Vh(unit_square, P1<1>);
 	 TrialFunction u(Vh);
-	 TestFunction  v(Vh);;
-	 // define bilinear form for laplacian operator
+	 TestFunction  v(Vh);
+	 // laplacian operator bilinear form
 	 auto a = integral(unit_square)(10 * dot(grad(u), grad(v)));
-
-	 // define forcing functional (this could have been omitted, but placed here just for completeness)
-	 ScalarField<2, decltype([](const SVector<2>& p) { return 0; })> f;
+	 // forcing functional (this could have been omitted, but placed here just for completeness)
+	 ScalarField<2, decltype([](const PointT& p) { return 0; })> f;
 
 	 // dirichlet homoegeneous data (fixed in time)
-	 ScalarField<2, decltype([](const SVector<2>& p) { return 0; })> g_D;
+	 ScalarField<2, decltype([](const PointT& p) { return 0; })> g_D;
 	 DofHandler<2, 2>& dof_handler = Vh.dof_handler();
 	 dof_handler.set_dirichlet_constraint(/* on = */ 0, /* data = */ g_D);
 	 // neumann inflow data
-	 SpaceTimeField<2, decltype([](const SVector<2>& p, double t) { return p[1] * (1 - p[1]) * t * (0.5 - t); })> g_N;
+	 SpaceTimeField<2, decltype([](const PointT& p, double t) { return p[1] * (1 - p[1]) * t * (0.5 - t); })> g_N;
 
 	 // set up Crank-Nicolson time integration scheme
 	 double T = 0.5, DeltaT = 0.02;
 	 int n_times = std::ceil(T/DeltaT);
-	 DMatrix<double> solution(dof_handler.n_dofs(), n_times);
-	 solution.col(0) = DVector<double>::Zero(dof_handler.n_dofs());   // zero initial condition
-	 SpMatrix<double> M = integral(unit_square)(u * v).assemble();    // mass matrix
-	 SpMatrix<double> A = M / DeltaT + a.assemble() * 0.5;            // stiff matrix (SPD)
+	 Eigen::Matrix<double, Dynamic, Dynamic> solution(dof_handler.n_dofs(), n_times);
+	 solution.col(0) = Eigen::Matrix<double, Dynamic, 1>::Zero(dof_handler.n_dofs());   // zero initial condition
+	 Eigen::SparseMatrix<double> M = integral(unit_square)(u * v).assemble();    // mass matrix
+	 Eigen::SparseMatrix<double> A = M / DeltaT + a.assemble() * 0.5;            // stiff matrix (SPD)
 	 dof_handler.enforce_constraints(A);
-	 Eigen::SimplicialLLT<SpMatrix<double>> lin_solver(A);
+	 Eigen::SimplicialLLT<Eigen::SparseMatrix<double>> lin_solver(A);
 	 // compute matrix of rhs (here we include non-homogeneous neumann BCs)
-	 DMatrix<double> F(dof_handler.n_dofs(), n_times);
+	 Eigen::Matrix<double, Dynamic, Dynamic> F(dof_handler.n_dofs(), n_times);
 	 for (int i = 0; i < n_times; ++i) {
 	     F.col(i) = (integral(unit_square)(f * v) +    // forcing term
 	                 integral(unit_square.boundary(/* on = */ 1))(g_N.at(DeltaT * i) * v)    // neumann BCs
@@ -268,7 +261,7 @@ The script is mostly similar to the Crank-Nicolson time-stepping scheme implemen
 	 }
 	 // time integration
 	 for (int i = 1; i < n_times; ++i) {
-             DVector<double> b =
+             Eigen::Matrix<double, Dynamic, 1> b =
                  (M / DeltaT - A / 2) * solution.col(i - 1) + 0.5 * (F.col(i) + F.col(i - 1));   // update rhs
 	     dof_handler.enforce_constraints(b);
 	     solution.col(i) = lin_solver.solve(b);
