@@ -93,7 +93,7 @@ In order to apply SUPG, let us first define the stabilization parameter :math:`\
 
    CellDiameterDescriptor h_k(unit_square);
    double delta = 2.85;
-   double b_norm = integral(unit_square, QS2D3P)(b.norm());   // transport field norm
+   double b_norm = integral(unit_square, QS2DP2)(b.norm());   // transport field norm
    
    auto tau_k  = 0.5 * delta * h_k / b_norm;   // stabilization parameter
 
@@ -111,9 +111,9 @@ In order to apply SUPG, let us first define the stabilization parameter :math:`\
 
    .. code-block:: cpp
 
-      double b_norm = integral(unit_square, QS2D3P)(b.norm());
+      double b_norm = integral(unit_square, QS2DP2)(b.norm());
 
-   in the definition of the stablization parameter computes :math:`\int_{[0,1]^2} \| b \|_2` using a two dimensional 3 point simplex rule (:code:`QS2D3P`).
+   in the definition of the stablization parameter computes :math:`\int_{[0,1]^2} \| b \|_2` using a two dimensional 3 point simplex rule (:code:`QS2DP2`).
 
 We have now all the ingredients to assemble the stabilized bilinear forms :math:`\tilde a(u,v)` and :math:`\tilde F(v)`:
 
@@ -163,7 +163,7 @@ Upon discretization and imposition of boundary conditions, the solution of the d
 	 // SUPG correction
 	 CellDiameterDescriptor h_k(unit_square);
 	 double delta = 2.85;
-	 double b_norm = integral(unit_square, QS2D3P)(b.norm());   // transport field norm
+	 double b_norm = integral(unit_square, QS2DP2)(b.norm());   // transport field norm
 	 auto tau_k  = 0.5 * delta * h_k / b_norm;   // stabilization parameter
 	 auto a_supg = a + integral(unit_square)(tau_k * (-mu * (dxx(u) + dyy(u)) + dot(b, grad(u)) + u) * dot(b, grad(v)));
 	 auto F_supg = F + integral(unit_square)(f * v + tau_k * f * dot(b, grad(v)));

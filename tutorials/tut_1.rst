@@ -92,14 +92,14 @@ We then define the forcing term as a plain :code:`ScalarField` togheter with the
        return -9*std::pow(p[0], 4) - 12*p[0]*p[0]*p[1]*p[1] + 3*p[0]*p[0] +
                2*p[1]*p[1] - 4*std::pow(p[1], 4) - 10;
    })> f;
-   auto F = integral(unit_square, QS2D6P)(f * v);
+   auto F = integral(unit_square, QS2DP4)(f * v);
 
-Observe that we explicitly require an higher order quadrature specifying the 6 points quadrature formula :code:`QS2D6P` as second argument of the :code:`integral` function. Finally, we define non-homegeneous Dirichlet boundary conditions :math:`g(\boldsymbol{x}) = 3x^2 + 2y^2` on all the boundary of the domain
+Observe that we explicitly require an higher order quadrature specifying the quadrature formula :code:`QS2DP4` for the exact integration of order 4 polynomials as second argument of the :code:`integral` function. Finally, we define non-homegeneous Dirichlet boundary conditions :math:`g(\boldsymbol{x}) = 3x^2 + 2y^2` on all the boundary of the domain
 
 .. code-block:: cpp
 		
    ScalarField<2, decltype([](const PointT& p) { return 3 * p[0] * p[0] + 2 * p[1] * p[1]; })> g;
-   DofHandler<2, 2>& dof_handler = Vh.dof_handler();
+   auto& dof_handler = Vh.dof_handler();
    dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
 Recall that Dirichlet boundary conditions are implemented as constraints on the degrees of freedom of the linear system :math:`A \boldsymbol{c} = \boldsymbol{b}` deriving form the discretization of the variational problem, and that we must later enforce them on the pair :math:`(A, \boldsymbol{b})` before solving the linear system, using the :code:`enforce_constraints` method.
@@ -172,11 +172,11 @@ The code just assembles :code:`A1` and :code:`A2`, updates the right hand side :
 	 ScalarField<2, decltype([](const PointT& p) {
 	     return -9*std::pow(p[0], 4) - 12*p[0]*p[0]*p[1]*p[1] + 3*p[0]*p[0] + 2*p[1]*p[1] - 4*std::pow(p[1], 4) - 10;
 	 })> f;
-	 auto F = integral(unit_square, QS2D6P)(f * v);
+	 auto F = integral(unit_square, QS2DP4)(f * v);
 	 
 	 // define dirichlet data
 	 ScalarField<2, decltype([](const PointT& p) { return 3 * p[0] * p[0] + 2 * p[1] * p[1]; })> g;
-	 DofHandler<2, 2>& dof_handler = Vh.dof_handler();
+	 auto& dof_handler = Vh.dof_handler();
 	 dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
 	 // Newton scheme initialization (solve linearized problem with initial guess u = 0)

@@ -88,7 +88,7 @@ You can fix the time coordinate calling :code:`f.at(t)`. Subsequent calls of :co
 .. code-block:: cpp
 
    ScalarField<2, decltype([](const PointT& p) { return 0; })> g;
-   DofHandler<2, 2>& dof_handler = Vh.dof_handler();
+   auto& dof_handler = Vh.dof_handler();
    dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
 Finally, we fix the time step :math:`\Delta t`, set up room for the solution fixing the initial condition to :math:`u_0(\boldsymbol{x}) = 0` and discretizing once and for all the mass matrix :math:`M` and the stiff matrix :math:`\frac{M}{\Delta T} + \frac{1}{2} A`, togheter with the forcing term :math:`F(t)`. Since the matrix :math:`\frac{M}{\Delta T} + \frac{1}{2} A` is SPD and time-invariant, we factorize it outside the time integration loop using a Cholesky factorization:
@@ -145,7 +145,7 @@ Finally, the crank-nicolson time integration loop can start:
          })> f;
 	 // dirichlet data (homogeneous and fixed in time)
 	 ScalarField<2, decltype([](const PointT& p) { return 0; })> g;
-	 DofHandler<2, 2>& dof_handler = Vh.dof_handler();
+	 auto& dof_handler = Vh.dof_handler();
 	 dof_handler.set_dirichlet_constraint(/* on = */ BoundaryAll, /* data = */ g);
 
 	 // crank-nicolson integration
@@ -238,7 +238,7 @@ The script is mostly similar to the Crank-Nicolson time-stepping scheme implemen
 
 	 // dirichlet homoegeneous data (fixed in time)
 	 ScalarField<2, decltype([](const PointT& p) { return 0; })> g_D;
-	 DofHandler<2, 2>& dof_handler = Vh.dof_handler();
+	 auto& dof_handler = Vh.dof_handler();
 	 dof_handler.set_dirichlet_constraint(/* on = */ 0, /* data = */ g_D);
 	 // neumann inflow data
 	 SpaceTimeField<2, decltype([](const PointT& p, double t) { return p[1] * (1 - p[1]) * t * (0.5 - t); })> g_N;
