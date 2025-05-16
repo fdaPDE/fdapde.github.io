@@ -35,6 +35,12 @@ L'idea generale è quella di scrivere degli script, che vedono fdaPDE come una l
   
 La libreria è composta da diversi moduli. Il modo più semplice per avere un ambiente funzionante è quello di caricare l'header :code:`<fdaPDE/models.h>`, il quale, attualmente, carica tutto lo stack della libreria. Per convenienza, importiamo anche il namespace :code:`fdapde`. 
 
+Per compilare, al momento, solo **gcc14 (o superiore) è supportato**. Usate la seguente riga di codice (supponendo di essere nella cartella :code:`test/mio_test`):
+
+.. code-block:: bash
+
+   g++ -o main main.cpp -I../../fdaPDE-cpp -I../../fdaPDE-cpp/fdaPDE/core -O2 -march=native -std=c++20 -s
+
 Tipicamente, l'anatomia di uno script è la seguente:
 
 1. **definizione della geometria**: il primo step è quello di definire la geometria del problema. In questa fase tratteremo unicamente discretizzazioni agli elementi finiti, e pertanto le nostre geometrie saranno unicamente triangolazioni. Potete caricare una triangolazione con il seguente codice:
