@@ -41,6 +41,8 @@ Per compilare, al momento, solo **gcc14 (o superiore) è supportato**. Usate la 
 
    g++ -o main main.cpp -I../../fdaPDE-cpp -I../../fdaPDE-cpp/fdaPDE/core -O2 -march=native -std=c++20 -s
 
+quindi esegiute con :code:`./main`.
+   
 Tipicamente, l'anatomia di uno script è la seguente:
 
 1. **definizione della geometria**: il primo step è quello di definire la geometria del problema. In questa fase tratteremo unicamente discretizzazioni agli elementi finiti, e pertanto le nostre geometrie saranno unicamente triangolazioni. Potete caricare una triangolazione con il seguente codice:
@@ -211,7 +213,42 @@ Definite le discretizzazioni temporale :code:`T` e spaziale :code:`D`, :code:`Ge
    In questo caso, poichè una griglia di punti esplicita è stata fornita tramite la matrice :code:`locs`, :code:`GeoFrame` non effettuerà alcuna tensorizzazione ma userà, invece, la griglia fornita. Questa opzione è possibile solo nel caso di layer :code:`<POINT, POINT>`.
       
 E possibile infine definire layers senza alcun dato associato. Questo può ritornare utile, ad esempio, nella definizione di problemi di processi di punto non marcati, dove non si ha nessuna quantità definita in corrispondenza della locazione. Questo è ottenuto semplicemente evitando di caricare alcun dato (tramite, e.g., :code:`read_csv` o :code:`load_vec`).
+
+Alcuni modelli funzionali potrebbero voler lavorare su più unità statistiche simultaneamente. Questo è il caso, ad esempio, per i modelli di :code:`fPCA`. In questo caso, invece di indicizzare le singole colonne del :code:`GeoFrame`, è necessario individuare con un unico nome simbolico un blocco di più colonne. Questo può essere ottenuto o attraverso una chiamata a :code:`.merge<T>("nome_blocco")` o caricando direttamente un blocco con :code:`.load_blk("nome_blocco", dati)`. Si veda il codice sottostante per un esempio:
+
+.. code-block:: cpp
+   :linenos:
+
+   // geometry
+   Triangulation<2, 2> D = Triangulation<2, 2>::UnitSquare(60);
+      
+   // data
+   GeoFrame data(D);
+   auto& l = data.insert_scalar_layer<POINT>("l1", MESH_NODES);
+   l.load_csv<double>("data.csv");
+
+   // merge all columns of type double into a single block named X
+   l.data().merge<double>("X");
+
+   std::cout << l << std::endl;
    
+                                             X
+                <POINT>           <50,1:flt64>
+   (0.000000, 0.000000) -0.017307 ... 0.038973
+   (0.016949, 0.000000) -0.023286 ... 0.151539
+   (0.033898, 0.000000)  0.018406 ... 0.007683
+   (0.050847, 0.000000) -0.099572 ... 0.208208
+   (0.067797, 0.000000) -0.246997 ... 0.185192
+   (0.084746, 0.000000)  0.038961 ... 0.236157
+   (0.101695, 0.000000) -0.271565 ... 0.219019
+   (0.118644, 0.000000) -0.251898 ... 0.328487
+
+   // or you can directly push a block as follow
+   Eigen::Matrix<double, Dynamic, Dynamic> block;
+   // ... fill block ...
+   
+   l.load_blk("X", block);
+
 3. **definizione della fisica**:
 
    .. tip::
@@ -268,7 +305,7 @@ E possibile infine definire layers senza alcun dato associato. Questo può ritor
    .. math::
 
       \begin{align}
-      & \min_{\boldsymbol{f} \in \mathbb{H}} && \mathcal{F}(\boldsymbol{f}) + \mathcal{P}(\boldsymbol{f}, \boldsymbol{f}) &&\\
+      & \min_{\boldsymbol{f} \in \mathbb{H}} && \mathcal{L}(\boldsymbol{f}) + \mathcal{P}(\boldsymbol{f}, \boldsymbol{f}) &&\\
       & \text{s.t.} && \mathcal{C}(\boldsymbol{f}) = \boldsymbol{0}
       \end{align}
    
@@ -587,7 +624,7 @@ Di seguito trovate degli script completi di esempio:
       locs.leftCols(2)  = read_csv<double>("../data/de/03/data_space.csv").as_matrix();
       locs.rightCols(1) = read_csv<double>("../data/de/03/data_time.csv" ).as_matrix();
       GeoFrame data(D, T);
-      auto& l1 = data.insert_scalar_layer<POINT, POINT>("l1", locs);
+      auto& l = data.insert_scalar_layer<POINT, POINT>("layer", locs);
       
       // physics
       FeSpace Vh(D, P1<1>);   // linear finite element in space
@@ -610,6 +647,50 @@ Di seguito trovate degli script completi di esempio:
     
       // export
       write_csv("estimate.csv", m.log_density());
+
+      return 0;
+   }
+
+.. code-block:: cpp
+   :linenos:
+   :caption: functional PCA with power iteration solver
+
+   #include <fdaPDE/models.h>
+   using namespace fdapde;
+
+   int main() {
+      // geometry
+      std::string mesh_path = "...";
+      Triangulation<2, 2> D(
+          mesh_path + "points.csv", mesh_path + "elements.csv", mesh_path + "boundary.csv", true, true);
+
+      // data
+      GeoFrame data(D);
+      auto& l = data.insert_scalar_layer<POINT>("layer", MESH_NODES);
+      l1.load_csv<double>("data.csv");
+      l1.data().merge<double>("X");
+      
+      // physics (isotropic laplacian)
+      FeSpace Vh(D, P1<1>);
+      TrialFunction f(Vh);
+      TestFunction  v(Vh);
+      auto a = integral(D)(dot(grad(f), grad(v)));
+      ZeroField<2> u;
+      auto F = integral(D)(u * v);
+    
+      // modeling
+      fPCA m("X", data, fe_ls_elliptic(a, F));
+      std::vector<double> lambda_grid = {1e-7, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2};
+      m.fit(
+          /* n_comp = */ 3,
+          lambda_grid,
+	  /* options = */ OptimizeGCV | ComputeRandSVD,
+	  fpca_power_solver()
+      );
+
+      // export
+      write_csv("scores.csv", m.scores());
+      write_csv("loadings.csv", m.loading());
 
       return 0;
    }
