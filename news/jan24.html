@@ -1,0 +1,738 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>January 2024 - fdaPDE  documentation</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.243c798c14787bf0e.min.css?v=a4497153" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-header__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fdaPDE  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              January 2024
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-nav__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    fdaPDE  documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 1:<wbr> A non-<wbr>linear diffusion reaction problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 2:<wbr> The Heat equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 3:<wbr> SUPG for advection dominated equations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 4:<wbr> The Stokes problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/alpha_testing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha testing fda<wbr>PDE 2.<wbr>0 <wbr>[cpp]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+  
+
+
+
+<h1 id="january-2024">January 2024<a class="headerlink" href="#january-2024" title="Link to this heading">¶</a></h1>
+<p><strong>core</strong></p>
+<ul>
+<li><p><strong>1D meshes</strong>: the <code class="code docutils literal notranslate"><span class="pre">mesh</span></code> module explicitly supports 1D meshes (intervals). Before of this update, the only way to handle one dimensional intervals was to employ a degenerate linear network. Now <code class="code docutils literal notranslate"><span class="pre">Mesh&lt;1,</span> <span class="pre">1&gt;</span></code> is provided to support this functionality. In addition, point location over 1D interval is implemented using a fast <span class="math notranslate nohighlight">\(O(\log(n))\)</span> binary search without additional memory storage. The class supports also a convenient linspaced constructor for meshing intervals <span class="math notranslate nohighlight">\([a,b]\)</span> with equispaced nodes <code class="code docutils literal notranslate"><span class="pre">Mesh&lt;1,</span> <span class="pre">1&gt;::Mesh(double</span> <span class="pre">a,</span> <span class="pre">double</span> <span class="pre">b,</span> <span class="pre">int</span> <span class="pre">n_nodes)</span></code>.</p></li>
+<li><p><strong>Discretization of 1D PDEs using B-spline basis</strong>: PDEs can be discretized using a B-spline basis expansion of the solution. The <code class="code docutils literal notranslate"><span class="pre">spline</span></code> module allows to define a PDE on a <code class="code docutils literal notranslate"><span class="pre">Mesh&lt;1,</span> <span class="pre">1&gt;</span></code> with the following API, using a B-spline discretization:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>One dimensional bilaplacian operator, discretized via cubic B-Splines<a class="headerlink" href="#id1" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">Mesh</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_interval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// SPLINE declares the intention to discretize this operator using a B-spline basis expansion</span>
+<span class="c1">// of its solution.</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">Lt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">bilaplacian</span><span class="o">&lt;</span><span class="n">SPLINE</span><span class="o">&gt;</span><span class="p">();</span><span class="w">    </span><span class="c1">// strong formulation of the differential operator</span>
+<span class="n">PDE</span><span class="o">&lt;</span><span class="n">Mesh</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Lt</span><span class="p">),</span><span class="w"> </span><span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">SPLINE</span><span class="p">,</span><span class="w"> </span><span class="n">spline_order</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">time_penalty</span><span class="p">(</span><span class="n">unit_interval</span><span class="p">,</span><span class="w"> </span><span class="n">Lt</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Still missing</p>
+<p>Diffusion and transport operators, non-homogeneous forcing terms, Dirichlet and non-homogeneous Neumann boundary conditions, time-dependent problems, non-linearities.</p>
+</div>
+</li>
+<li><p><strong>Binary matrices</strong>: the linear algebra module supports the definition and manipulation of binary valued matrices, via the template <code class="code docutils literal notranslate"><span class="pre">BinaryMatrix&lt;Rows,</span> <span class="pre">Cols&gt;</span></code>. Template parameters <code class="code docutils literal notranslate"><span class="pre">Rows</span></code> and <code class="code docutils literal notranslate"><span class="pre">Cols</span></code> can be set to <code class="code docutils literal notranslate"><span class="pre">fdapde::Dynamic</span></code> to express a matrix whose dimesions are not known at compile time. Due to its particularly efficient implementation, binary matrices should always be preferred over <code class="code docutils literal notranslate"><span class="pre">std::vector&lt;bool&gt;</span></code> or <code class="code docutils literal notranslate"><span class="pre">DMatrix&lt;bool&gt;</span></code> in the library, whenever there is the need to manipulate vectors (or matrices) of binary values.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>BinaryMatrix API<a class="headerlink" href="#id2" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// a statically stored binary matrix (coefficients set to 0 by default)</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m1</span><span class="p">;</span>
+<span class="n">m1</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// set to 1 the coefficient in position (0,0)</span>
+
+<span class="c1">// another statically stored binary matrix</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span>
+<span class="n">m2</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// bitwise operations</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span><span class="w">    </span><span class="c1">// bitwise or (addition modulo 2)</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span><span class="w">    </span><span class="c1">// bitwise and (product modulo 2)</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m1</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">m2</span><span class="p">;</span><span class="w">    </span><span class="c1">// bitwise xor</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">m1</span><span class="p">;</span><span class="w">        </span><span class="c1">// binary negation</span>
+
+<span class="c1">// bitwise expression templates :)</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">m1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">m2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">m1</span><span class="p">;</span>
+
+<span class="c1">// a 5 x 100, dynamically sized, binary matrix</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m7</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="n">m7</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">);</span>
+
+<span class="c1">// block operations</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m7</span><span class="p">.</span><span class="n">row</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// extract the third row</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m7</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w">    </span><span class="c1">// extract the fifth column</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m7</span><span class="p">.</span><span class="n">block</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">            </span><span class="c1">// extract a 3 x 30 block starting at position (2,40)</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">static_block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m7</span><span class="p">.</span><span class="n">block</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">);</span><span class="w"> </span><span class="c1">// static sized version of the above</span>
+
+<span class="c1">// obtain a new binary matrix by repating m7 2 times by rows and 4 times by columns</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m7</span><span class="p">.</span><span class="n">blk_repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+
+<span class="c1">// visitors</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m3</span><span class="p">.</span><span class="n">all</span><span class="p">();</span><span class="w"> </span><span class="c1">// are all the coefficients of m3 set to true?</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m3</span><span class="p">.</span><span class="n">any</span><span class="p">();</span><span class="w"> </span><span class="c1">// is there at least one coefficient of m3 set to true?</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m3</span><span class="p">.</span><span class="n">count</span><span class="p">();</span><span class="w"> </span><span class="c1">// how many coefficients of m3 set to true?</span>
+
+<span class="c1">// binary vectors are defined as BinaryMatrix&lt;Rows, 1&gt;, all the API above remains valid</span>
+<span class="n">BinaryVector</span><span class="o">&lt;</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vec</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="n">vec</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="n">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m7</span><span class="p">.</span><span class="n">row</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>Binary matrices are expecially convenient to express bitmasks, e.g., to express the presence or absence of an observation at a given location. <code class="code docutils literal notranslate"><span class="pre">BinaryMatrix&lt;Rows,</span> <span class="pre">Cols&gt;</span></code> exposes a <code class="code docutils literal notranslate"><span class="pre">select()</span></code> method which can be used to mask a given dense or sparse Eigen expression.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Mask an Eigen matrix using a BinaryMatrix<a class="headerlink" href="#id3" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">SpMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="n">BinaryMatrix</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mask</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">// produce a (sparse) matrix B keeping only those coefficients of A which matches with ones in the mask,</span>
+<span class="c1">// sets all the others to zero</span>
+<span class="n">SpMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mask</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+
+<span class="c1">// the same holds for dense expressions.</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p>A <code class="code docutils literal notranslate"><span class="pre">BinaryMatrix&lt;Rows,</span> <span class="pre">Cols&gt;</span></code> does not store its coefficients using one integer for each coefficient. Instead, each integer is used to store <code class="code docutils literal notranslate"><span class="pre">8*sizeof(std::uintmax_t)</span></code> coefficients (this value is architecture dependent, for instance, each integer can store 64 bits on a 64-bit architecture). This means that a binary matrix with less than 64 coefficients is stored using a single integer (with a space-consumption of 8 bytes on a 64-bit architecture).</p>
+<p>This memory representation makes the datatype extremely efficient. Indeed, operations between binary matrices are performed at batches of <code class="code docutils literal notranslate"><span class="pre">8*sizeof(std::uintmax_t)</span></code> coefficients, e.g., the logical sum (addition modulo 2) between two binary matrices with less than <code class="code docutils literal notranslate"><span class="pre">8*sizeof(std::uintmax_t)</span></code> is performed with one single machine instruction, instead of using a costly loop coefficient by coefficient.</p>
+</div>
+</li>
+<li><p><strong>Mass lumping</strong>: the linear algebra module supports the computation of the lumped matrix of a given Eigen expression. Both sparse and dense expressions are supported. The implemented lumped operator is the classical row-sum operator.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Mass-lumping of a matrix<a class="headerlink" href="#id4" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">SpMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">R0</span><span class="p">;</span><span class="w">                   </span><span class="c1">// some sparse matrix</span>
+<span class="n">SpMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">R0_lumped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lump</span><span class="p">(</span><span class="n">R0</span><span class="p">);</span><span class="w"> </span><span class="c1">// mass-lumped R0</span>
+<span class="c1">// obtain the mass lumped matrix of eigen expressions</span>
+<span class="n">SpMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lumped_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lump</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">R0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">R0</span><span class="p">);</span>
+
+<span class="c1">// the above holds also for dense expresions.</span>
+</code></pre></div>
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p><code class="code docutils literal notranslate"><span class="pre">lump(A)</span></code> returns the mass-lumped matrix of A, not the inverse of its mass-lumped matrix.</p>
+</div>
+</li>
+<li><p><strong>Optimizers can be type-erased</strong>: the optimization module provides a template <code class="code docutils literal notranslate"><span class="pre">Optimizer&lt;F&gt;</span></code> which is a type-erasure wrapper for optimization algorithms optimizing functors of type <code class="code docutils literal notranslate"><span class="pre">F</span></code>. <code class="code docutils literal notranslate"><span class="pre">Optimizer&lt;F&gt;</span></code> exposes the standard API of the optimization module. Check any optimizer in the optimization module for details.</p>
+<div class="example admonition">
+<p class="admonition-title">Example</p>
+<p>Thanks to the type-erasure technique, optimizers can be set and assigned using run-time decisions.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Assign optimizer based on run-time decision<a class="headerlink" href="#id5" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">SVector</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="p">});</span>
+<span class="c1">// an optimizer for 2D scalar fields</span>
+<span class="n">Optimizer</span><span class="o">&lt;</span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">opt</span><span class="p">;</span>
+
+<span class="c1">// bound to opt any optimization algorithm at runtime</span>
+<span class="k">if</span><span class="p">(</span><span class="n">some_runtime_condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BFGS</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">WolfeLineSearch</span><span class="o">&gt;</span><span class="p">(</span><span class="n">max_iter</span><span class="p">,</span><span class="w"> </span><span class="n">tolerance</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">);</span><span class="w">              </span><span class="c1">// BFGS with Wolfe step</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Newton</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">BacktrackingLineSearch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">opt</span><span class="p">(</span><span class="n">max_iter</span><span class="p">,</span><span class="w"> </span><span class="n">tolerance</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">);</span><span class="w"> </span><span class="c1">// Newton with Backtracking step</span>
+<span class="p">}</span>
+<span class="c1">// this works whenever f is a ScalarField&lt;2&gt;, independently on the implementation of f</span>
+<span class="n">opt</span><span class="p">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">SVector</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+</code></pre></div>
+</div>
+</div>
+<p>The above is used, e.g., in <code class="code docutils literal notranslate"><span class="pre">calibration::GCV</span></code> (see below) to set at run-time the type of optimizer used for GCV minimization. <code class="code docutils literal notranslate"><span class="pre">calibration::GCV</span></code> stores a member of type <code class="code docutils literal notranslate"><span class="pre">Optimizer&lt;GCV&gt;</span></code>, to enable the optimization of the GCV objective using any optimization strategy.</p>
+</div>
+</li>
+</ul>
+<p><strong>cpp</strong></p>
+<ul>
+<li><p><strong>General PDEs for space-time separable penalized problems</strong>: it is now possible to provide a generic 1D PDE as time penalty in a space-time separable penalized problem.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The functionality is not tested outside the classical time-penalty usually encountered in literature, e.g. <span class="math notranslate nohighlight">\(\int_{\mathcal{D} \times T} (\frac{\partial^2 f}{\partial t^2})^2\)</span>, neverthless from this update on the internal infrastructure allows for generic operators in time.</p>
+</div>
+<div class="example admonition">
+<p class="admonition-title">Example</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>A space-time separable STRPDE smoothing problem with general spatial and temporal penalties<a class="headerlink" href="#id6" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// a spatio-temporal STRPDE model with separable penalty (details omitted)</span>
+<span class="c1">// define temporal and spatial domain...</span>
+
+<span class="c1">// spatial regularization</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">Ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">laplacian</span><span class="o">&lt;</span><span class="n">FEM</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// simple laplacian penalty in space</span>
+<span class="n">PDE</span><span class="o">&lt;</span><span class="n">Mesh</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Ld</span><span class="p">),</span><span class="w"> </span><span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">FEM</span><span class="p">,</span><span class="w"> </span><span class="n">fem_order</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">space_penalty</span><span class="p">(</span><span class="n">space_domain</span><span class="p">,</span><span class="w"> </span><span class="n">Ld</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">);</span>
+<span class="c1">// temporal regularization</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">Lt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">bilaplacian</span><span class="o">&lt;</span><span class="n">SPLINE</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// penalty on the second derivative in time</span>
+<span class="n">PDE</span><span class="o">&lt;</span><span class="n">Mesh</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Lt</span><span class="p">),</span><span class="w"> </span><span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">SPLINE</span><span class="p">,</span><span class="w"> </span><span class="n">spline_order</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">time_penalty</span><span class="p">(</span><span class="n">time_domain</span><span class="p">,</span><span class="w"> </span><span class="n">Lt</span><span class="p">);</span>
+
+<span class="n">STRPDE</span><span class="o">&lt;</span><span class="n">SpaceTimeSeparable</span><span class="p">,</span><span class="w"> </span><span class="n">fdapde</span><span class="o">::</span><span class="n">monolithic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">space_penalty</span><span class="p">,</span><span class="w"> </span><span class="n">time_penalty</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p>The writing above implements an STRPDE model as usually encountered in literature. Neverthless <code class="code docutils literal notranslate"><span class="pre">Lt</span></code> can now be any operator time. It is also worth to mention that <code class="code docutils literal notranslate"><span class="pre">-bilaplacian&lt;SPLINE&gt;</span></code> refers to the fourth order problem one gets by developing the math. This might be misleading, as we are actually penalizing for a laplacian (second order derivative in time). Name changes are possible in this respect.</p>
+</div>
+</li>
+<li><p><strong>K-fold Cross Validation</strong>: support for a general implementation of a K-fold cross validation strategy with random partition in train and test set. <code class="code docutils literal notranslate"><span class="pre">KCV</span></code> fulfills the calibrator concept (see below for details).</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>K-Fold CV fit signature<a class="headerlink" href="#id7" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ScoreType</span><span class="o">&gt;</span>
+<span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fit</span><span class="p">(</span><span class="n">ModelType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">lambdas</span><span class="p">,</span><span class="w"> </span><span class="n">ScoreType</span><span class="w"> </span><span class="n">cv_score</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p>Specifically <code class="code docutils literal notranslate"><span class="pre">ScoreType</span></code> must be a functor with the following singature</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>ScoreType call operator signature<a class="headerlink" href="#id8" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">lambda</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BinaryVector</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">train_mask</span><span class="p">,</span>
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BinaryVector</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">test_mask</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p>and must return the model score for a given smoothing parameter and train/test partition. Check <code class="code docutils literal notranslate"><span class="pre">RMSE</span></code> for an example.</p>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p><code class="code docutils literal notranslate"><span class="pre">KCV</span></code> splits the data (previously shuffled if requested) in K folds, and just invokes the provided cross validation index with the currently explored smoothing parameter and train/test partition. As such, the specific scoring logic, i.e., the core of the calibration strategy, is completely moved on the <code class="code docutils literal notranslate"><span class="pre">ScoreType</span></code> data type.</p>
+<p>Moreover, there is no actual data splitting, nor data replication, while producing the data folds. Instead, properly defined masks, implemented as <code class="code docutils literal notranslate"><span class="pre">BinaryVector&lt;Dynamic&gt;</span></code>, are produced to implement the partitioning in train and test sets.</p>
+</div>
+<div class="example admonition">
+<p class="admonition-title">Example</p>
+<p>The code below shows how to calibrate the smoothing parameter of an SRPDE model using a 10-fold CV strategy minimizing the model’s RMSE.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>10-fold CV smoothing parameter selection via RMSE minimization<a class="headerlink" href="#id9" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// define some statistical model</span>
+<span class="n">SRPDE</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">);</span>
+<span class="c1">// define KCV engine and search for best lambda which minimizes the model&#39;s RMSE</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">n_folds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">KCV</span><span class="w"> </span><span class="nf">kcv</span><span class="p">(</span><span class="n">n_folds</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">lambdas</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-6.0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">-3.0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.25</span><span class="p">)</span><span class="w"> </span><span class="n">lambdas</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">SVector</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)));</span>
+<span class="n">kcv</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">lambdas</span><span class="p">,</span><span class="w"> </span><span class="n">RMSE</span><span class="p">(</span><span class="n">model</span><span class="p">));</span>
+</code></pre></div>
+</div>
+</div>
+<p>For an higher-level API, check the calibrator concept below.</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>The functionality is still considered unstable, as extensive numerical tests for all the supported models are required.</p>
+</div>
+</li>
+<li><p><strong>Calibrators</strong>: the calibrator concept introduces a unified way to calibrate a statistical model (e.g. select its smoothing parameters). The only requirement for a type T to be a calibrator is to expose a <code class="code docutils literal notranslate"><span class="pre">fit</span></code> method with the following signature</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Calibrator concept fit signature<a class="headerlink" href="#id10" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelType</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"> </span><span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fit</span><span class="p">(</span><span class="n">ModelType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">fit</span></code> takes the model whose parameters must be selected and additional arguments required for the specific calibration algorithm. It returns the selected smoothing parameter. Are examples of calibrators, <code class="code docutils literal notranslate"><span class="pre">calibration::KCV</span></code> and <code class="code docutils literal notranslate"><span class="pre">calibration::GCV</span></code>.</p>
+<div class="abstract admonition">
+<p class="admonition-title">some details on the GCV calibrator</p>
+<p><code class="code docutils literal notranslate"><span class="pre">calibration::GCV</span></code> must not be confused with <code class="code docutils literal notranslate"><span class="pre">model::GCV</span></code>. While the latter is a functor representing the GCV objective, the former represents a calibrator. <code class="code docutils literal notranslate"><span class="pre">model::GCV</span></code> offers a lower-level API than its calibrator. To see the differences, check the following code snippets:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span><code class="code docutils literal notranslate"><span class="pre">model::GCV</span></code> API<a class="headerlink" href="#id11" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// define some statistical model</span>
+<span class="n">SRPDE</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">);</span>
+<span class="c1">// request its GCV objective (use approximated Tr[S])</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">476813</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">GCV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">gcv</span><span class="o">&lt;</span><span class="n">StochasticEDF</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">);</span>
+<span class="c1">// optimize GCV (require a grid optimization)</span>
+<span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">opt_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core</span><span class="o">::</span><span class="n">Grid</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="p">{}.</span><span class="n">optimize</span><span class="p">(</span><span class="n">GCV</span><span class="p">,</span><span class="w"> </span><span class="n">lambda_grid</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span><code class="code docutils literal notranslate"><span class="pre">calibration::GCV</span></code> API<a class="headerlink" href="#id12" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// define some statistical model</span>
+<span class="n">SRPDE</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">);</span>
+<span class="c1">// define GCV calibrator (pay attention that a calibrator is model independent)</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">476813</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">calibrator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Grid</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)};</span>
+<span class="c1">// fit the model using the calibrator</span>
+<span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">opt_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calibrator</span><span class="p">(</span><span class="n">lambda_grid</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p>Pay attention that <strong>a calibrator never depends on a statistical model</strong>. It allows for a functional way to express a calibration strategy which does not depend on a specific model instance. For instance</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">calibrator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Grid</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)};</span>
+</code></pre></div>
+</div>
+<p>represents a calibration strategy for a (regression) model based on GCV minimization, optimized over a grid of smoothing parameters, and using a stochastic approximation for the edfs. Note that in the above definition no model is specified. Moreover, it is copy/move assignable, i.e., it can be stored and given as argument to other functions.</p>
+<p>The first argument of <code class="code docutils literal notranslate"><span class="pre">calibrator::GCV</span></code> can be any optimizer in the core module, for instance a calibrator so defined</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">calibrator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Newton</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">BacktrackingLineSearch</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)};</span>
+</code></pre></div>
+</div>
+<p>express a calibration strategy for a (regression) model whose GCV is optimized using a newton method with adaptive step size (backtracking line search), using a stochastic approximation for the edfs. Check the optimization module for further details.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">calibration::GCV</span></code> is a functor, exposing a call operator which forwards its arguments to the optimizer (e.g., the initial point for an iterative optimization routine, or a grid of points for a brute force optimization). The result is an instance of <code class="code docutils literal notranslate"><span class="pre">ConfiguredCalibrator</span></code> with a <code class="code docutils literal notranslate"><span class="pre">fit</span></code> method accepting the model instance. The calibration is lazily evaluated, e.g., computation starts only when fit is invoked.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// set up the internal optimization algorithm with the choosen grid of smoothing parameters and fit the model</span>
+<span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">opt_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calibrator</span><span class="p">(</span><span class="n">lambdas</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<div class="abstract admonition">
+<p class="admonition-title">some details on the KCV calibrator</p>
+<p><code class="code docutils literal notranslate"><span class="pre">calibration::KCV</span></code> allows for the selection of the smoothing parameter of a statistical model, using a K-Fold Cross Validation approach. Observe that thanks to the low requirements for the model type accepted by <code class="code docutils literal notranslate"><span class="pre">calibration::KCV</span></code>, any model class (not only regression models) can be provided to this calibrator. The snippet below shows the provided API</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>K-fold CV based calibration of an SRPDE model using a calibrator<a class="headerlink" href="#id13" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// define some statistical model</span>
+<span class="n">SRPDE</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">);</span>
+<span class="c1">// define KCV calibrator minimizing the Root Mean Squared Error (RMSE) of the model</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">n_folds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">476813</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">calibrator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calibration</span><span class="o">::</span><span class="n">KCV</span><span class="w"> </span><span class="p">{</span><span class="n">n_folds</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">}(</span><span class="n">lambda_grid</span><span class="p">,</span><span class="w"> </span><span class="n">RMSE</span><span class="p">());</span>
+<span class="c1">// fit the model with the selected calibration strategy</span>
+<span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">opt_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calibrator</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Functions accepting a calibration strategy should accept a <code class="code docutils literal notranslate"><span class="pre">ConfiguredCalibrator</span></code> instance. In this way, the routine is abstracted from the calibration strategy, allowing to provide any type of calibration to the algorithm. For an example, see the <code class="code docutils literal notranslate"><span class="pre">center</span></code> routine for the functional centering of a data matrix.</p>
+</li>
+<li><p><strong>Functional centering</strong>: the functional module now offer support for the smooth centering of a given data matrix <span class="math notranslate nohighlight">\(X\)</span> via the <code class="code docutils literal notranslate"><span class="pre">center</span></code> routine. It returns the centered data togheter with the expansion coefficients of the mean field.</p>
+<div class="example admonition">
+<p class="admonition-title">Example</p>
+<p>The functional centering of a data matrix <span class="math notranslate nohighlight">\(X\)</span>, which provides the following signature</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>center signature<a class="headerlink" href="#id14" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">SmootherType_</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">CalibrationType_</span><span class="o">&gt;</span>
+<span class="n">CenterReturnType</span><span class="w"> </span><span class="n">center</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">SmootherType_</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">smoother</span><span class="p">,</span><span class="w"> </span><span class="n">CalibrationType_</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">calibration</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p>is an example of the flexibility of the calibrator concept. The <code class="code docutils literal notranslate"><span class="pre">center</span></code> function does not assume any type of smoothing algorithm to produce the smooth mean, nor any type of calibration strategy to find the optimal smoothing parameter for the smoother. Users of the centering algorithm define whatever they find more appropriate for their use case.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>centering of a data matrix X using a GCV-calibrated SRPDE model<a class="headerlink" href="#id15" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// center the data matrix X, using the smooth mean field obtained from an SRPDE model tuned according to its GCV index</span>
+<span class="c1">// (optimized over a grid of smoothing parameters) applied on the pointwise mean estimator of X</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">centered_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">center</span><span class="p">(</span>
+<span class="w">   </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">SRPDE</span><span class="w"> </span><span class="p">{</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">},</span><span class="w"> </span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Grid</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">100</span><span class="p">)}(</span><span class="n">lambda_grid</span><span class="p">));</span>
+
+<span class="c1">// centered_data is of type CenterReturnType, a struct providing access to:</span>
+<span class="n">centred_data</span><span class="p">.</span><span class="n">fitted</span><span class="w"> </span><span class="c1">// centred data X - \mu</span>
+<span class="n">centred_data</span><span class="p">.</span><span class="n">mean</span><span class="w">   </span><span class="c1">// mean field expansion coefficients</span>
+</code></pre></div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The requirements on the smoother are so low that also a <code class="code docutils literal notranslate"><span class="pre">RegressionModel&lt;void&gt;</span></code> instance (type-erased wrapper for a regression model without any assumption on its penalty) is a valid smoother.</p>
+</div>
+</div>
+</li>
+<li><p><strong>functional PCA</strong>: official support for sequential fPCA (<em>Lila, E., Aston, J.A.D., Sangalli, L.M. (2016), Smooth Principal Component Analysis over two-dimensional manifolds with an application to Neuroimaging, Annals of Applied Statistics, 10 (4), 1854-1879.</em>) with GCV and KCV calibration of the optimal smoothing parameter for each component. Space-only version.</p>
+<p>In the initialization step, SVD is now placed outside the PC functions computational for loop.</p>
+<p>PC functions are always normalized with respect to the functional <span class="math notranslate nohighlight">\(L^2\)</span> norm, loadings are the evaluation of these <span class="math notranslate nohighlight">\(L^2\)</span>-normalized fields at the data locations (they are no more normalized in euclidean norm).</p>
+<p>Official support for monolithic fPCA based on Regularized SVD with fixed smoothing parameter.</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Functional Principal Component Analysis cpp API<a class="headerlink" href="#id16" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// fPCA with fixed lambda for each component, sequential solver</span>
+<span class="n">FPCA</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="p">,</span><span class="w"> </span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">,</span><span class="w"> </span><span class="n">Calibration</span><span class="o">::</span><span class="n">off</span><span class="p">);</span>
+<span class="c1">// replacing Calibration::off, with Calibration::gcv or Calibration::kcv makes the model to</span>
+<span class="c1">// switch the selection of the level of smoothing for each compoent to the desired strategy</span>
+
+<span class="c1">// solve the same problem with a monolithic (RSVD-based) solver</span>
+<span class="n">FPCA</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="p">,</span><span class="w"> </span><span class="n">fdapde</span><span class="o">::</span><span class="n">monolithic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+<p>Check <code class="code docutils literal notranslate"><span class="pre">test/src/fpca_test.cpp</span></code> for the detailed API.</p>
+</li>
+</ul>
+<p><strong>R (base)</strong></p>
+<ul class="simple">
+<li><p>no notable changings. Moving the internal implementation to R6 classes. At this stage still in an early development phase.</p></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, fdaPDE.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script id="MathJax-script" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

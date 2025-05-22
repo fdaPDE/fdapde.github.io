@@ -1,0 +1,623 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>Latest - September 2024 - fdaPDE  documentation</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="_static/sphinx_immaterial_theme.243c798c14787bf0e.min.css?v=a4497153" />
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="fdaPDE  documentation" class="md-header__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fdaPDE  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Latest - September 2024
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="fdaPDE  documentation" class="md-nav__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    fdaPDE  documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tut_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 1:<wbr> A non-<wbr>linear diffusion reaction problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tut_2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 2:<wbr> The Heat equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tut_5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 3:<wbr> SUPG for advection dominated equations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tut_4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 4:<wbr> The Stokes problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/alpha_testing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha testing fda<wbr>PDE 2.<wbr>0 <wbr>[cpp]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+  
+
+
+
+<h1 id="latest-september-2024">Latest - September 2024<a class="headerlink" href="#latest-september-2024" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Introduction of several core API changes, which significantly alter the usage of the library at the C++ level. From this update on, support for PDEs in strong form is dropped.</p>
+<p><strong>core</strong></p>
+<ul>
+<li><p><strong>constexpr linear algebra</strong>: (<em>this is something you won’t see outside fdaPDE eheheh</em>) Introduction of several built-in types to enable for compile-time dense linear algebra, togheter with the possibility to solve dense linear system <span class="math notranslate nohighlight">\(Ax = b\)</span> at compile-time using LU factorization with partial pivoting.</p>
+<p>You find under the <code class="code docutils literal notranslate"><span class="pre">cexpr</span></code> namespace, templates <code class="code docutils literal notranslate"><span class="pre">Matrix&lt;Scalar,</span> <span class="pre">Rows,</span> <span class="pre">Cols&gt;</span></code> and <code class="code docutils literal notranslate"><span class="pre">Vector&lt;Scalar,</span> <span class="pre">Rows&gt;</span></code> which are the backbone for compile-time dense linear algerba. Here a brief explanation of what this means:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>test.cpp<a class="headerlink" href="#id1" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/linear_algebra.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="o">::</span><span class="nn">cexpr</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// a 2X2 matrix of int</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// using M, you can perform computations at compile time. Suppose you want to sum M with itself</span>
+
+<span class="w">    </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">M</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// A is an expression template encoding the action of summing M with itself.</span>
+<span class="w">    </span><span class="c1">// The point is that, the matrix addition can be performed by the compiler</span>
+<span class="w">    </span><span class="c1">// during compilation. Don&#39;t you believe it? Let&#39;s query the compiler by writing</span>
+<span class="w">    </span><span class="c1">// a static_assert which for sure is falsified</span>
+
+<span class="w">    </span><span class="k">static_assert</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>We know <code class="code docutils literal notranslate"><span class="pre">A(0,</span> <span class="pre">0)</span> <span class="pre">=</span> <span class="pre">2</span></code>, and indeed if we compile the program above we expect the compilation to fail:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><code>&gt; g++ -o test test.cpp -I.. -O2 -std=c++20
+
+  test.cpp: In function ‘int main()’:
+  test.cpp:57:27: error: static assertion failed
+     57 |     static_assert(A(0, 0) == 0);
+        |                   ~~~~~~~~^~~~
+  test.cpp:57:27: note: the comparison reduces to ‘(2 == 0)’
+                                                    ^
+                             here the value of A(0, 0) produced by the compiler
+</code></pre></div>
+</div>
+<p>If this still seems useless to you, check the produced assembly code (aka, machine code) to see how much the compiler is able to optimize the operation.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/linear_algebra.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="o">::</span><span class="nn">cexpr</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">constexpr</span><span class="w"> </span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">M</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Generated assembly<a class="headerlink" href="#id2" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">Dump</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="o">:</span>
+<span class="w"> </span><span class="mh">0x00000000000010b0</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">mov</span><span class="w">    </span><span class="n">$0x2</span><span class="p">,</span><span class="o">%</span><span class="n">eax</span><span class="w">    </span><span class="c1">// return statment (which indeed returns 0x2 = 2)</span>
+<span class="w"> </span><span class="mh">0x00000000000010b5</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">5</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">ret</span>
+<span class="w"> </span><span class="n">End</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">dump</span><span class="p">.</span>
+</code></pre></div>
+</div>
+</div>
+<p>Just one move instruction! The compiler was able to completely optimize out the matrix addition, and to return directly the result (0x2, which is <code class="code docutils literal notranslate"><span class="pre">A(0,</span> <span class="pre">0)</span> <span class="pre">=</span> <span class="pre">2</span></code>).</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>It must be pointer out that Eigen is also able to reach the same assembly code with the <code class="code docutils literal notranslate"><span class="pre">-DNDEBUG</span></code> flag activated. For instance, this Eigen code</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SMatrix</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">;</span>
+<span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">M</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<p>produces the same assembly code above (the compiler is smart enought to completely optimize the matrix addition). This is true for any arithmetic operation between <em>static-sized</em> Eigen types. Nonethless, <strong>Eigen types cannot be used in a constexpr-context</strong>, and this poses several limitations, for instance, to evaluate mathematical expressions at compile-time (see next).</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Another limitation of using Eigen (for complie-time linear algebra) is the impossibility to store the result of a computation done at compile-time, and later use it at compile-time.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/linear_algebra.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="c1">// since C++20 lambdas have a constexpr call operator. We can define a linear system Ax = b inside a lambda and get it solved</span>
+<span class="c1">// at compile time. The solution can be bound to a (static) constexpr variable</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="n">cexpr</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">cexpr</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">;</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">M</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="n">cexpr</span><span class="o">::</span><span class="n">PartialPivLU</span><span class="o">&lt;</span><span class="n">cexpr</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">invM</span><span class="p">;</span>
+<span class="w">   </span><span class="n">invM</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="n">M</span><span class="p">);</span>
+<span class="w">   </span><span class="n">cexpr</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">invM</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">cexpr</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// solution is [-3 5 -2]</span>
+<span class="p">}();</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// generated assembly</span>
+
+<span class="n">Dump</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="o">:</span>
+<span class="mh">0x00000000000010d0</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">mov</span><span class="w">    </span><span class="n">$0xfffffffa</span><span class="p">,</span><span class="o">%</span><span class="n">eax</span><span class="w">    </span><span class="c1">// returns -6</span>
+<span class="mh">0x00000000000010d5</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">5</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">ret</span>
+<span class="n">End</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">dump</span><span class="p">.</span>
+</code></pre></div>
+</div>
+<p>Again, the compiler was able to completely optimize out all the computations and just return what asked. This is not possible with Eigen, as the nearest thing we can do without constexpr is the following</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span>
+
+<span class="c1">// solve the linear system and bound the solution to a (static) variable</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">M</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">PartialPivLU</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">invM</span><span class="p">;</span>
+<span class="w">    </span><span class="n">invM</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="n">M</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">invM</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}();</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// generated assembly</span>
+
+<span class="n">Dump</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="o">:</span>
+<span class="mh">0x00000000000010d0</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">movsd</span><span class="w">  </span><span class="mh">0x30a8</span><span class="p">(</span><span class="o">%</span><span class="n">rip</span><span class="p">),</span><span class="o">%</span><span class="n">xmm0</span><span class="w">   </span><span class="c1">// load data from global variable x</span>
+<span class="mh">0x00000000000010d8</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">8</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">addsd</span><span class="w">  </span><span class="o">%</span><span class="n">xmm0</span><span class="p">,</span><span class="o">%</span><span class="n">xmm0</span><span class="w">          </span><span class="c1">// execute addition x[0] + x[0]</span>
+<span class="mh">0x00000000000010dc</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">12</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">cvttsd2si</span><span class="w"> </span><span class="o">%</span><span class="n">xmm0</span><span class="p">,</span><span class="o">%</span><span class="n">eax</span><span class="w">        </span><span class="c1">// round result from double to integer and return</span>
+<span class="mh">0x00000000000010e0</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">16</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">ret</span>
+<span class="n">End</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">dump</span><span class="p">.</span>
+</code></pre></div>
+</div>
+<p>The compiler, while was still able to solve the linear system at compile-time (since no function-call is executed, this is lambda expressions black magic), is not able to directly return the result, as it is no capable to inspect an Eigen type during compilation. In my opinion, there is no point in having code executed at run-time for a computation which is exactly known at compile-time. Therefore, fdaPDE was able to produce better optimized code in this situation.</p>
+<p>Is not difficult to start noticing the advantages of constexpr computations (if you are in the position to do so).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// assume you just want to compute the sum of the elements of x</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">rows</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// sum is 0</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// assembly generated by fdaPDE</span>
+
+<span class="n">Dump</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="o">:</span>
+<span class="mh">0x0000000000001110</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;:</span><span class="w">     </span><span class="k">xor</span><span class="w">    </span><span class="o">%</span><span class="n">eax</span><span class="p">,</span><span class="o">%</span><span class="n">eax</span><span class="w"> </span><span class="c1">// returns 0 (just a nice machine trick to return 0, xor a register with itself)</span>
+<span class="mh">0x0000000000001112</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">2</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">ret</span>
+<span class="n">End</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">dump</span><span class="p">.</span>
+
+<span class="c1">// assembly generated by Eigen</span>
+
+<span class="n">Dump</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="o">:</span>
+<span class="mh">0x0000000000001110</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">pxor</span><span class="w">   </span><span class="o">%</span><span class="n">xmm0</span><span class="p">,</span><span class="o">%</span><span class="n">xmm0</span><span class="w">            </span><span class="c1">// zero xmm0 register</span>
+<span class="mh">0x0000000000001114</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">4</span><span class="o">&gt;:</span><span class="w">     </span><span class="n">addsd</span><span class="w">  </span><span class="mh">0x3064</span><span class="p">(</span><span class="o">%</span><span class="n">rip</span><span class="p">),</span><span class="o">%</span><span class="n">xmm0</span><span class="w">     </span><span class="c1">// load x[0] in xmm0</span>
+<span class="mh">0x000000000000111c</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">12</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">lea</span><span class="w">    </span><span class="mh">0x3085</span><span class="p">(</span><span class="o">%</span><span class="n">rip</span><span class="p">),</span><span class="o">%</span><span class="n">rdx</span>
+<span class="mh">0x0000000000001123</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">19</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">lea</span><span class="w">    </span><span class="mh">-0x20</span><span class="p">(</span><span class="o">%</span><span class="n">rdx</span><span class="p">),</span><span class="o">%</span><span class="n">rax</span>
+<span class="mh">0x0000000000001127</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">23</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">addsd</span><span class="w">  </span><span class="p">(</span><span class="o">%</span><span class="n">rax</span><span class="p">),</span><span class="o">%</span><span class="n">xmm0</span><span class="w">           </span><span class="c1">// execute for loop &lt;---------------------</span>
+<span class="mh">0x000000000000112b</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">27</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">add</span><span class="w">    </span><span class="n">$0x10</span><span class="p">,</span><span class="o">%</span><span class="n">rax</span><span class="w">             </span><span class="c1">//                                        |</span>
+<span class="mh">0x000000000000112f</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">31</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">addsd</span><span class="w">  </span><span class="mh">-0x8</span><span class="p">(</span><span class="o">%</span><span class="n">rax</span><span class="p">),</span><span class="o">%</span><span class="n">xmm0</span><span class="w">       </span><span class="c1">// sum += x[i]                            |</span>
+<span class="mh">0x0000000000001134</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">36</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">cmp</span><span class="w">    </span><span class="o">%</span><span class="n">rdx</span><span class="p">,</span><span class="o">%</span><span class="n">rax</span><span class="w">              </span><span class="c1">//                                        |</span>
+<span class="mh">0x0000000000001137</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">39</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">jne</span><span class="w">    </span><span class="mh">0x1127</span><span class="w"> </span><span class="o">&lt;</span><span class="n">main</span><span class="p">()</span><span class="o">+</span><span class="mi">23</span><span class="o">&gt;</span><span class="w">     </span><span class="c1">// ---------------------------------------</span>
+<span class="mh">0x0000000000001139</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">41</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">cvttsd2si</span><span class="w"> </span><span class="o">%</span><span class="n">xmm0</span><span class="p">,</span><span class="o">%</span><span class="n">eax</span><span class="w">          </span><span class="c1">// return computed sum</span>
+<span class="mh">0x000000000000113d</span><span class="w"> </span><span class="o">&lt;+</span><span class="mi">45</span><span class="o">&gt;:</span><span class="w">    </span><span class="n">ret</span>
+<span class="n">End</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">assembler</span><span class="w"> </span><span class="n">dump</span><span class="p">.</span>
+</code></pre></div>
+</div>
+<p>While fdaPDE was completely able to avoid any for loop at run-time (as it perfectly knows how to compute the for-loop at compile time), Eigen cannot, and must execute code (therefore, waste time) to produce a result. You will further notice the advantages of such data-types when involved in the much more involved math expressions.</p>
+</div>
+<p>Below a summary of the API exposed for constexpr dense linear algebra at the time of this update:</p>
+<table class="docutils data align-default" id="id3">
+<caption><span class="caption-text"><strong>constexpr dense linear algebra API</strong></span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">measure()</span></code></p></td>
+<td><p>measure of the simplex.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">bounding_box()</span></code></p></td>
+<td><p>returns the smallest rectangle containing the simplex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">barycenter()</span></code></p></td>
+<td><p>returns the midpoint (center of mass) of the simplex.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">barycentric_coords(const</span> <span class="pre">NodeType&amp;</span> <span class="pre">p)</span></code></p></td>
+<td><p>given a point <span class="math notranslate nohighlight">\(p\)</span>, rewrites it in the barycentric coordinate system of the simplex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">circumcenter()</span></code></p></td>
+<td><p>returns the center of the (hyper)-sphere passing through the vertices of the simplex.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">circumradius()</span></code></p></td>
+<td><p>returns the radius of the (hyper)-sphere passing through the vertices of the simplex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">contains(const</span> <span class="pre">NodeType&amp;</span> <span class="pre">p)</span></code></p></td>
+<td><p>given a point <span class="math notranslate nohighlight">\(p\)</span> determines if the point is inside, on a boundary cell, on a vertex or outside of the simplex.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">supporting_plane()</span></code></p></td>
+<td><p>the <code class="code docutils literal notranslate"><span class="pre">HyperPlane&lt;Order,</span> <span class="pre">EmbedDim&gt;</span></code> passing through the simplex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">normal()</span></code></p></td>
+<td><p>the normal direction to the simplex (meaningfull only if <code class="code docutils literal notranslate"><span class="pre">Order</span> <span class="pre">!=</span> <span class="pre">EmbedDim</span></code>, otherwise returns zero).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">nearest(const</span> <span class="pre">NodeType&amp;</span> <span class="pre">p)</span></code></p></td>
+<td><p>given a free point <span class="math notranslate nohighlight">\(p\)</span>, finds the best approximation of <span class="math notranslate nohighlight">\(p\)</span> in the simplex (e.g., the point in the simplex which is nearest to <span class="math notranslate nohighlight">\(p\)</span>).</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><strong>field expressions revised</strong>: since writing mathmetical expressions is now a core part of the library API, the whole expression template mechanism has been reimplemented from scratch.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>One notable addition to the fields API are <em>constexpr-enabled</em> expressions, i.e., under some circumstances expressions can be evaluated at compile-time.</p>
+</div>
+</li>
+<li><p><strong>new finite element module</strong>:</p></li>
+<li><p><strong>shapefile reader</strong>:</p></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, fdaPDE.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+        <script src="_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script id="MathJax-script" src="_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

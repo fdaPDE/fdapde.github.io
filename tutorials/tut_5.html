@@ -1,0 +1,659 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="tut_2.html">
+      
+      
+        <link rel="next" href="tut_4.html">
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>Example 3: SUPG for advection dominated equations - fdaPDE  documentation</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.243c798c14787bf0e.min.css?v=a4497153" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-header__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fdaPDE  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Example 3: SUPG for advection dominated equations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-nav__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    fdaPDE  documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 1:<wbr> A non-<wbr>linear diffusion reaction problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 2:<wbr> The Heat equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Example 3:<wbr> SUPG for advection dominated equations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 3:<wbr> SUPG for advection dominated equations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span title="implementation (reference label)">Implementation</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 4:<wbr> The Stokes problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="alpha_testing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha testing fda<wbr>PDE 2.<wbr>0 <wbr>[cpp]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span title="implementation (reference label)">Implementation</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+  
+
+
+
+<h1 id="example-3-supg-for-advection-dominated-equations">Example 3: SUPG for advection dominated equations<a class="headerlink" href="#example-3-supg-for-advection-dominated-equations" title="Link to this heading">¶</a></h1>
+<p>In this tutorial we consider a second order diffusion-transport-reaction equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+- \mu \Delta u + \langle b, \nabla u \rangle + u = f &amp; \qquad \text{in } \Omega \\
+  u = g &amp; \qquad \text{on } \partial \Omega
+\end{align}\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(\Omega = [0,1]^2\)</span> and assuming an advection-dominated regime. Specifically, we set the diffusion coefficient <span class="math notranslate nohighlight">\(\mu = 10^{-5}\)</span> and we take a non-constant transport field  <span class="math notranslate nohighlight">\(b : \Omega \rightarrow \mathbb{R}^2\)</span> given by the equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}b = \begin{bmatrix}
+2 y^2 + 1 \\
+2 x
+\end{bmatrix}.\end{split}\]</div>
+<p>The boundary conditions are set Dirichlet homogeneous over all domain boundary, i.e. <span class="math notranslate nohighlight">\(g = 0\)</span>. As the Peclet number results bigger than one, numerical stabilization techniques are required to avoid spurious ossilations in the solution. We here analyze the Streamline Upwind Petrov–Galerkin (SUPG) approach, a strongly consistent stabilization method, togheter with its C++ implementation using the C++ fdaPDE-core API.</p>
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a proper Sobolev space where the solution has to be searched. Define <span class="math notranslate nohighlight">\(a(u, v) = \int_{\Omega} \mu \nabla u \cdot \nabla v + \langle b, \nabla u \rangle v + uv\)</span> the bilinear form associated to the weak formulation of the considered problem, and let <span class="math notranslate nohighlight">\(F(v) = \int_{\Omega} fv\)</span> be the corresponding linear form. Following the usual Galerkin approach, we consider a family of finite dimensional subspaces <span class="math notranslate nohighlight">\(V_h\)</span> of <span class="math notranslate nohighlight">\(V\)</span> and search <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> such that <span class="math notranslate nohighlight">\(a(u_h, v_h) = F(v_h)\)</span> for any <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>. Due to the finite-dimensional nature of <span class="math notranslate nohighlight">\(V_h\)</span>, the problem is typically reduced to solving a linear system. However, in case of advection dominated problems, the direct solution of such linear system results in numerical instabilities. SUPG instead seeks a solution <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[a(u_h, v_h) + \sum_{k \in T_h} \tau_k \langle Lu_h, b \cdot \nabla v_h \rangle_{L^2(\Omega)} = F(v_h) + \sum_{k \in T_h} \tau_k f (b \cdot \nabla v_h) \quad \forall v_h \in V_h\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_h\)</span> is a discretization of the problem domain <span class="math notranslate nohighlight">\(\Omega\)</span>, <span class="math notranslate nohighlight">\(Lu_h\)</span> is the PDE in strong formulation and <span class="math notranslate nohighlight">\(\tau_k\)</span> is a suitably choosen stabilization parameter. The latter is tipically parametrized as follow <span class="math notranslate nohighlight">\(\delta \frac{h_k}{2 \| b \|_2}\)</span>, where <span class="math notranslate nohighlight">\(\delta\)</span> is a problem dependent parameter and <span class="math notranslate nohighlight">\(h_k\)</span> denots the characteristic length (i.e. the diameter) of the <span class="math notranslate nohighlight">\(k\)</span>-th cell of <span class="math notranslate nohighlight">\(T_h\)</span>.</p>
+<p>As such, define the bilinear form</p>
+<div class="math notranslate nohighlight">
+\[\tilde a(u_h, v_h) = \int_{\Omega} \bigl[ \mu \nabla u_h \cdot \nabla v_h + \langle b, \nabla u_h \rangle v_h + u_h v_h \bigr] + \sum_{k \in T_h} \tau_k (- \mu \Delta u_h + \langle b, \nabla u_h \rangle + u_h) (b \cdot \nabla v_h)\]</div>
+<p>and the linear form</p>
+<div class="math notranslate nohighlight">
+\[\tilde F(v_h) = \int_{\Omega} fv_h + \sum_{k \in T_h} \tau_k f (b \cdot \nabla v_h)\]</div>
+<p>then we are required to find <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> solution of <span class="math notranslate nohighlight">\(\tilde a(u_h, v_h) = \tilde F(v_h)\)</span> for all <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>. Using the standard Galerkin argument, we are left to the solution of a linear system resulting from the discretization of <span class="math notranslate nohighlight">\(\tilde a(u_h, v_h)\)</span> and <span class="math notranslate nohighlight">\(\tilde F(v_h)\)</span>.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Link to this heading">¶</a></h2>
+<p>As usual, we start by creating the geometry and the finite element space, togheter with trial and test functions. We also define the non-constant transport field <span class="math notranslate nohighlight">\(b\)</span> as a <code class="code docutils literal notranslate"><span class="pre">MatrixField</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">cache_cells</span><span class="p">);</span>
+
+<span class="n">FeSpace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span><span class="w">   </span><span class="c1">// piecewise linear continuous scalar finite elements</span>
+<span class="n">TrialFunction</span><span class="w"> </span><span class="nf">u</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="n">TestFunction</span><span class="w">  </span><span class="nf">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+
+<span class="c1">// transport field</span>
+<span class="n">MatrixField</span><span class="o">&lt;</span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="p">};</span>
+<span class="c1">// diffusion coefficient</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-5</span><span class="p">;</span>
+
+<span class="c1">// forcing term</span>
+<span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>Secondly, we instantiate the integration loops for the bilinear form <span class="math notranslate nohighlight">\(a(u,v)\)</span> and the linear functional <span class="math notranslate nohighlight">\(F(v)\)</span> without SUPG correction</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">mu</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p>You don’t have to care about the fact that <span class="math notranslate nohighlight">\(b\)</span> is not a constant. The integrator loops will recognize this fact and silently perform the required actions (i.e., distribute the quadrature nodes on the physical domain and evaluate non-constant coefficients at them) in order to perform the discretization.</p>
+</div>
+<p>We might observe that solving the linear system resulting from the discretization of <code class="code docutils literal notranslate"><span class="pre">a</span></code> and <code class="code docutils literal notranslate"><span class="pre">F</span></code> alone will result in an unstable solution, as shown in the figure below.</p>
+<a class="reference internal image-reference" href="../_images/supg_no_stab_solution.png"><img alt="../_images/supg_no_stab_solution.png" class="align-center" src="../_images/supg_no_stab_solution.png" style="width: 400px;" />
+</a>
+<p>In order to apply SUPG, let us first define the stabilization parameter <span class="math notranslate nohighlight">\(\tau_k\)</span> and observe that this depends on the cell diameter <span class="math notranslate nohighlight">\(h_k\)</span>. As such, <span class="math notranslate nohighlight">\(\tau_k\)</span> will not be a constant during the integration loop. The type <code class="code docutils literal notranslate"><span class="pre">CellDiameterDescriptor</span></code> can be used as a placeholder inside an expression to denote <span class="math notranslate nohighlight">\(h_k\)</span>. During the integration loop, the integrator will take care to substitute, cell by cell, <span class="math notranslate nohighlight">\(h_k\)</span> with its actual numerical value.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">CellDiameterDescriptor</span><span class="w"> </span><span class="nf">h_k</span><span class="p">(</span><span class="n">unit_square</span><span class="p">);</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.85</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">b_norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">QS2DP2</span><span class="p">)(</span><span class="n">b</span><span class="p">.</span><span class="n">norm</span><span class="p">());</span><span class="w">   </span><span class="c1">// transport field norm</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">tau_k</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h_k</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b_norm</span><span class="p">;</span><span class="w">   </span><span class="c1">// stabilization parameter</span>
+</code></pre></div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p>We can compute the integral of any expression using the <code class="code docutils literal notranslate"><span class="pre">integral</span></code> interface. Provided that the expression does not involve any trial nor test function, <code class="code docutils literal notranslate"><span class="pre">integral(D)(f)</span></code> will return the numerical value (as <code class="code docutils literal notranslate"><span class="pre">double</span></code>) of <span class="math notranslate nohighlight">\(\int_D f\)</span>. A quadrature rule is mandatory in this case, as the code cannot deduce any valid quadrature rule from <code class="code docutils literal notranslate"><span class="pre">f</span></code> alone.</p>
+<p>In case the domain of integration <code class="code docutils literal notranslate"><span class="pre">D</span></code> is a triangulation, only simplex quadrature formulas of the <code class="code docutils literal notranslate"><span class="pre">QS</span></code> family are accepted, in which case the integration is performed as</p>
+<div class="math notranslate nohighlight">
+\[\int_D f = \sum_{k \in T_h} \int_k f \approx \sum_{k \in T_k} \sum_{q} w_q f(x_q).\]</div>
+<p>The line of code</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">b_norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">QS2DP2</span><span class="p">)(</span><span class="n">b</span><span class="p">.</span><span class="n">norm</span><span class="p">());</span>
+</code></pre></div>
+</div>
+<p>in the definition of the stablization parameter computes <span class="math notranslate nohighlight">\(\int_{[0,1]^2} \| b \|_2\)</span> using a two dimensional 3 point simplex rule (<code class="code docutils literal notranslate"><span class="pre">QS2DP2</span></code>).</p>
+</div>
+<p>We have now all the ingredients to assemble the stabilized bilinear forms <span class="math notranslate nohighlight">\(\tilde a(u,v)\)</span> and <span class="math notranslate nohighlight">\(\tilde F(v)\)</span>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">a_supg</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">tau_k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">mu</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">dxx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dyy</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">F_supg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">tau_k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+</code></pre></div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p>The laplace operator in strong form is implemented using second derivative accessors <code class="code docutils literal notranslate"><span class="pre">dxx()</span></code> and <code class="code docutils literal notranslate"><span class="pre">dyy()</span></code>. In case of <code class="code docutils literal notranslate"><span class="pre">P1</span></code> finite elements (or any finite element description whose second derivative is zero), those functions immediately returns 0 and are therefore completely optimized out during the assembly phase.</p>
+</div>
+<p>Upon discretization and imposition of boundary conditions, the solution of the discretized linear system provides us with a stabilized solution.</p>
+<div class="abstract admonition">
+<p class="admonition-title">The complete script</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/finite_elements.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// useful typedef and constants definition</span>
+<span class="w">   </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">local_dim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">   </span><span class="k">using</span><span class="w"> </span><span class="n">PointT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="n">local_dim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">cache_cells</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">u</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// transport field</span>
+<span class="w">   </span><span class="n">MatrixField</span><span class="o">&lt;</span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">   </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">   </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="p">};</span>
+<span class="w">   </span><span class="c1">// diffusion coefficent</span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-5</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">// forcing term</span>
+<span class="w">   </span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+
+<span class="w">   </span><span class="c1">// not stabilized forms</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">mu</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// SUPG correction</span>
+<span class="w">   </span><span class="n">CellDiameterDescriptor</span><span class="w"> </span><span class="n">h_k</span><span class="p">(</span><span class="n">unit_square</span><span class="p">);</span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.85</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">b_norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">QS2DP2</span><span class="p">)(</span><span class="n">b</span><span class="p">.</span><span class="n">norm</span><span class="p">());</span><span class="w">   </span><span class="c1">// transport field norm</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">tau_k</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">h_k</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b_norm</span><span class="p">;</span><span class="w">   </span><span class="c1">// stabilization parameter</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a_supg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">tau_k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">mu</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">dxx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dyy</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F_supg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau_k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+
+<span class="w">   </span><span class="c1">// homogeneous dirichlet data</span>
+<span class="w">   </span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dof_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vh</span><span class="p">.</span><span class="n">dof_handler</span><span class="p">();</span>
+<span class="w">   </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">set_dirichlet_constraint</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="n">BoundaryAll</span><span class="p">,</span><span class="w"> </span><span class="cm">/* data = */</span><span class="w"> </span><span class="n">g</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// discretization</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a_supg</span><span class="p">.</span><span class="n">assemble</span><span class="p">();</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">F_supg</span><span class="p">.</span><span class="n">assemble</span><span class="p">();</span>
+<span class="w">   </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">enforce_constraints</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// solve step</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseLU</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">solver</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">solution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solver</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<a class="reference internal image-reference" href="../_images/supg_stab_solution.png"><img alt="../_images/supg_stab_solution.png" class="align-center" src="../_images/supg_stab_solution.png" style="width: 400px;" />
+</a>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, fdaPDE.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script id="MathJax-script" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

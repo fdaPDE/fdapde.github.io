@@ -1,0 +1,892 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>February 2024 - fdaPDE  documentation</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.243c798c14787bf0e.min.css?v=a4497153" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-header__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fdaPDE  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              February 2024
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-nav__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    fdaPDE  documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 1:<wbr> A non-<wbr>linear diffusion reaction problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 2:<wbr> The Heat equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 3:<wbr> SUPG for advection dominated equations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tut_4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 4:<wbr> The Stokes problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/alpha_testing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha testing fda<wbr>PDE 2.<wbr>0 <wbr>[cpp]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+  
+
+
+
+<h1 id="february-2024">February 2024<a class="headerlink" href="#february-2024" title="Link to this heading">¶</a></h1>
+<div class="warning admonition">
+<p class="admonition-title">Upgrade of the C++ standard</p>
+<p>From this update on, code is written conforming to the C++20 standard. Starting from R 4.0.0 packages can specify C++20 as requirement, and from R 4.3.0 even the newest C++23. As an indicator that R is pushing toward latest standards, from R version 4.3.0 <em>the default C++ standard has been changed to C++17 where available (which it is on all currently checked platforms)</em> (check the <a class="reference external" href="https://cran.rstudio.com/doc/manuals/r-patched/NEWS.pdf">latest patch note</a>).</p>
+<p>Nowadays there is extensive support from all major compilers for the C++20 standard (<a class="reference external" href="https://en.cppreference.com/w/cpp/compiler_support/20">C++ compiler support</a>). C++20 introduces several interesting core language features, among which, concepts, coroutines, templated lambdas, etc. <code class="code docutils literal notranslate"><span class="pre">fdaPDE</span></code> will slowly migrate and exploit the capabilities of C++20 during this year. Migration to C++23 is planned for the next year.</p>
+<div class="error danger admonition">
+<p class="admonition-title">danger</p>
+<p>At the time of this update, raising the standard to C++20 causes compilation problems at the R level, due to the package <code class="code docutils literal notranslate"><span class="pre">RCppEigen</span></code>. The package is going to be updated soon, with the latest version of Eigen (which is the 3.4, see <a class="reference external" href="https://github.com/RcppCore/RcppEigen/issues/103">here</a>). This will solve the issue. At this stage, since the R package is still in development, there is no such issue.</p>
+</div>
+</div>
+<p><strong>core</strong></p>
+<ul>
+<li><p><strong>Binary trees</strong>: the implementation of the <code class="code docutils literal notranslate"><span class="pre">BinaryTree</span></code> data structure has been completely revised. The new implementation is more space-time efficient, and offers a way better API.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>BinaryTree signature<a class="headerlink" href="#id2" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">BinaryTree</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">BinaryTree</span></code> provides a low-level API, which should be used to device more sophisticated data structures, using the adaptor pattern. See, for instance, <code class="code docutils literal notranslate"><span class="pre">BST</span></code> and <code class="code docutils literal notranslate"><span class="pre">KDTree</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>BinaryTree API<a class="headerlink" href="#id3" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// custom construction of a binary tree</span>
+<span class="n">BinaryTree</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tree</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">               </span><span class="c1">// root stores 1</span>
+<span class="c1">// push operations return an iterator to the inserted node</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">push_left</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">  </span><span class="c1">// push node storing 2 as left  child of root</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">n3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">push_right</span><span class="p">(</span><span class="n">root</span><span class="p">(),</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">  </span><span class="c1">// push node storing 3 as right child of root</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">push_left</span><span class="p">(</span><span class="n">n3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">                 </span><span class="c1">// push node storing 4 as left child of n3</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">n5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">push_left</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w">       </span><span class="c1">// push node storing 5 as left child of n2</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">emplace_left</span><span class="p">(</span><span class="n">n5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span><span class="w">              </span><span class="c1">// emplace 6 as left child of n5</span>
+
+<span class="c1">// while push operations create a copy of the provided element, emplace constructs the</span>
+<span class="c1">// element in place (here useless for int types, can be beneficial for more complex ones)</span>
+
+<span class="c1">// the insertion point can be determined in a functional way, i.e., by supplying a functor</span>
+<span class="c1">// to the push() method inducing a partial ordering relation. For instance,</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">sorted_insertion</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BinaryTree</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">node_pointer</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">sorted_insertion</span><span class="w"> </span><span class="p">{});</span><span class="w">    </span><span class="c1">// sorted insertion, push 10 as right child of n3</span>
+
+<span class="c1">// check the BST data type below, which implements a binary search tree in this way</span>
+
+<span class="n">tree</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span><span class="w">   </span><span class="c1">// is tree empty?</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w">    </span><span class="c1">// how many nodes in the tree?</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">root</span><span class="p">();</span><span class="w">    </span><span class="c1">// dfs_iterator to root</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w">   </span><span class="c1">// deallocate all nodes in the tree</span>
+
+<span class="n">tree</span><span class="p">[</span><span class="n">n5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w">  </span><span class="c1">// write access to value pointed by n5</span>
+<span class="n">tree</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">n3</span><span class="p">);</span><span class="w">    </span><span class="c1">// read-only access to value pointed by n3</span>
+
+<span class="c1">// range-for loop, performs a depth-first traversal of the tree</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">tree</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// multiply all the stored values by 2</span>
+
+<span class="c1">// BinaryTree exposes different iterators to traverse the tree</span>
+<span class="c1">// depth-first traversal:   prints 1 2 5 6 3 4</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">dfs_begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">dfs_end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="c1">// breadth-first traversal: prints 1 2 3 4 5 6</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">bfs_begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">bfs_end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="c1">// cycle over all leaf nodes, in dfs order, and store them in a vector</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">leafs</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">leaf_begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">leaf_end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">leafs</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// leafs vector contains: 6 4</span>
+
+<span class="c1">// BinaryTree is copy constructable/assignable</span>
+<span class="n">BinaryTree</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">copied_tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">;</span><span class="w"> </span><span class="c1">// O(n), copies nodes one by one</span>
+<span class="c1">// BinaryTree move semantic</span>
+<span class="n">BinaryTree</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">moved_tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">tree</span><span class="p">);</span><span class="w"> </span><span class="c1">// O(1), just some pointer swaps.</span>
+<span class="c1">// ... after the move tree is left empty, e.g. tree.size() evaluates to 0</span>
+</code></pre></div>
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Binary Search Trees</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">BST&lt;T&gt;</span></code> class is an adaptor of <code class="code docutils literal notranslate"><span class="pre">BinaryTree&lt;T&gt;</span></code> that gives the functionality of a Binary Search Tree, i.e., <em>a tree in which the key of each internal node being greater than all the keys in the respective node’s left subtree and less than the ones in its right subtree</em>. The partial ordering is provided by something similar to <code class="code docutils literal notranslate"><span class="pre">sorted_insertion</span></code> in the code above.</p>
+<p>Specifically, the data structure exposes a subset of the interface of <code class="code docutils literal notranslate"><span class="pre">BinaryTree&lt;T&gt;</span></code> which guarantees the ordering property (which can instead be easily violated using a plain <code class="code docutils literal notranslate"><span class="pre">BinaryTree&lt;T&gt;</span></code>). Check the code snippet below for the details:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>BST API<a class="headerlink" href="#id4" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// a binary search tree of integers</span>
+<span class="n">BST</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">bst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">};</span><span class="w">    </span><span class="c1">// constructs a BST by pushing the values in the list</span>
+<span class="n">bst</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span><span class="w">   </span><span class="c1">// inserts 9 using the ordering induced by sorted_insertion (i.e., as right child of 8)</span>
+
+<span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">tree</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// prints 7, 2, 1, 3, 4, 5, 6, 8, 9</span>
+
+<span class="c1">// the whole API of BinaryTree is available, with the exception of:</span>
+<span class="c1">// - push_left, push_right</span>
+<span class="c1">// - push with a generic ordering relation</span>
+<span class="c1">// - emplace, emplace_left, emplace_right</span>
+
+<span class="c1">// you can search in a binary tree with O(log(n)) complexity</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bst</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// found is a dfs_iterator pointing to 4</span>
+<span class="n">bst</span><span class="p">[</span><span class="n">found</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="p">;</span>
+
+<span class="c1">// you can test if an element is contained as follow</span>
+<span class="k">if</span><span class="p">(</span><span class="n">bst</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bst</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;10 is not in bst&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li><p><strong>geometry module</strong>: This is just a name change. From this update on, any geometric data structure or algorithm (mesh management, point location, nearest neighbors and range searches, voronoi tasselations, etc.) are placed under the <cite>geometry</cite> module (previously known as <cite>mesh</cite> module).</p></li>
+<li><p><strong>KD-trees</strong>: The geometry module provides support for a <a class="reference external" href="https://en.wikipedia.org/wiki/K-d_tree">KD-Tree</a> data structure, built on top of a <code class="code docutils literal notranslate"><span class="pre">BinaryTree&lt;int&gt;</span></code>. A KD-Tree is used to index a set of <span class="math notranslate nohighlight">\(n\)</span> given points and provide a quick answer to nearest neighbors queries, i.e., find the nearest point (in <span class="math notranslate nohighlight">\(\| \cdot \|_2\)</span> distance) among the <span class="math notranslate nohighlight">\(n\)</span> indexed ones to a given query point. The data structure can also serve to solve range queries, i.e., find all points contained in a given rectangle.</p>
+<p>The construction of a KD-Tree takes <span class="math notranslate nohighlight">\(O(nlog(n))\)</span> time and <span class="math notranslate nohighlight">\(O(n)\)</span> space. The average complexity to answer to a nearest neighbor query, as well as a range query, is <span class="math notranslate nohighlight">\(O(log(n))\)</span> (worst case complexity is still <span class="math notranslate nohighlight">\(O(n)\)</span>).</p>
+<div class="example admonition">
+<p class="admonition-title">KD-Tree usage example</p>
+<p>The geometry module implements the KD-Tree data structure by means of the template <code class="code docutils literal notranslate"><span class="pre">KDTree&lt;K&gt;</span></code>. Check the code snippet below for an example of its API</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// let X be a set of K-dimensional points (assume K = 2)</span>
+<span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="c1">// index the set X using a KD-Tree data structure</span>
+<span class="n">KDTree</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kdtree</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+
+<span class="c1">// let p a given query point</span>
+<span class="n">SVector</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">kdtree</span><span class="p">.</span><span class="n">nn_search</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="c1">// what is the nearest point (in euclidean distance) in X to p?</span>
+
+<span class="c1">// a range query consists in finding the set of points in X which lie inside a given rectangle.</span>
+<span class="c1">// the query is defined by a pair of K-dimensional points, indicating the lower-left and upper-right</span>
+<span class="c1">// corner of the query rectangle</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kdtree</span><span class="p">.</span><span class="n">range_search</span><span class="p">({</span><span class="n">SVector</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">SVector</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)});</span>
+
+<span class="c1">// ids is a set containing the ids of all the points in X which fall inside [0.5, 2] x [0.5, 2]</span>
+</code></pre></div>
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p>The previously available tree search strategy for the location of a point over a triangulation has been reimplemented using a <code class="code docutils literal notranslate"><span class="pre">KDTree</span></code> data structure. This improves its performances, thanks to the better balancing provided by a <code class="code docutils literal notranslate"><span class="pre">KDTree</span></code> with respect to the previous implementation. <code class="code docutils literal notranslate"><span class="pre">KDTree</span></code> indeed builds a partion of the space with a criterion which takes into account the distribution of the points, while the previous implementation was blind to such information. This could potentially result in a highly unbalanced tree, with a lookup complexity near to <span class="math notranslate nohighlight">\(O(n)\)</span>. <code class="code docutils literal notranslate"><span class="pre">KDTree</span></code> guarantees instead a well-balanced tree, which in turn guarantees an average <span class="math notranslate nohighlight">\(O(log(n))\)</span> lookup.</p>
+</div>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p><code class="code docutils literal notranslate"><span class="pre">KDTree</span></code> is of fundamental importance for <em>efficiently</em> solving the point-location problem on a Voronoi tasselation. Indeed, by definition of Voronoi diagram, a point <span class="math notranslate nohighlight">\(p\)</span> lies inside a vornoi cell if the center of the cell is the nearest point to <span class="math notranslate nohighlight">\(p\)</span>. Observe that other considerations must be made to effectively solve the point location problem over a <strong>constrained</strong> voronoi tasselation (where the constrain is given by a border). Neverthless, solving in logaritmic time the nearest neighbor problem guarantees a logaritmic complexity for the point location problem over a tasselation.</p>
+</div>
+</li>
+</ul>
+<p><strong>cpp</strong></p>
+<ul>
+<li><p><strong>Regularized Singular Value Decomposition</strong>: due to its central role for the implementation of functional models, check for instance fPCA and fPLS, the Regularized SVD (RSVD) is now standardized as an independent solver, and is exposed via the template <code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;SolutionPolicy&gt;</span></code>. The <code class="code docutils literal notranslate"><span class="pre">SolutionPolicy</span></code> template parameter configures the RSVD to work either sequentially or monolithically.</p>
+<p>The template is not designed to work without a model, as informations related to the penalty term are derived from a model instance. Most of the times it should be used by a model to implement its <code class="code docutils literal notranslate"><span class="pre">solve()</span></code> method. Details on the different solution policies follow:</p>
+<div class="abstract admonition">
+<p class="admonition-title">Sequential RSVD API</p>
+<p><code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;fdapde::sequential&gt;</span></code> solves the RSVD problem by rank-one steps, e.g. it sequentially minimizes in <span class="math notranslate nohighlight">\((\boldsymbol{s}, f)\)</span> the functional <span class="math notranslate nohighlight">\(\| X - \boldsymbol{s}\boldsymbol{f}_n^\top \|_F^2 + \boldsymbol{s}^\top \boldsymbol{s} \mathcal{P}_{\lambda}(f)\)</span> up to a desired rank. Due to the presence of the smoothing parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, <code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;fdapde::sequential&gt;</span></code> requires a calibration strategy to be well-defined. Supported calibration strategies are</p>
+<table class="docutils data align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">Calibration:off</span></code></p></td>
+<td><p>no calibration, the smoothing parameter is kept fixed for each component. <span class="math notranslate nohighlight">\(\lambda\)</span> is obtained from the calling model.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">Calibration::gcv</span></code></p></td>
+<td><p>smoothing parameters selected via minimization of the GCV index related to the internal smoothing step.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">Calibration::kcv</span></code></p></td>
+<td><p>smoothing parameters selected with a K-fold cross validation strategy, looking for a minimum in the reconstruction error.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;fdapde::sequential&gt;</span></code> provides a <code class="code docutils literal notranslate"><span class="pre">compute</span></code> method with the following signature</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span><code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;sequential&gt;::compute</span></code> signature<a class="headerlink" href="#id5" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelType</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">compute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">ModelType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">rank</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>which computes the RSVD of the pair (X, model) up to a a desired rank <code class="code docutils literal notranslate"><span class="pre">rank</span></code> in one single run. This makes the algorithm behave, in its interface, like a monolithic approach. Since the algorithm is sequential in its nature, <code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;fdapde::sequential&gt;</span></code> exposes also an iterator-like API, via the <code class="code docutils literal notranslate"><span class="pre">rank_one_stepper()</span></code> method, which enables to manage the single components <span class="math notranslate nohighlight">\((\boldsymbol{s}, f)\)</span> as they are computed. Check the code example below:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Sequential RSVD solver API<a class="headerlink" href="#id6" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// let m some model, and X some data</span>
+
+<span class="c1">// define RSVD sequential solver</span>
+<span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rsvd</span><span class="w"> </span><span class="p">(</span><span class="n">Calibration</span><span class="o">::</span><span class="n">off</span><span class="p">);</span>
+<span class="c1">// extract the first 3 components of X at once</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="p">);</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">loadings</span><span class="p">();</span><span class="w">      </span><span class="c1">// matrix of L^2 normalized functional components [f_1, f_2, f_3]</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">scores</span><span class="p">();</span><span class="w">        </span><span class="c1">// matrix of associated scores [s_1, s_2, s_3]</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">loadings_norm</span><span class="p">();</span><span class="w"> </span><span class="c1">// vector of L^2 norms of rsvd.loadings()</span>
+
+<span class="c1">// use the rank-one stepper (iterator-like) API</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rsvd</span><span class="p">.</span><span class="n">rank_one_stepper</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">rank</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">it</span><span class="p">.</span><span class="n">loading</span><span class="p">();</span><span class="w"> </span><span class="c1">// expansion coefficients of L^2 normalized functional component f_i</span>
+<span class="w">   </span><span class="n">it</span><span class="p">.</span><span class="n">scores</span><span class="p">();</span><span class="w">  </span><span class="c1">// associated score vector</span>
+<span class="w">   </span><span class="n">it</span><span class="p">.</span><span class="n">norm</span><span class="p">();</span><span class="w">    </span><span class="c1">// L^2 norm of it.loading()</span>
+<span class="w">   </span><span class="n">it</span><span class="p">.</span><span class="n">lambda</span><span class="p">();</span><span class="w">  </span><span class="c1">// best smoothing parameter selected for this component</span>
+
+<span class="w">   </span><span class="c1">// do whatever operation you need...</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>The rank-one stepper approach might, for instance, be used by higher-level algorithms which must interleave the computation of single components with other, algorithm-specific, computations.</p>
+</div>
+<p>For a detailed API on how to configure the algorithm, in case of <code class="code docutils literal notranslate"><span class="pre">Calibration::gcv</span></code> or <code class="code docutils literal notranslate"><span class="pre">Calibration::kcv</span></code>, check the code example below:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Sequential RSVD solver API<a class="headerlink" href="#id7" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rsvd</span><span class="p">(</span><span class="n">Calibration</span><span class="o">::</span><span class="n">off</span><span class="p">);</span>
+<span class="c1">// configuration for the internal power-iteration method (check power_iteration.h for details)</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_tolerance</span><span class="p">(</span><span class="n">tol</span><span class="p">);</span><span class="w">      </span><span class="c1">// tolerance before forced stop</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_max_iter</span><span class="p">(</span><span class="n">n_iter</span><span class="p">);</span><span class="w">    </span><span class="c1">// maximum number of iterations</span>
+
+<span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rsvd</span><span class="p">(</span><span class="n">Calibration</span><span class="o">::</span><span class="n">gcv</span><span class="p">);</span>
+<span class="c1">// all the API available for Calibration::off, plus</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span><span class="w">          </span><span class="c1">// seed used, e.g., for the stochastic approximation of Tr[S] involved in the computation of the GCV</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_lambda</span><span class="p">(</span><span class="n">lambda_grid</span><span class="p">);</span><span class="w"> </span><span class="c1">// grid of smoothing parameters for GCV (grid-based) minimization</span>
+
+<span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rsvd</span><span class="p">(</span><span class="n">Calibration</span><span class="o">::</span><span class="n">kcv</span><span class="p">);</span>
+<span class="c1">// all the API available for Calibration::off, plus</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span><span class="w">          </span><span class="c1">// seed used, e.g., for the initial shuffling of the data before splitting the data in folds</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_lambda</span><span class="p">(</span><span class="n">lambda_grid</span><span class="p">);</span><span class="w"> </span><span class="c1">// grid of smoothing parameters</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_folds</span><span class="p">(</span><span class="n">n_folds</span><span class="p">);</span><span class="w">      </span><span class="c1">// number of folds employed in the K-fold cross validation</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="abstract admonition">
+<p class="admonition-title">Monolithic RSVD API</p>
+<p><code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;fdapde::monolithic&gt;</span></code> solves the RSVD problem in a single step, seeking for a rank <code class="code docutils literal notranslate"><span class="pre">rank</span></code> matrix <span class="math notranslate nohighlight">\(U\)</span>, which factorizes as <span class="math notranslate nohighlight">\(S F^\top\)</span>, minimizing <span class="math notranslate nohighlight">\(\| X - U \Psi^\top \|_F^2 + \text{Trace}[U P_{\lambda}(f) U^\top]\)</span>. The data type offers a single <code class="code docutils literal notranslate"><span class="pre">compute()</span></code> method which provides the wanted factors <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(F\)</span>. Because the method works setting a unique level of smoothing <span class="math notranslate nohighlight">\(\lambda\)</span>, the solver does not require any type of internal calibration.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span><code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;monolithic&gt;::compute</span></code> signature<a class="headerlink" href="#id8" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ModelType</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">compute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">ModelType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">rank</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<p>Check the code below for an example of its API</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Monolithic RSVD solver API<a class="headerlink" href="#id9" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// let m some model, and X some data</span>
+
+<span class="c1">// define RSVD sequential solver</span>
+<span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">monolithic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rsvd</span><span class="p">;</span>
+<span class="c1">// extract the first 3 components of X at once</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">rank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">rank</span><span class="p">);</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">loadings</span><span class="p">();</span><span class="w">      </span><span class="c1">// matrix of L^2 normalized functional components [f_1, f_2, f_3]</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">scores</span><span class="p">();</span><span class="w">        </span><span class="c1">// matrix of associated scores [s_1, s_2, s_3]</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">loadings_norm</span><span class="p">();</span><span class="w"> </span><span class="c1">// vector of L^2 norms of rsvd.loadings()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Thanks to the unified interface, it is possible to type erase the RSVD solvers, therefore making possible to switch solver at run-time. Check <code class="code docutils literal notranslate"><span class="pre">FPCA</span></code> for an example. Observe, anyway, that it is not possible to expose the <code class="code docutils literal notranslate"><span class="pre">rank_one_stepper</span></code> API by a type-erasure wrapper (as not shared with the monolithic solver).</p>
+</li>
+<li><p><strong>functional PLS</strong>: official support for functional Partial Least Squares (fPLS), space-only sequential version, with GCV and KCV calibration of the optimal smoothing parameter, for both the correlation maximization step (solved by an application of a sequential rank-one RSVD) and the regression step (solved by an application of an SRPDE model, for space-only data).</p>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p>fPLS assumes input matrices already centered. You can use the <code class="code docutils literal notranslate"><span class="pre">center()</span></code> routine from the functional module to obtain a smooth centering of the covariate matrix. The interface allows for a further degree of flexibility, as the smooth mean field can use a different calibration strategy than those supplied to fPLS.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>fPLS does not avoid to set a different calibration strategy for the correlation maximization step and the smoothing step.</p>
+<p>If no calibrator for the smoothing step is supplied, fPLS defaults to a fixed-lambda calibration strategy, if the provided RSVD solver is instantiated with <code class="code docutils literal notranslate"><span class="pre">Calibration::off</span></code>, fallbacks to a GCV strategy otherwise (which results to be more computationally efficient than a KCV). In this case the GCV is optimized over the same grid supplied to the RSVD solver.</p>
+</div>
+<p>For an example of the provided API, check the code example below.</p>
+<div class="example admonition">
+<p class="admonition-title">Example</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>fPLS model API<a class="headerlink" href="#id10" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// assume mesh and laplacian penalty already defined...</span>
+
+<span class="c1">// definition of a functional PLS model for space-only data</span>
+<span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rsvd</span><span class="w"> </span><span class="p">{</span><span class="n">Calibration</span><span class="o">::</span><span class="n">gcv</span><span class="p">};</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_lambda</span><span class="p">(</span><span class="n">lambda_grid</span><span class="p">);</span>
+<span class="n">FPLS</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">,</span><span class="w"> </span><span class="n">rsvd</span><span class="p">);</span>
+
+<span class="c1">// one-liner equivalent version</span>
+<span class="n">FPLS</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">,</span><span class="w"> </span><span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="n">Calibration</span><span class="o">::</span><span class="n">gcv</span><span class="p">}.</span><span class="n">set_lambda</span><span class="p">(</span><span class="n">lambda_grid</span><span class="p">));</span>
+
+<span class="c1">// configure the calibrator for the internal smoothing step</span>
+<span class="n">model</span><span class="p">.</span><span class="n">set_smoothing_step_calibrator</span><span class="p">(</span>
+<span class="w">   </span><span class="n">fdapde</span><span class="o">::</span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Grid</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)}(</span><span class="n">lambda_grid</span><span class="p">));</span>
+
+<span class="c1">// set model&#39;s data</span>
+<span class="n">BlockFrame</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">df</span><span class="p">;</span>
+<span class="n">df</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">OBSERVATIONS_BLK</span><span class="p">,</span><span class="w"> </span><span class="n">DMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Y</span><span class="p">.</span><span class="n">rowwise</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="n">colwise</span><span class="p">().</span><span class="n">mean</span><span class="p">()));</span><span class="w">   </span><span class="c1">// pointwise centred responses</span>
+<span class="c1">// smooth centred functional covariates (select optimal smoothing by GCV)</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">centered_covs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">center</span><span class="p">(</span>
+<span class="w">   </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">SRPDE</span><span class="w"> </span><span class="p">{</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">},</span>
+<span class="w">   </span><span class="n">fdapde</span><span class="o">::</span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Grid</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)}(</span><span class="n">lambda_grid</span><span class="p">));</span>
+<span class="n">df</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">DESIGN_MATRIX_BLK</span><span class="p">,</span><span class="w"> </span><span class="n">centered_covs</span><span class="p">.</span><span class="n">fitted</span><span class="p">);</span>
+<span class="n">model</span><span class="p">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">df</span><span class="p">);</span>
+<span class="c1">// solve FPLS problem</span>
+<span class="n">model</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+<span class="n">model</span><span class="p">.</span><span class="n">solve</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Internally, fPLS stores a <code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;sequential&gt;</span></code> instance. Trying to assign to fPLS a <code class="code docutils literal notranslate"><span class="pre">RegularizedSVD&lt;monolithic&gt;</span></code> is wrong, and will cause a compilation failure.</p>
+</div>
+</div>
+</li>
+<li><p><strong>fPCA</strong>: fPCA is now conform to the standard model signature, i.e. <code class="code docutils literal notranslate"><span class="pre">template</span> <span class="pre">&lt;typename</span> <span class="pre">RegularizationType_&gt;</span> <span class="pre">class</span> <span class="pre">FPCA</span></code>. Previous to this update, the resolution strategy used to solve the fPCA problem was provided as a template argument as <code class="code docutils literal notranslate"><span class="pre">template</span> <span class="pre">&lt;typename</span> <span class="pre">RegularizationType_,</span> <span class="pre">typename</span> <span class="pre">SolutionPolicy_&gt;</span> <span class="pre">class</span> <span class="pre">FPCA</span></code>. Now, the strategy used to extract the princiapl components is defined at run-time by providing a proper <code class="code docutils literal notranslate"><span class="pre">RegularizedSVD</span></code> instance. Check the code example below:</p>
+<div class="example admonition">
+<p class="admonition-title">Example</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>fPCA model API<a class="headerlink" href="#id11" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// assume mesh and laplacian penalty already defined...</span>
+
+<span class="c1">// definition of a functional PCA model, sequential version, space-only data</span>
+<span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rsvd</span><span class="w"> </span><span class="p">{</span><span class="n">Calibration</span><span class="o">::</span><span class="n">gcv</span><span class="p">};</span>
+<span class="n">rsvd</span><span class="p">.</span><span class="n">set_lambda</span><span class="p">(</span><span class="n">lambda_grid</span><span class="p">);</span>
+<span class="n">FPCA</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">,</span><span class="w"> </span><span class="n">rsvd</span><span class="p">);</span>
+
+<span class="c1">// one-liner equivalent version</span>
+<span class="n">FPCA</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">,</span><span class="w"> </span><span class="n">RegularizedSVD</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">sequential</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="n">Calibration</span><span class="o">::</span><span class="n">gcv</span><span class="p">}.</span><span class="n">set_lambda</span><span class="p">(</span><span class="n">lambda_grid</span><span class="p">));</span>
+
+<span class="c1">// set model&#39;s data</span>
+<span class="n">BlockFrame</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">df</span><span class="p">;</span>
+<span class="c1">// smooth centered functional data (select optimal smoothing)</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">centered_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">center</span><span class="p">(</span>
+<span class="w">   </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">SRPDE</span><span class="w"> </span><span class="p">{</span><span class="n">pde</span><span class="p">,</span><span class="w"> </span><span class="n">Sampling</span><span class="o">::</span><span class="n">mesh_nodes</span><span class="p">},</span>
+<span class="w">   </span><span class="n">fdapde</span><span class="o">::</span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Grid</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)}(</span><span class="n">lambda_grid</span><span class="p">));</span>
+<span class="n">df</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">OBSERVATIONS_BLK</span><span class="p">,</span><span class="w"> </span><span class="n">centered_data</span><span class="p">.</span><span class="n">fitted</span><span class="p">);</span>
+<span class="n">model</span><span class="p">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">df</span><span class="p">);</span>
+<span class="c1">// solve fPCA problem</span>
+<span class="n">model</span><span class="p">.</span><span class="n">init</span><span class="p">();</span>
+<span class="n">model</span><span class="p">.</span><span class="n">solve</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+<p>Internally, fPCA type-erases the RSVD solver, so that it is possible to provide to the model any type of RSVD, with any configuration.</p>
+</div>
+</li>
+<li><p><strong>minor changes</strong> :</p>
+<ul>
+<li><p><strong>QSRPDE</strong>: official support for space-time (separable) quantile regression. Use of smoothed pinball loss function in the computation of the GCV’s numerator for both space and space-time data.</p></li>
+<li><p><strong>fPCA</strong>: official support for space-time fPCA.</p></li>
+<li><p><strong>GCV</strong>: the <code class="code docutils literal notranslate"><span class="pre">calibrator::GCV</span></code> datatype is now a template of the regularization type (either <code class="code docutils literal notranslate"><span class="pre">SpaceOnly</span></code> or <code class="code docutils literal notranslate"><span class="pre">SpaceTime</span></code>). This is necessary to let <code class="code docutils literal notranslate"><span class="pre">calibrator::GCV</span></code> interface with types which do not enforce any regularization at compile-time, see, e.g., a generic <code class="code docutils literal notranslate"><span class="pre">RegressionModel&lt;void&gt;</span></code>. In this sense <code class="code docutils literal notranslate"><span class="pre">calibrator::GCV&lt;SpaceOnly&gt;</span></code> is a calibrator for space-only (regression) models. Similarly <code class="code docutils literal notranslate"><span class="pre">calibrator::GCV&lt;SpaceTime&gt;</span></code> can be used to fit space-time models. <code class="code docutils literal notranslate"><span class="pre">calibrator::GCV</span></code> is still valid but the user is responsible to indicate the class of models (possibly with some runtime decision) before the fitting. Check code below:</p>
+<div class="example admonition">
+<p class="admonition-title">Example</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// a GCV calibrator explicitly for space-only models</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">GCV_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fdapde</span><span class="o">::</span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="n">Newton</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)};</span>
+<span class="c1">// calibrate model</span>
+<span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">optimal_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GCV_</span><span class="p">(</span><span class="n">lambda_start</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+
+<span class="c1">// defer the specification of the penalty type</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">GCV_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fdapde</span><span class="o">::</span><span class="n">calibration</span><span class="o">::</span><span class="n">GCV</span><span class="w"> </span><span class="p">{</span><span class="n">Newton</span><span class="o">&lt;</span><span class="n">fdapde</span><span class="o">::</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">StochasticEDF</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="p">)};</span>
+<span class="c1">// before fitting the model, need to fix the GCV type</span>
+<span class="k">if</span><span class="p">(...</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="n">decision</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GCV_</span><span class="p">.</span><span class="n">set</span><span class="o">&lt;</span><span class="n">SpaceOnly</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GCV_</span><span class="p">.</span><span class="n">set</span><span class="o">&lt;</span><span class="n">SpaceTime</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">DVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">optimal_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GCV_</span><span class="p">(</span><span class="n">lambda_start</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+<span class="c1">// not providing any type of regularization before fit() is potentially unsafe, and raises a runtime assert</span>
+</code></pre></div>
+</div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>R (base)</strong></p>
+<p>The R wrapper officially adopts the R6 object system (see <a class="reference external" href="https://r6.r-lib.org/articles/Introduction.html">here</a> for the details).</p>
+<div class="error danger admonition">
+<p class="admonition-title">Deprecated</p>
+<p>What written below has been deprecated on May 2024.</p>
+</div>
+<ul>
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">Mesh</span></code> class supports 1D, 2D, 2.5D and 3D geometries.</p>
+<div class="info admonition">
+<p class="admonition-title">Info</p>
+<p>At the time of this update, linear networks are still not supported, as they require special care from the R side.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Mesh API<a class="headerlink" href="#id12" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><code><span class="c1">## let M be the tangent space dimension. Define a list so formatted</span>
+<span class="n">mesh_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">   </span><span class="n">nodes</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="c1">## an n_nodes \times M matrix of coordinates</span>
+<span class="w">   </span><span class="n">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">## an n_elements \times M+1 matrix of indices</span>
+<span class="w">   </span><span class="n">boundary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">## an n_nodes \times 1 vector of integers, with 1 indicating boundary nodes, 0 otherwise</span>
+<span class="p">)</span>
+<span class="c1">## create a Mesh object</span>
+<span class="n">mesh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Mesh</span><span class="p">(</span><span class="n">mesh_data</span><span class="p">)</span>
+
+<span class="c1">## in addition to active bindings (check R6 docs) to recover the input informations, we get</span>
+<span class="n">mesh</span><span class="o">$</span><span class="n">neighbors</span><span class="w"> </span><span class="c1">## for each element, the ids of adjacent elements</span>
+<span class="n">mesh</span><span class="o">$</span><span class="n">edges</span><span class="w">     </span><span class="c1">## for each edge, the pair of nodes composing it</span>
+
+<span class="c1">## solves the point location problem over the mesh:</span>
+<span class="c1">## returns the ids of elements containing points (0.5, 0.5), (0.75, 0.75)</span>
+<span class="n">mesh</span><span class="o">$</span><span class="nf">locate</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">),</span><span class="w"> </span><span class="n">byrow</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span>
+
+<span class="c1">## special constructors</span>
+<span class="n">unit_interval</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">IntervalMesh</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">  </span><span class="c1">## interval [a, b] splitted using n nodes</span>
+<span class="n">square</span><span class="w">        </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SquareMesh</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="c1">## square [a, b] \times [a, b]</span>
+<span class="n">rectangle</span><span class="w">     </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RectangularMesh</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">bx</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">ay</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="p">),</span><span class="w"> </span><span class="n">nx</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">FunctionalSpace</span></code> now accepts a <code class="code docutils literal notranslate"><span class="pre">type</span></code> argument to specify the type of functional basis to instantiate. Additional arguments can be provided to specify some details of the basis system. Moreover, it is possible to take the tensor product of two basis systems using the <code class="code docutils literal notranslate"><span class="pre">%X%</span></code> operator. Check the code snippet below:</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>FunctionalSpace API<a class="headerlink" href="#id13" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><code><span class="n">unit_square</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SquareMesh</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+
+<span class="c1">## A Lagrange finite element space of order 1 (CG = Continuous Galerkin finite elements)</span>
+<span class="n">Vs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FunctionalSpace</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CG&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1">## A (cubic) B spline basis function over the unit interval [0,1]</span>
+<span class="n">unit_interval</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">IntervalMesh</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="n">Vt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FunctionalSpace</span><span class="p">(</span><span class="n">unit_interval</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BSpline&quot;</span><span class="p">)</span>
+<span class="n">Phi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Vt</span><span class="o">$</span><span class="nf">eval</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">))</span><span class="w"> </span><span class="c1">## basis function evaluation</span>
+<span class="c1">## Phi is a n_basis \times n_locations sparse matrix (dgCMatrix) having its i-th column equal to the</span>
+<span class="c1">## evaluation of the i-th basis function over the provided locations</span>
+
+<span class="c1">## tensor product of basis systems</span>
+<span class="n">Vh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Vs</span><span class="w"> </span><span class="o">%X%</span><span class="w"> </span><span class="n">Vt</span><span class="w"> </span><span class="c1">## the classical functional space used in separable regularization</span>
+
+<span class="c1">## evaluation grid</span>
+<span class="n">s_grid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">),</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">))</span><span class="w"> </span><span class="c1">## space evaluation grid</span>
+<span class="n">t_grid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span><span class="w">                                    </span><span class="c1">## time  evaluation grid</span>
+
+<span class="n">Psi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Vh</span><span class="o">$</span><span class="nf">eval</span><span class="p">(</span><span class="n">s_grid</span><span class="p">,</span><span class="w"> </span><span class="n">t_grid</span><span class="p">)</span><span class="w"> </span><span class="c1">## the matrix \Psi of separable regularization (obtained by tensorization)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Defaults</p>
+<p><code class="code docutils literal notranslate"><span class="pre">FunctionalBasis</span></code> defaults to linear finite elements, so that <code class="code docutils literal notranslate"><span class="pre">Vh</span> <span class="pre">&lt;-</span> <span class="pre">FunctionalSpace(mesh)</span></code> always constructs a linear finite element system over <code class="code docutils literal notranslate"><span class="pre">mesh</span></code>.</p>
+</div>
+</li>
+<li><p>Partial support for numerical integration.</p>
+<div class="warning admonition">
+<p class="admonition-title">Experimental support</p>
+<p>The feature is still considered experimental. Internally, the provided function is first written as a linear combination of linear Lagrangian elements, and then numerically integrated with an exact quadrature for those elements.</p>
+<p>Therefore, there is no way to choose the order (degree of exactness) of the quadrature rule. It is also not possible to integrate a function over portions of the domain (properly encoded with a binary matrix).</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>Numerical integration API<a class="headerlink" href="#id14" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><code><span class="n">unit_square</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SquareMesh</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+<span class="c1">## compute domain measure by integrating the constant 1</span>
+<span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">points</span><span class="p">))</span>
+<span class="nf">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">unit_square</span><span class="p">)</span><span class="w"> </span><span class="c1">## outputs 1</span>
+
+<span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="n">p</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">^</span><span class="m">2</span>
+<span class="nf">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">unit_square</span><span class="p">)</span><span class="w"> </span><span class="c1">## outputs 0.667063</span>
+
+<span class="c1">## compute integral using the FE basis expansion coefficient vector</span>
+<span class="nf">integrate</span><span class="p">(</span><span class="n">expansion_coeffs</span><span class="p">,</span><span class="w"> </span><span class="n">unit_square</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>This is just for reference. R6 (probably any attempt to recover some form of OOP inside the R language) has some limitations, for instance lack of multiple inheritance, as only linear inheritance is possible, and lack of protected fields (either you set them as public, or use the <code class="code docutils literal notranslate"><span class="pre">object$.__enclos_env__$private</span></code> trick). I would recommend to not (ab)use of the inheritance mechanism provided by R6, as it is quite limiting and does not work as one would expect.</p>
+<p>Neverthless, one of the greatest point of R stands in its reflecting capabilities (you can literally change the code of a function while it is running). We can have S3 dispatching on top of the <code class="code docutils literal notranslate"><span class="pre">self</span></code> attribute exposes by an <code class="code docutils literal notranslate"><span class="pre">R6</span></code> class, which provides the same mechanism of a function overloading but without inheritance. The pattern is depicted in the code below:</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>S3 dispatching over R6<a class="headerlink" href="#id15" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><code><span class="n">method</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">)</span><span class="w"> </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s">&quot;method&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">## enable S3 dispatch on method calls</span>
+<span class="n">method.type1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">)</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;type1&quot;</span><span class="p">)</span>
+<span class="n">method.type2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">)</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;type2&quot;</span><span class="p">)</span>
+
+<span class="n">Class</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">R6</span><span class="o">::</span><span class="nf">R6Class</span><span class="p">(</span>
+<span class="w">   </span><span class="s">&quot;Class&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="n">private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">       </span><span class="n">cpp_backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="w"> </span><span class="c1">## our &quot;safely&quot; encapsulated cpp module</span>
+<span class="w">   </span><span class="p">)</span>
+<span class="w">   </span><span class="n">public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">       </span><span class="n">initialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="kc">...</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="kc">...</span>
+<span class="w">       </span><span class="p">},</span>
+<span class="w">       </span><span class="n">call_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="c1">## reflect on self class to dispatch to method call</span>
+<span class="w">   </span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">obj</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Class</span><span class="o">$</span><span class="nf">new</span><span class="p">()</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="s">&quot;type1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="w"> </span><span class="c1">## exploit the fact that in R types do not really exist...</span>
+<span class="n">obj</span><span class="o">$</span><span class="nf">call_method</span><span class="p">()</span><span class="w"> </span><span class="c1">## prints type1</span>
+</code></pre></div>
+</div>
+</div>
+<p>In this way, <code class="code docutils literal notranslate"><span class="pre">Class</span></code> can be fully generic, and dispatch specific logic to external functions, in pure R style! This is one of the core pattern behind how the statistical models are implemented at R level.</p>
+</div>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, fdaPDE.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script id="MathJax-script" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,787 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="tut_1.html">
+      
+      
+        <link rel="next" href="tut_5.html">
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>Example 2: The Heat equation - fdaPDE  documentation</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.243c798c14787bf0e.min.css?v=a4497153" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#implementation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-header__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fdaPDE  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Example 2: The Heat equation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-nav__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    fdaPDE  documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 1:<wbr> A non-<wbr>linear diffusion reaction problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Example 2:<wbr> The Heat equation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 2:<wbr> The Heat equation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 3:<wbr> SUPG for advection dominated equations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 4:<wbr> The Stokes problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="alpha_testing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha testing fda<wbr>PDE 2.<wbr>0 <wbr>[cpp]
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+  
+
+
+
+<h1 id="example-2-the-heat-equation">Example 2: The Heat equation<a class="headerlink" href="#example-2-the-heat-equation" title="Link to this heading">¶</a></h1>
+<p>In this example we show how to use the fdaPDE-core library to build a numerical scheme for the solution of the heat equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+&amp;\frac{\partial}{\partial t} u(\boldsymbol{x}, t) - \Delta u(\boldsymbol{x}, t) &amp;&amp;= f(\boldsymbol{x}, t) &amp;&amp; \qquad \boldsymbol{x} \in \Omega, t &gt; 0 \\
+&amp;\frac{\partial}{\partial \boldsymbol{n}}u(\boldsymbol{x}, t) &amp;&amp;= g_N(\boldsymbol{x}, t) &amp;&amp; \qquad \boldsymbol{x} \in \Gamma_N, t &gt; 0 \\
+&amp;u(\boldsymbol{x}, t) &amp;&amp;= g_D(\boldsymbol{x}, t) &amp;&amp; \qquad \boldsymbol{x} \in \Gamma_D, t &gt; 0 \\
+&amp;u(\boldsymbol{x}, 0) &amp;&amp;= u_0(\boldsymbol{x}) &amp;&amp; \qquad \boldsymbol{x} \in \Omega
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Gamma_D, \Gamma_N \in \partial \Omega\)</span> are such that <span class="math notranslate nohighlight">\(\Gamma_D \cup \Gamma_N = \partial \Omega\)</span>, <span class="math notranslate nohighlight">\(g_D(\boldsymbol{x}, t), g_N(\boldsymbol{x}, t)\)</span> denote the Dirichlet and Neumann boundary data respectively and <span class="math notranslate nohighlight">\(u_0(\boldsymbol{x})\)</span> represents the given initial condition. <span class="math notranslate nohighlight">\(\boldsymbol{n}\)</span> is the outward normal vector to <span class="math notranslate nohighlight">\(\partial \Omega\)</span>.</p>
+<p>As always, we start by deriving the weak formulation, by multiplying for each <span class="math notranslate nohighlight">\(t &gt; 0\)</span> the differential equation by a test function <span class="math notranslate nohighlight">\(v \in V = H^1_{\Gamma_D}(\Omega)\)</span> and integrating on the spatial domain only <span class="math notranslate nohighlight">\(\Omega\)</span>. Specifically, for each <span class="math notranslate nohighlight">\(t &gt; 0\)</span> we seek <span class="math notranslate nohighlight">\(u(t) \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\int_{\Omega} \frac{\partial}{\partial t} u(\boldsymbol{x}, t) v - \Delta u(\boldsymbol{x}, t)v = \int_{\Omega} f(\boldsymbol{x}, t) v \qquad \forall v \in V\]</div>
+<p>Integrating by parts the Laplacian leads to the weak formulation</p>
+<div class="math notranslate nohighlight">
+\[\int_{\Omega} \frac{\partial}{\partial t} u(\boldsymbol{x}, t) v - \nabla u(\boldsymbol{x}, t) \nabla v = \int_{\Omega} f(\boldsymbol{x}, t) + \int_{\Gamma_N} \frac{\partial}{\partial \boldsymbol{n}} u(\boldsymbol{x}, t) v \qquad \forall v \in V\]</div>
+<p>As usual, the Galerkin approach considers a finite dimensional space <span class="math notranslate nohighlight">\(V_h \subset V\)</span> and writes <span class="math notranslate nohighlight">\(u(\boldsymbol{x}, t) = \sum_{j=1}^N u_j(t) \psi_j(\boldsymbol{x})\)</span>. Substituting in the weak formulation, computations lead to the following semi-discretization</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j=1}^N \Biggl[ \dot{c_j}(t) \int_{\Omega} \psi_i(\boldsymbol{x}) \psi_j(\boldsymbol{x}) + c_j(t) \int_{\Omega} \nabla \psi_i(\boldsymbol{x}) \cdot \nabla \psi_j(\boldsymbol{x}) \Biggr] = \int_{\Omega} f(\boldsymbol{x}, t) \psi_j(\boldsymbol{x}) + \int_{\Gamma_N} g(\boldsymbol{x}, t) \psi_i(\boldsymbol{x}) \qquad \forall i = 1, \ldots, N\]</div>
+<p>Let <span class="math notranslate nohighlight">\(M = [m_{ij}] = \int_{\Omega} \psi_i \psi_j\)</span> be the mass matrix, <span class="math notranslate nohighlight">\(A = [a_{ij}] = \int_{\Omega} \nabla \psi_i \cdot \nabla \psi_j\)</span> be the stiff matrix and <span class="math notranslate nohighlight">\(\boldsymbol{F}(t) = \int_{\Omega} f(\boldsymbol{x}, t) \psi_j(\boldsymbol{x}) + \int_{\Gamma_N} g(\boldsymbol{x}, t) \psi_i(\boldsymbol{x})\)</span> the discretization of the righ hand side of the above relation, we are asked to solve in <span class="math notranslate nohighlight">\(\boldsymbol{u}(t)\)</span> the following systems of ODEs</p>
+<div class="math notranslate nohighlight">
+\[M \boldsymbol{\dot{u}}(t) + A \boldsymbol{u}(t) = \boldsymbol{F}(t)\]</div>
+<p>We decide to solve it via the Crank-Nicolson method, which is a second order method in the time step size <span class="math notranslate nohighlight">\(\Delta t\)</span>. Specifically we get</p>
+<div class="math notranslate nohighlight">
+\[M \frac{\boldsymbol{u}^{k+1} - \boldsymbol{u}^k}{\Delta t} + \frac{1}{2} A ( \boldsymbol{u}^{k+1} + \boldsymbol{u}^k) = \frac{1}{2} ( \boldsymbol{F}^{k+1} + \boldsymbol{F}^k)\]</div>
+<p>The above is solved iteratively for all the time steps <span class="math notranslate nohighlight">\(k = 1, \ldots, N_T\)</span>.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Link to this heading">¶</a></h2>
+<p>For the first example we consider homogeneous Neumann and Dirichlet conditions on the domain boundary and a space-time depending forcing term. We initially define the geometry, togheter with a finite element space and the definition of bilinear form of the laplace operator (observe that (the bilinear form of) any elliptic operator could have been placed here, in case of general parabolic equations).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">cache_cells</span><span class="p">);</span>
+<span class="n">FeSpace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span><span class="w">   </span><span class="c1">// piecewise linear continuous scalar finite elements</span>
+<span class="n">TrialFunction</span><span class="w"> </span><span class="nf">u</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="n">TestFunction</span><span class="w">  </span><span class="nf">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);;</span>
+
+<span class="c1">// laplacian operator bilinear form</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+</code></pre></div>
+</div>
+<p>We then define the forcing term. Because we are dealing with a space-time problem, we use the specialized <code class="code docutils literal notranslate"><span class="pre">SpaceTimeField</span></code> type, which extends the <code class="code docutils literal notranslate"><span class="pre">ScalarField</span></code> capabilities to handle an explicit time coordinate. Specifically, the code below implements the forcing term</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f(\boldsymbol{x}, t) = \begin{cases} 1 &amp; \qquad x &lt; 0.5, y &lt; 0.5, 0.0 \leq t \leq 0.2 \\ 1 &amp; \qquad x &gt; 0.5, y &gt; 0.5, 0.2 \leq t \leq 0.4 \\ 0 &amp; \qquad \text{otherwise} \end{cases}\end{split}\]</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="c1">// define forcing functional</span>
+<span class="n">SpaceTimeField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w">        </span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<p>You can fix the time coordinate calling <code class="code docutils literal notranslate"><span class="pre">f.at(t)</span></code>. Subsequent calls of <code class="code docutils literal notranslate"><span class="pre">f</span></code> at a spatial point will act as calls to a <code class="code docutils literal notranslate"><span class="pre">ScalarField</span></code> where the time coordinate has been fixed to <code class="code docutils literal notranslate"><span class="pre">t</span></code>. Next we proceed to fix homogeneous boundary conditions on all the domain’s boundary</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dof_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vh</span><span class="p">.</span><span class="n">dof_handler</span><span class="p">();</span>
+<span class="n">dof_handler</span><span class="p">.</span><span class="n">set_dirichlet_constraint</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="n">BoundaryAll</span><span class="p">,</span><span class="w"> </span><span class="cm">/* data = */</span><span class="w"> </span><span class="n">g</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>Finally, we fix the time step <span class="math notranslate nohighlight">\(\Delta t\)</span>, set up room for the solution fixing the initial condition to <span class="math notranslate nohighlight">\(u_0(\boldsymbol{x}) = 0\)</span> and discretizing once and for all the mass matrix <span class="math notranslate nohighlight">\(M\)</span> and the stiff matrix <span class="math notranslate nohighlight">\(\frac{M}{\Delta T} + \frac{1}{2} A\)</span>, togheter with the forcing term <span class="math notranslate nohighlight">\(F(t)\)</span>. Since the matrix <span class="math notranslate nohighlight">\(\frac{M}{\Delta T} + \frac{1}{2} A\)</span> is SPD and time-invariant, we factorize it outside the time integration loop using a Cholesky factorization:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">).</span><span class="n">assemble</span><span class="p">();</span><span class="w">    </span><span class="c1">// mass matrix</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">assemble</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w">            </span><span class="c1">// stiff matrix (SPD)</span>
+
+<span class="c1">// discretize time-dependent forcing field</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">dof_handler</span><span class="p">.</span><span class="n">n_dofs</span><span class="p">(),</span><span class="w"> </span><span class="n">n_times</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n_times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">f</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">DeltaT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">).</span><span class="n">assemble</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+
+<span class="n">dof_handler</span><span class="p">.</span><span class="n">enforce_constraints</span><span class="p">(</span><span class="n">A</span><span class="p">);</span><span class="w">    </span><span class="c1">// set dirichlet constraints</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">SimplicialLLT</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">lin_solver</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>Finally, the crank-nicolson time integration loop can start:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n_times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">(</span><span class="n">M</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w">   </span><span class="c1">// update rhs</span>
+<span class="w">    </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">enforce_constraints</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lin_solver</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="abstract admonition">
+<p class="admonition-title">The complete script</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/finite_elements.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="n">local_dim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">cache_cells</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">u</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// laplacian operator bilinear form</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="w">   </span><span class="c1">// forcing functional</span>
+<span class="w">   </span><span class="n">SpaceTimeField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="k">if</span><span class="w">        </span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">       </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">       </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">       </span><span class="p">}</span>
+<span class="w">   </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">// dirichlet data (homogeneous and fixed in time)</span>
+<span class="w">   </span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dof_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vh</span><span class="p">.</span><span class="n">dof_handler</span><span class="p">();</span>
+<span class="w">   </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">set_dirichlet_constraint</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="n">BoundaryAll</span><span class="p">,</span><span class="w"> </span><span class="cm">/* data = */</span><span class="w"> </span><span class="n">g</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// crank-nicolson integration</span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.02</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">n_times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">solution</span><span class="p">(</span><span class="n">dof_handler</span><span class="p">.</span><span class="n">n_dofs</span><span class="p">(),</span><span class="w"> </span><span class="n">n_times</span><span class="p">);</span>
+<span class="w">   </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;::</span><span class="n">Zero</span><span class="p">(</span><span class="n">dof_handler</span><span class="p">.</span><span class="n">n_dofs</span><span class="p">());</span><span class="w">   </span><span class="c1">// zero initial condition</span>
+
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">).</span><span class="n">assemble</span><span class="p">();</span><span class="w">    </span><span class="c1">// mass matrix</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">assemble</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w">            </span><span class="c1">// stiff matrix (SPD)</span>
+<span class="w">   </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">enforce_constraints</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SimplicialLLT</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">lin_solver</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// discretize time-dependent forcing field</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">dof_handler</span><span class="p">.</span><span class="n">n_dofs</span><span class="p">(),</span><span class="w"> </span><span class="n">n_times</span><span class="p">);</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n_times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">f</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">DeltaT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">).</span><span class="n">assemble</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n_times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span>
+<span class="w">           </span><span class="p">(</span><span class="n">M</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w">   </span><span class="c1">// update rhs</span>
+<span class="w">       </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">enforce_constraints</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">       </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lin_solver</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<a class="reference internal image-reference" href="../_images/heat.gif"><img alt="../_images/heat.gif" class="align-center" src="../_images/heat.gif" style="width: 400px;" />
+</a>
+<p>We here report a slight variation of the problem above, where we consider a null-forcing term, but a non-homogeneous time-dependent Neumann condition on the left side of the square, while we impose a zero dirichlet condition on the remaining part of the boundary.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>We pose the attention on the mechanism which enables us to define the different portions of the domain’s boundary <span class="math notranslate nohighlight">\(\Gamma_D\)</span> and <span class="math notranslate nohighlight">\(\Gamma_N\)</span>. Specifically, every boundary element of the geometry can be associated to a numerical non-negative marker, so that, boundary elements with the same marker contributes to the definition of the same boundary subset <span class="math notranslate nohighlight">\(\Gamma \subset \partial \Omega\)</span>.</p>
+<p>Each <code class="code docutils literal notranslate"><span class="pre">Triangulation</span></code> object starts with an empty set of boundary markers (in this case, we name the boundary elements which have no marker as <code class="code docutils literal notranslate"><span class="pre">Unmarked</span></code>). You can fix a value for the boundary markers using the <code class="code docutils literal notranslate"><span class="pre">mark_boundary()</span></code> method of a <code class="code docutils literal notranslate"><span class="pre">Triangulation</span></code> instance. For instance, to fix all the markers of the triangulation to 0, just use</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">unit_square</span><span class="p">.</span><span class="n">mark_boundary</span><span class="p">(</span><span class="cm">/* as = */</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// mark all nodes as zero</span>
+</code></pre></div>
+</div>
+<p>You can use a geometric predicate to obtain a more selective marking. In the considered example, we can mark only the left side of the unit square <span class="math notranslate nohighlight">\([0,1]^2\)</span> by setting the marker of all the edges on the left side to 1 using the following</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">unit_square</span><span class="p">.</span><span class="n">mark_boundary</span><span class="p">(</span><span class="cm">/* as = */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="cm">/* where = */</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">EdgeType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">edge</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">edge</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">edge</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">     </span><span class="c1">// select only edges on the left side</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+<p>Be aware that <strong>markers with higher values have higher precedence on markers with lower values</strong>, that is, markers with higher values will overwrite existing markers with lower values, the viceversa is not true.</p>
+<p>Once you have fixed the markers, you can iterate on all the boundary elements having a fixed marker using the overload of the <code class="code docutils literal notranslate"><span class="pre">boundary_begin()</span></code> and <code class="code docutils literal notranslate"><span class="pre">boundary_end()</span></code> methods taking the marker as parameter. For instance, to iterate over <span class="math notranslate nohighlight">\(Gamma_N\)</span> only (assuming being identified with marker 1) you execute:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit_square</span><span class="p">.</span><span class="n">boundary_begin</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">unit_square</span><span class="p">.</span><span class="n">boundary_end</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// all and only the boundary edges marked as 1</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+<p>The script is mostly similar to the Crank-Nicolson time-stepping scheme implemented before, apart for the definition of the boundary conditions and the introduction of the non-homogeneous neumann boundary term at line 46</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><code><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">.</span><span class="n">boundary</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="mi">1</span><span class="p">))(</span><span class="n">g_N</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">DeltaT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="abstract admonition">
+<p class="admonition-title">The complete script</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/finite_elements.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="n">local_dim</span><span class="p">,</span><span class="w"> </span><span class="n">local_dim</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="n">cache_cells</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// label boundary</span>
+<span class="w">   </span><span class="n">unit_square</span><span class="p">.</span><span class="n">mark_boundary</span><span class="p">(</span><span class="cm">/* as = */</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// mark all nodes as zero</span>
+<span class="w">   </span><span class="c1">// mark left side of square (where we will impose non-homegenous Neumann BCs) with 1</span>
+<span class="w">   </span><span class="n">unit_square</span><span class="p">.</span><span class="n">mark_boundary</span><span class="p">(</span><span class="cm">/* as = */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="cm">/* where = */</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">EdgeType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="p">});</span>
+
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">u</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// laplacian operator bilinear form</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="w">   </span><span class="c1">// forcing functional (this could have been omitted, but placed here just for completeness)</span>
+<span class="w">   </span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+
+<span class="w">   </span><span class="c1">// dirichlet homoegeneous data (fixed in time)</span>
+<span class="w">   </span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g_D</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dof_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vh</span><span class="p">.</span><span class="n">dof_handler</span><span class="p">();</span>
+<span class="w">   </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">set_dirichlet_constraint</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="cm">/* data = */</span><span class="w"> </span><span class="n">g_D</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// neumann inflow data</span>
+<span class="w">   </span><span class="n">SpaceTimeField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">PointT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">0.5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g_N</span><span class="p">;</span>
+
+<span class="w">   </span><span class="c1">// set up Crank-Nicolson time integration scheme</span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.02</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">n_times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ceil</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">DeltaT</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">solution</span><span class="p">(</span><span class="n">dof_handler</span><span class="p">.</span><span class="n">n_dofs</span><span class="p">(),</span><span class="w"> </span><span class="n">n_times</span><span class="p">);</span>
+<span class="w">   </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;::</span><span class="n">Zero</span><span class="p">(</span><span class="n">dof_handler</span><span class="p">.</span><span class="n">n_dofs</span><span class="p">());</span><span class="w">   </span><span class="c1">// zero initial condition</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">).</span><span class="n">assemble</span><span class="p">();</span><span class="w">    </span><span class="c1">// mass matrix</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">assemble</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w">            </span><span class="c1">// stiff matrix (SPD)</span>
+<span class="w">   </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">enforce_constraints</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">SimplicialLLT</span><span class="o">&lt;</span><span class="n">Eigen</span><span class="o">::</span><span class="n">SparseMatrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">lin_solver</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// compute matrix of rhs (here we include non-homogeneous neumann BCs)</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="n">dof_handler</span><span class="p">.</span><span class="n">n_dofs</span><span class="p">(),</span><span class="w"> </span><span class="n">n_times</span><span class="p">);</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n_times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">    </span><span class="c1">// forcing term</span>
+<span class="w">                   </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">.</span><span class="n">boundary</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="mi">1</span><span class="p">))(</span><span class="n">g_N</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">DeltaT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w">    </span><span class="c1">// neumann BCs</span>
+<span class="w">                   </span><span class="p">).</span><span class="n">assemble</span><span class="p">();</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="c1">// time integration</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n_times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span>
+<span class="w">           </span><span class="p">(</span><span class="n">M</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">DeltaT</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">F</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w">   </span><span class="c1">// update rhs</span>
+<span class="w">       </span><span class="n">dof_handler</span><span class="p">.</span><span class="n">enforce_constraints</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">       </span><span class="n">solution</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lin_solver</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<a class="reference internal image-reference" href="../_images/heat_neumann.gif"><img alt="../_images/heat_neumann.gif" class="align-center" src="../_images/heat_neumann.gif" style="width: 400px;" />
+</a>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, fdaPDE.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script id="MathJax-script" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>

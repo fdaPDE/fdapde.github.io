@@ -1,0 +1,1472 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="tut_4.html">
+      
+      
+      
+      <link rel="icon" href="">
+    
+    
+      
+        <title>Alpha testing fdaPDE 2.0 [cpp] - fdaPDE  documentation</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.243c798c14787bf0e.min.css?v=a4497153" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-fdapde" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-header__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fdaPDE  documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Alpha testing fdaPDE 2.0 [cpp]
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="fdaPDE  documentation" class="md-nav__button md-logo" aria-label="fdaPDE  documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+    </a>
+    fdaPDE  documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 1:<wbr> A non-<wbr>linear diffusion reaction problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 2:<wbr> The Heat equation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 3:<wbr> SUPG for advection dominated equations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tut_4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example 4:<wbr> The Stokes problem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Alpha testing fda<wbr>PDE 2.<wbr>0 <wbr>[cpp]
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha testing fda<wbr>PDE 2.<wbr>0 <wbr>[cpp]
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-fdapde" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span title="how to fdapde (reference label)">How to fda<wbr>PDE</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-fdapde" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span title="how to fdapde (reference label)">How to fda<wbr>PDE</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+  
+
+
+
+<h1 id="alpha-testing-fdapde-2-0-cpp">Alpha testing fdaPDE 2.0 [cpp]<a class="headerlink" href="#alpha-testing-fdapde-2-0-cpp" title="Link to this heading">¶</a></h1>
+<p>Cari tutti, benvenuti nella pagina di alpha-testing di fdaPDE 2.0. Scopo di questo documento è quello di mostrare quanto sia semplice tradurre uno script R o cpp, scritto per una qualunque versione precedente della libreria, usando la nuova API di fdaPDE.</p>
+<p>Lo scopo della fase di testing è quello di rompere la libreria, e, tra le altre cose, di stressarmi. Pertanto:</p>
+<ul class="simple">
+<li><p>se trovate bug (il codice crasha, il codice non compila, i numeri sono sbagliati, …)</p></li>
+<li><p>se trovate qualcosa di poco intuitivo</p></li>
+<li><p>se mancano pezzi, rispetto alla libreria attualmente su CRAN, o rispetto a lavoro pregresso che avete fatto ma che non trovate nel codice attuale</p></li>
+<li><p>se volete aggiungere delle modelistiche che state ora sviluppando o funzionalità che trovate interessanti</p></li>
+</ul>
+<p>segnalatemelo (mi scrivete su whatsapp o me lo dite di persona).</p>
+<h2 id="how-to-fdapde">How to fdaPDE<a class="headerlink" href="#how-to-fdapde" title="Link to this heading">¶</a></h2>
+<p>L’idea generale è quella di scrivere degli script, che vedono fdaPDE come una libreria terza. Quindi, create un bel file <code class="code docutils literal notranslate"><span class="pre">main.cpp</span></code>, fuori dalla cartella dove avete il sorgente di fdaPDE, e per iniziare scrivete quanto segue:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/models.h&gt;</span><span class="c1"> // include the whole library</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// codice di test</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>La libreria è composta da diversi moduli. Il modo più semplice per avere un ambiente funzionante è quello di caricare l’header <code class="code docutils literal notranslate"><span class="pre">&lt;fdaPDE/models.h&gt;</span></code>, il quale, attualmente, carica tutto lo stack della libreria. Per convenienza, importiamo anche il namespace <code class="code docutils literal notranslate"><span class="pre">fdapde</span></code>.</p>
+<p>Per compilare, al momento, solo <strong>gcc14 (o superiore) è supportato</strong>. Usate la seguente riga di codice (supponendo di essere nella cartella <code class="code docutils literal notranslate"><span class="pre">test/mio_test</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>g++<span class="w"> </span>-o<span class="w"> </span>main<span class="w"> </span>main.cpp<span class="w"> </span>-I../../fdaPDE-cpp<span class="w"> </span>-I../../fdaPDE-cpp/fdaPDE/core<span class="w"> </span>-O2<span class="w"> </span>-march<span class="o">=</span>native<span class="w"> </span>-std<span class="o">=</span>c++20<span class="w"> </span>-s
+</code></pre></div>
+</div>
+<p>quindi esegiute con <code class="code docutils literal notranslate"><span class="pre">./main</span></code>.</p>
+<p>Tipicamente, l’anatomia di uno script è la seguente:</p>
+<ol class="arabic simple">
+<li><p><strong>definizione della geometria</strong>: il primo step è quello di definire la geometria del problema. In questa fase tratteremo unicamente discretizzazioni agli elementi finiti, e pertanto le nostre geometrie saranno unicamente triangolazioni. Potete caricare una triangolazione con il seguente codice:</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;mesh/nodes.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mesh/cells.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mesh/boundary.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* header = */</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="cm">/* index_col = */</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Alternativamente, potete generare delle semplici geometrie in maniera dinamica nel modo seguente:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;::</span><span class="n">UnitInterval</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// unit interval with n nodes</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w">   </span><span class="c1">// unit square with n nodes per side</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;::</span><span class="n">UnitSphere</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w">   </span><span class="c1">// unit sphere surface using n refinments</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;::</span><span class="n">UnitCube</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w">     </span><span class="c1">// unit cube with n nodes per side</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>definizione dei dati</strong>: una volta definita la geometria, possiamo caricare i dati. A tal scopo un oggetto di tipo <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> modelizza un data frame per dati che sono spazialmente localizzati su una geometria. Potete definire un <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> nel modo seguente:</p></li>
+</ol>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">GeoFrame</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>L’oggetto <code class="code docutils literal notranslate"><span class="pre">data</span></code> appena costruito è un <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> definito su una triangolazione <code class="code docutils literal notranslate"><span class="pre">D</span></code>, che rappresenta lo spazio fisico dove sono definiti i dati di interesse. <code class="code docutils literal notranslate"><span class="pre">data</span></code> così costruito non ha alcun dato associato.</p>
+<p>Prima di procedere, è bene sapere che <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> è una struttura dati abbastanza complessa. Nella sua interezza, essa rappresenta una struttura multi-layer, ovvero una struttura in grado di gestire dati osservati potenzialmente su supporti differenti.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>Potete immaginare un <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> come una pila dove, alla base, abbiamo un layer fisico definito dalla geometria, sulla quale definiamo uno o più layers contenenti le osservazioni, potenzialmente osservate su supporti differenti.</p>
+<a class="reference internal image-reference" href="../_images/geoframe.png"><img alt="../_images/geoframe.png" class="align-center" src="../_images/geoframe.png" style="width: 400px;" />
+</a>
+</div>
+<p>Poichè per il momento i modelli supportati gestiscono dati osservati sul medesimo supporto, i.e. sono single-layer, ed inoltre gestiscono unicamente dati scalari, ci occuperemo unicamente di questo caso.</p>
+<p>Per aggiungere un layer scalare, ovvero in cui ad ogni locazione è associato un singolo valore numerico, si procede nel modo seguente:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;locs.csv&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>La funzione <code class="code docutils literal notranslate"><span class="pre">insert_sclar_layer&lt;POINT&gt;()</span></code> inserisce un layer scalare. Per specificare che i dati sono puntuali utilizziamo il descrittore <code class="code docutils literal notranslate"><span class="pre">POINT</span></code>. L’altro descrittore attualmente supportato è <code class="code docutils literal notranslate"><span class="pre">POLYGON</span></code>, e definisce dati associati a poligoni, ossia quelle che per noi sono osservazioni areali.</p>
+<p>Mentre il primo argomento di <code class="code docutils literal notranslate"><span class="pre">insert_sclar_layer</span></code> specifica il nome simbolico del layer, il secondo argomento specifica dove i dati sono osservati. Questo può essere o il nome di un file <code class="code docutils literal notranslate"><span class="pre">.csv</span></code> o <code class="code docutils literal notranslate"><span class="pre">.txt</span></code> (in tal caso formattato in stile <code class="code docutils literal notranslate"><span class="pre">write.table</span></code>) dove le coordinate sono salvate, o essere uguale al valore speciale <code class="code docutils literal notranslate"><span class="pre">MESH_NODES</span></code>, nel qual caso i nodi della mesh sono automaticamente utilizzati come locazioni, o essere una matrice di punti definita da sorgente. Il codice seguente mostra queste ultime due casistiche:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESH_NODES</span><span class="p">);</span><span class="w"> </span><span class="c1">// observations at mesh nodes</span>
+
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">coords</span><span class="p">;</span>
+<span class="c1">// populate coords...</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">coords</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Per il caso di dati areali, il seguente codice definisce un layer areale con matrice di incidenza caricata da file</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POLYGON</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;incidence_mat.csv&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>La matrice di incidenza è una matrice binaria che ha tante colonne quante celle della triangolazione e tante righe quante sottoregioni. L’elemento in posizione (i, j) è 1 se la cella j-esima appartiene all’i-esima sottoregione.</p>
+<p>Dopo aver inserito le coordinate, potete procedere all’inserimento dei dati (che devono avere la stessa numerosità del numero di locazioni). Una richiesta abbastanza frequente sarà quella di caricare dati da file, operazione che può essere realizzata con il codice seguente:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">l</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;response.csv&quot;</span><span class="p">);</span><span class="w">      </span><span class="c1">// read from .csv file (you can read from .txt using load_txt)</span>
+<span class="n">l</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;design_matrix.csv&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>I nomi delle colonne in questo caso sono presi dall’header dei file. Se avete dati generati da sorgente, è sempre possibile procedere come segue:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vec</span><span class="p">;</span>
+<span class="n">l</span><span class="p">.</span><span class="n">load_vec</span><span class="p">(</span><span class="s">&quot;V1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vec</span><span class="p">);</span>
+
+<span class="c1">// to load an eigen matrix</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mtx</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mtx</span><span class="p">.</span><span class="n">cols</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">load_vec</span><span class="p">(</span><span class="s">&quot;V&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">mtx</span><span class="p">.</span><span class="n">col</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>è infine possibile visualizzare il contenuto di un layer mandando <code class="code docutils literal notranslate"><span class="pre">l</span></code> sullo stream di output</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">                                </span><span class="n">y</span><span class="w">          </span><span class="n">x1</span><span class="w">          </span><span class="n">x2</span>
+<span class="w">              </span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">flt64</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">flt64</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">flt64</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="mf">-0.925000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w">   </span><span class="mf">-0.995250</span><span class="w">    </span><span class="mf">0.140206</span><span class="w">   </span><span class="mf">-0.798621</span>
+<span class="p">(</span><span class="mf">-0.910947</span><span class="p">,</span><span class="w"> </span><span class="mf">0.160625</span><span class="p">)</span><span class="w">    </span><span class="mf">5.593103</span><span class="w">    </span><span class="mf">1.198960</span><span class="w">   </span><span class="mf">-0.790085</span>
+<span class="p">(</span><span class="mf">-0.869216</span><span class="p">,</span><span class="w"> </span><span class="mf">0.316369</span><span class="p">)</span><span class="w">   </span><span class="mf">-2.782208</span><span class="w">   </span><span class="mf">-2.329969</span><span class="w">   </span><span class="mf">-0.763823</span>
+<span class="p">(</span><span class="mf">-0.801073</span><span class="p">,</span><span class="w"> </span><span class="mf">0.462500</span><span class="p">)</span><span class="w">    </span><span class="mf">1.337585</span><span class="w">    </span><span class="mf">0.570945</span><span class="w">   </span><span class="mf">-0.718104</span>
+<span class="p">(</span><span class="mf">-0.708591</span><span class="p">,</span><span class="w"> </span><span class="mf">0.594579</span><span class="p">)</span><span class="w">    </span><span class="mf">7.532907</span><span class="w">    </span><span class="mf">2.748276</span><span class="w">   </span><span class="mf">-0.650765</span>
+<span class="p">(</span><span class="mf">-0.594579</span><span class="p">,</span><span class="w"> </span><span class="mf">0.708591</span><span class="p">)</span><span class="w">    </span><span class="mf">6.058098</span><span class="w">    </span><span class="mf">1.708040</span><span class="w">   </span><span class="mf">-0.560160</span>
+<span class="p">(</span><span class="mf">-0.462500</span><span class="p">,</span><span class="w"> </span><span class="mf">0.801073</span><span class="p">)</span><span class="w">   </span><span class="mf">13.832988</span><span class="w">    </span><span class="mf">5.952680</span><span class="w">   </span><span class="mf">-0.446187</span>
+<span class="p">(</span><span class="mf">-0.316369</span><span class="p">,</span><span class="w"> </span><span class="mf">0.869216</span><span class="p">)</span><span class="w">    </span><span class="mf">3.041545</span><span class="w">    </span><span class="mf">0.769879</span><span class="w">   </span><span class="mf">-0.311117</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>La struttura dati è in grado di eseguire operazioni molto più complesse, ma per questo tutorial ci limitiamo a questo caso base.</p>
+<p>Per il caso di problemi spazio-temporali, <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> è in grado di gestire arbitrarie tensorizzazioni di triangolazioni. Il codice seguente definisce un <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> definito su un cilindro spazio-temporale:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// geometry</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;::</span><span class="n">UnitInterval</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;mesh/nodes.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mesh/cells.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mesh/boundary.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* header = */</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="cm">/* index_col = */</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+
+<span class="c1">// data</span>
+<span class="n">GeoFrame</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="p">,</span><span class="w"> </span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;locs.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESH_NODES</span><span class="p">});</span>
+<span class="n">l</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;response.csv&quot;</span><span class="p">);</span>
+<span class="n">l</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;design_matrix.csv&quot;</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">                                           </span><span class="n">y</span><span class="w">          </span><span class="n">x1</span>
+<span class="w">              </span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="w">    </span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">flt64</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">flt64</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="mf">-0.925000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">    </span><span class="mf">0.290830</span><span class="w">    </span><span class="mf">0.140206</span>
+<span class="p">(</span><span class="mf">-0.910947</span><span class="p">,</span><span class="w"> </span><span class="mf">0.160625</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">    </span><span class="mf">2.817051</span><span class="w">    </span><span class="mf">1.198960</span>
+<span class="p">(</span><span class="mf">-0.869216</span><span class="p">,</span><span class="w"> </span><span class="mf">0.316369</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">   </span><span class="mf">-5.116292</span><span class="w">   </span><span class="mf">-2.329969</span>
+<span class="p">(</span><span class="mf">-0.801073</span><span class="p">,</span><span class="w"> </span><span class="mf">0.462500</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">    </span><span class="mf">1.986013</span><span class="w">    </span><span class="mf">0.570945</span>
+<span class="p">(</span><span class="mf">-0.708591</span><span class="p">,</span><span class="w"> </span><span class="mf">0.594579</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">    </span><span class="mf">6.268801</span><span class="w">    </span><span class="mf">2.748276</span>
+<span class="p">(</span><span class="mf">-0.594579</span><span class="p">,</span><span class="w"> </span><span class="mf">0.708591</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">    </span><span class="mf">4.010273</span><span class="w">    </span><span class="mf">1.708040</span>
+<span class="p">(</span><span class="mf">-0.462500</span><span class="p">,</span><span class="w"> </span><span class="mf">0.801073</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">   </span><span class="mf">12.039375</span><span class="w">    </span><span class="mf">5.952680</span>
+<span class="p">(</span><span class="mf">-0.316369</span><span class="p">,</span><span class="w"> </span><span class="mf">0.869216</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mf">0.000000</span><span class="p">)</span><span class="w">    </span><span class="mf">1.938149</span><span class="w">    </span><span class="mf">0.769879</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Definite le discretizzazioni temporale <code class="code docutils literal notranslate"><span class="pre">T</span></code> e spaziale <code class="code docutils literal notranslate"><span class="pre">D</span></code>, <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span> <span class="pre">data(D,</span> <span class="pre">T)</span></code> definisce un geoframe sul prodotto cartesiano tra <code class="code docutils literal notranslate"><span class="pre">D</span></code> e <code class="code docutils literal notranslate"><span class="pre">T</span></code>. In questo caso, <code class="code docutils literal notranslate"><span class="pre">insert_scalar_layer&lt;POINT,</span> <span class="pre">POINT&gt;()</span></code> richiede due descrittori, uno per la dimensione spaziale e uno per quella temporale. Tutte le combinazioni tra <code class="code docutils literal notranslate"><span class="pre">POINT</span></code> e <code class="code docutils literal notranslate"><span class="pre">POLYGON</span></code> sono supportate (permettendo, ad esempio, la gestione di osservazioni puntuali in spazio e areali in tempo (<code class="code docutils literal notranslate"><span class="pre">&lt;POINT,</span> <span class="pre">POLYGON&gt;</span></code>) o areali in spazio e puntuali in tempo (<code class="code docutils literal notranslate"><span class="pre">&lt;POLYGON,</span> <span class="pre">POINT&gt;</span></code>)).</p>
+<p><code class="code docutils literal notranslate"><span class="pre">insert_scalar_layer</span></code> richiede quindi, oltre al nome simbolico del layer, la specifica delle coordinate fisiche effettive. In questo caso, è richiesta una coppia di valori, una per la dimensione spaziale e una per quella temporale. Nell’esempio sopra, <code class="code docutils literal notranslate"><span class="pre">std::pair</span> <span class="pre">{&quot;locs.csv&quot;,</span> <span class="pre">MESH_NODES}</span></code> carica le locazioni spaziali da file, mentre utilizza i nodi della triangolazione <code class="code docutils literal notranslate"><span class="pre">T</span></code> come locazioni temporali. Tutte le combinazioni di possibilità viste in precedenza sono valide.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p><code class="code docutils literal notranslate"><span class="pre">insert_scalar_layer&lt;POINT,</span> <span class="pre">POINT&gt;()</span></code> chiamata come sopra automaticamente tensorizza le locazioni spaziali, i.e., data una griglia di punti in solo spazio (caricata in precedenza dal file <code class="code docutils literal notranslate"><span class="pre">locs.csv</span></code>) e una griglia di punti in solo tempo, <code class="code docutils literal notranslate"><span class="pre">insert_scalar_layer&lt;POINT,</span> <span class="pre">POINT&gt;(...)</span></code> automaticamente genera una griglia spazio-temporale di punti come prodotto tensore delle due singole griglie.</p>
+<p>In alcuni casi questo non è un comportamento desiderabile. Questo potrebbe essere il caso se, ad esempio, le osservazioni non sono osservate su una griglia regolare, come nel setting dei processi di punto. Se si possiede una griglia di locazioni, è possibile passare direttamente la griglia nella maniera seguente</p>
+<div class="highlight-default notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">//</span> <span class="n">geometry</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="n">D</span> <span class="o">=</span> <span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="n">T</span> <span class="o">=</span> <span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">::</span><span class="n">UnitInterval</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">data</span>
+<span class="n">Eigen</span><span class="p">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">double</span><span class="p">,</span> <span class="n">Dynamic</span><span class="p">,</span> <span class="n">Dynamic</span><span class="o">&gt;</span> <span class="n">locs</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">locs</span><span class="o">.</span><span class="n">leftCols</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="o">=</span> <span class="n">read_csv</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;locs_space.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">();</span>
+<span class="n">locs</span><span class="o">.</span><span class="n">rightCols</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">read_csv</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;locs_time.csv&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">();</span>
+
+<span class="n">GeoFrame</span> <span class="n">data</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">T</span><span class="p">);</span>
+<span class="n">auto</span><span class="o">&amp;</span> <span class="n">l</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="p">,</span> <span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;layer_name&quot;</span><span class="p">,</span> <span class="n">locs</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>In questo caso, poichè una griglia di punti esplicita è stata fornita tramite la matrice <code class="code docutils literal notranslate"><span class="pre">locs</span></code>, <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code> non effettuerà alcuna tensorizzazione ma userà, invece, la griglia fornita. Questa opzione è possibile solo nel caso di layer <code class="code docutils literal notranslate"><span class="pre">&lt;POINT,</span> <span class="pre">POINT&gt;</span></code>.</p>
+</div>
+<p>E possibile infine definire layers senza alcun dato associato. Questo può ritornare utile, ad esempio, nella definizione di problemi di processi di punto non marcati, dove non si ha nessuna quantità definita in corrispondenza della locazione. Questo è ottenuto semplicemente evitando di caricare alcun dato (tramite, e.g., <code class="code docutils literal notranslate"><span class="pre">read_csv</span></code> o <code class="code docutils literal notranslate"><span class="pre">load_vec</span></code>).</p>
+<p>Alcuni modelli funzionali potrebbero voler lavorare su più unità statistiche simultaneamente. Questo è il caso, ad esempio, per i modelli di <code class="code docutils literal notranslate"><span class="pre">fPCA</span></code>. In questo caso, invece di indicizzare le singole colonne del <code class="code docutils literal notranslate"><span class="pre">GeoFrame</span></code>, è necessario individuare con un unico nome simbolico un blocco di più colonne. Questo può essere ottenuto o attraverso una chiamata a <code class="code docutils literal notranslate"><span class="pre">.merge&lt;T&gt;(&quot;nome_blocco&quot;)</span></code> o caricando direttamente un blocco con <code class="code docutils literal notranslate"><span class="pre">.load_blk(&quot;nome_blocco&quot;,</span> <span class="pre">dati)</span></code>. Si veda il codice sottostante per un esempio:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// geometry</span>
+<span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span>
+
+<span class="c1">// data</span>
+<span class="n">GeoFrame</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;l1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESH_NODES</span><span class="p">);</span>
+<span class="n">l</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;data.csv&quot;</span><span class="p">);</span>
+
+<span class="c1">// merge all columns of type double into a single block named X</span>
+<span class="n">l</span><span class="p">.</span><span class="n">data</span><span class="p">().</span><span class="n">merge</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">);</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">                                          </span><span class="n">X</span>
+<span class="w">             </span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="w">           </span><span class="o">&lt;</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">flt64</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="mf">0.000000</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w"> </span><span class="mf">-0.017307</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.038973</span>
+<span class="p">(</span><span class="mf">0.016949</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w"> </span><span class="mf">-0.023286</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.151539</span>
+<span class="p">(</span><span class="mf">0.033898</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w">  </span><span class="mf">0.018406</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.007683</span>
+<span class="p">(</span><span class="mf">0.050847</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w"> </span><span class="mf">-0.099572</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.208208</span>
+<span class="p">(</span><span class="mf">0.067797</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w"> </span><span class="mf">-0.246997</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.185192</span>
+<span class="p">(</span><span class="mf">0.084746</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w">  </span><span class="mf">0.038961</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.236157</span>
+<span class="p">(</span><span class="mf">0.101695</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w"> </span><span class="mf">-0.271565</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.219019</span>
+<span class="p">(</span><span class="mf">0.118644</span><span class="p">,</span><span class="w"> </span><span class="mf">0.000000</span><span class="p">)</span><span class="w"> </span><span class="mf">-0.251898</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="mf">0.328487</span>
+
+<span class="c1">// or you can directly push a block as follow</span>
+<span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">block</span><span class="p">;</span>
+<span class="c1">// ... fill block ...</span>
+
+<span class="n">l</span><span class="p">.</span><span class="n">load_blk</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">block</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<ol class="arabic" start="3">
+<li><p><strong>definizione della fisica</strong>:</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>Non tutte i modelli richiedono una penalizzazione, pertanto questo step è opzionale.</p>
+</div>
+<p>a questo punto è possibile definire la fisica del problema. L’API cpp richiede sempre la definizione della fisica, anche nel caso semplice di penalizzazione laplaciana. Per definire la penalizzazione, definiamo le forme bilineari e lineari derivanti dalla formulazione debole del problema variazionale associato al problema di stima. Chiaramente, modelli diversi possono dare interpretazioni diverse a queste quantità, pertanto non esiste un ragionamento valido per ogni possible casistica. Indipendentemente dal modello statistico, l’API per la definizione di problemi differenziali permette la scrittura, e conseguente discretizzazione, di qualunque operatore differenziale, e di conseguenza, la risoluzione di qualunque PDE.</p>
+<p>L’API per la definizone e discretizzazione di operatori differenziali è riportata nel seguente codice:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w"> </span><span class="n">FeSpace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span><span class="w"> </span><span class="c1">// functional space definition</span>
+
+<span class="w"> </span><span class="c1">// trial and test function definition</span>
+<span class="w"> </span><span class="n">TrialFunction</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w"> </span><span class="n">TestFunction</span><span class="w">  </span><span class="nf">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+
+<span class="w"> </span><span class="c1">// laplacian bilinear form</span>
+<span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+
+<span class="w"> </span><span class="c1">// homogeneous forcing linear form</span>
+<span class="w"> </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="w"> </span><span class="c1">// u can be any function, for instance</span>
+<span class="w"> </span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="c1">// non-homoegenous forcing, here x + 2y</span>
+<span class="w"> </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Il primo passo è quello di definire lo spazio funzionale che vogliamo usare per discretizzare il problema differenziale. <code class="code docutils literal notranslate"><span class="pre">FeSpace</span></code> costruisce uno spazio agli elementi finiti sulla triangolazione <code class="code docutils literal notranslate"><span class="pre">D</span></code>, usando elementi finiti lineari scalari (significato di <code class="code docutils literal notranslate"><span class="pre">P1&lt;1&gt;</span></code>). <code class="code docutils literal notranslate"><span class="pre">P1&lt;N&gt;</span></code>, con <code class="code docutils literal notranslate"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>, definisce uno spazio agli elementi finiti vettoriale di <code class="code docutils literal notranslate"><span class="pre">N</span></code> componenti. Gli elementi finiti di tipo Lagrange supportati arrivano fino all’ordine <code class="code docutils literal notranslate"><span class="pre">P5</span></code> (anche se per i nostri interessi statistici non si andrà mai oltre <code class="code docutils literal notranslate"><span class="pre">P2</span></code>).</p>
+<p>Successivamente, previa definizione delle funzioni di trial e di testing, è possibile passare alla definizione delle forme deboli. Ad esempio, la formulazione debole per un operatore di diffusione isotropa, è data come:</p>
+<div class="math notranslate nohighlight">
+\[a(f, v) = \int_{\mathcal{D}} \nabla f \cdot \nabla v\]</div>
+<p>e viene tradotta in codice come</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Rimando agli esempi specifici sulle PDE per esempi più avanzati.</p>
+</li>
+<li><p><strong>definizione del modello</strong>: arrivati a questo punto, abbiamo tutti gli elementi per definire la nostra modellistica statistica. Ciascun modello ha le sue specifiche, pertanto non c’è una descrizione valida per tutti i casi.</p>
+<p>Prima di procedere dobbiamo introdurre Il concetto fondamentale di solver variazionale. Un solver variazionale è <strong>l’algoritmo</strong> per risolvere un problema del tipo:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+&amp; \min_{\boldsymbol{f} \in \mathbb{H}} &amp;&amp; \mathcal{L}(\boldsymbol{f}) + \mathcal{P}(\boldsymbol{f}, \boldsymbol{f}) &amp;&amp;\\
+&amp; \text{s.t.} &amp;&amp; \mathcal{C}(\boldsymbol{f}) = \boldsymbol{0}
+\end{align}\end{split}\]</div>
+<p>Il problema sopra indicato è fin troppo generico. Un risolutore fissa, a meno della fisica, ovvero della penalizzazione <span class="math notranslate nohighlight">\(\mathcal{P}(\boldsymbol{f}, \boldsymbol{f})\)</span>, tutti i dettagli che definiscono il problema variazionale, e la sua risoluzione, e.g. dettagli quali la tipologia di discretizzazione usata, l’uso o meno di un approccio misto, eventuali schemi di integrazione in tempo, etc. I risolutori sono divisi per famiglia, con al momento due famiglie disponibili:</p>
+<ul>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ls</span></code>: <strong>least square solvers</strong>: risolvono problemi del tipo</p>
+<div class="math notranslate nohighlight">
+\[\min_{f \in \mathbb{H}, \boldsymbol{\beta} \in \mathbb{R}^q} \frac{1}{n} \sum_{i=1}^n (y_i - \boldsymbol{x}_i^\top \boldsymbol{\beta} - f(\boldsymbol{p}_i))^2 + \mathcal{P}(f, f)\]</div>
+<p>Tra i risolutori disponibili in questa famiglia abbiamo:</p>
+<ul>
+<li><p><code class="code docutils literal notranslate"><span class="pre">fe_ls_elliptic(a,</span> <span class="pre">F)</span></code>: risolutore ellittico con discretizzazione agli elementi finiti. Fissa</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}(f, f) = \int_{\mathcal{D}} (-\text{div}[K \nabla f] + \boldsymbol{b} \cdot \nabla f + cf)^2.\]</div>
+<p>In questo caso, <code class="code docutils literal notranslate"><span class="pre">a</span></code> deve descrivere la forma debole dell’operatore ellittico usato nella penalizzazione, mentre <code class="code docutils literal notranslate"><span class="pre">F</span></code> deve rappresentare la forma lineare derivante dal termine di forzante. Il perchè di questo è da ritrovarsi nell’approccio agli elementi finiti misto usato per risolvere il problema. Si rimanda alla letteratura specifica.</p>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">fe_ls_parabolic_mono(std::pair{a,</span> <span class="pre">F},</span> <span class="pre">ic)</span></code>: risolutore spazio-tempo parabolico monolitico con discretizazzione agli elementi finiti. Fissa:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}(f, f) = \int_{\mathcal{D}} \Bigl(\frac{\partial f}{\partial t} -\text{div}[K \nabla f] + \boldsymbol{b} \cdot \nabla f + cf \Bigr)^2.\]</div>
+<p><code class="code docutils literal notranslate"><span class="pre">a</span></code> deve essere pari alla forma debole dell’operatore ellittico usato nella penalizzazione, mentre <code class="code docutils literal notranslate"><span class="pre">F</span></code> rappresenta la forma lineare derivante dal termine di forzante. <code class="code docutils literal notranslate"><span class="pre">ic</span></code> è il vettore dell’espansione in base della condizione iniziale. Il risolutore approccia il problema in maniera monolitica.</p>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">fe_ls_parabolic_ieul(std::pair{a,</span> <span class="pre">F},</span> <span class="pre">ic,</span> <span class="pre">/*</span> <span class="pre">max_iter</span> <span class="pre">=</span> <span class="pre">*/</span> <span class="pre">50,</span> <span class="pre">/*</span> <span class="pre">tol</span> <span class="pre">=</span> <span class="pre">*/</span> <span class="pre">1e-4)</span></code>: risolutore spazio-tempo parabolico iterativo con discretizzazione agli elementi finiti in spazio e integrazione in tempo alla eulero implicito <code class="code docutils literal notranslate"><span class="pre">ieul</span></code>. Risolve lo stesso problema di <code class="code docutils literal notranslate"><span class="pre">fe_ls_parabolic_mono</span></code> ma usando un approccio diverso. A differenza di <code class="code docutils literal notranslate"><span class="pre">fe_parabolic_mono</span></code>, prende opzionalmente in ingresso i parametri di arresto dello schema iterativo.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">fe_ls_separable_mono(std::pair</span> <span class="pre">{a_D,</span> <span class="pre">F_D},</span> <span class="pre">std::pair</span> <span class="pre">{a_T,</span> <span class="pre">F_T})</span></code>: risolutore spazio-tempo separabile monolitico con discretizzazione in spazio agli elementi finiti e discretizzazione in tempo avente regolarità di sobolev maggiore di 2 (le B-Spline sono un caso specifico). Fissa</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}(f, f) = \int_{\mathcal{D}}\int_T (L_{\mathcal{D}} f - u_{\mathcal{D}})^2 + \int_T \int_{\mathcal{D}} (L_{T} f - u_T)^2,\]</div>
+<p>con <span class="math notranslate nohighlight">\(L_f\)</span> operatore ellittico del secondo ordine in spazio e <span class="math notranslate nohighlight">\(L_T\)</span> operatore ellittico del secondo ordine in tempo. <code class="code docutils literal notranslate"><span class="pre">{a_D,</span> <span class="pre">F_D}</span></code> sono le forme deboli per la componente in spazio, <code class="code docutils literal notranslate"><span class="pre">{a_T,</span> <span class="pre">F_T}</span></code> per quella in tempo.</p>
+</li>
+</ul>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">de</span></code>: <strong>density estimation solvers</strong>: risolvono problemi del tipo</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+&amp; \min_{f \in \mathbb{H}} &amp;&amp; -\frac{1}{n} \sum_{i=1}^n f(\boldsymbol{p}_i) + \mathcal{P}(f, f) &amp;&amp;\\
+&amp; \text{s.t.} &amp;&amp; \int_{\mathcal{D}} e^f = 1
+\end{aligned}\end{split}\]</div>
+<p>Tra i risolutori disponibili in questa famiglia abbiamo:</p>
+<ul>
+<li><p><code class="code docutils literal notranslate"><span class="pre">fe_de_elliptic(a,</span> <span class="pre">F)</span></code>: risolutore ellittico con discretizzazione agli elementi finiti. Fissa</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}(f, f) = \int_{\mathcal{D}} (-\text{div}[K \nabla f] + \boldsymbol{b} \cdot \nabla f + cf)^2.\]</div>
+<p>Il significato degli argomenti è lo stesso che si ha con <code class="code docutils literal notranslate"><span class="pre">fe_ls_elliptic</span></code>.</p>
+</li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">fe_de_separable(std::pair</span> <span class="pre">{a_D,</span> <span class="pre">F_D},</span> <span class="pre">std::pair</span> <span class="pre">{a_T,</span> <span class="pre">F_T})</span></code>: risolutore spazio-tempo separabile monolitico con discretizzazione in spazio agli elementi finiti e discretizzazione in tempo avente regolarità di sobolev maggiore di 2 (le B-Spline sono un caso specifico). Fissa</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}(f, f) = \int_{\mathcal{D}}\int_T (L_{\mathcal{D}} f - u_{\mathcal{D}})^2 + \int_T \int_{\mathcal{D}} (L_{T} f - u_T)^2.\]</div>
+<p>Il significato degli argomenti è lo stesso che si ha con <code class="code docutils literal notranslate"><span class="pre">fe_ls_separable</span></code>.</p>
+</li>
+</ul>
+<p>Modelli che lo richiedono possono prendere in ingresso un solver variazionale. Ad esempio, il codice seguente:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;y ~ f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_elliptic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>definisce un modello di regressione spaziale non-parametrico. <code class="code docutils literal notranslate"><span class="pre">y</span></code> nella formula (la stessa notazione di R è supportata) deve effettivamente essere un valida colonna in <code class="code docutils literal notranslate"><span class="pre">data</span></code>. Modelli semi-parametrici possono essere gestiti manipolando la formula, ad esempio <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">~</span> <span class="pre">x1</span> <span class="pre">+</span> <span class="pre">x2</span> <span class="pre">+</span> <span class="pre">f</span></code> definisce un modello che usa come covariate le colonne <code class="code docutils literal notranslate"><span class="pre">x1</span></code> e <code class="code docutils literal notranslate"><span class="pre">x2</span></code> in <code class="code docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>Modelli spazio-tempo possono essere definiti cambiando il tipo di solver variazionale, come indicato nel codice sotto:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>regressione spazio-tempo separabile<a class="headerlink" href="#id1" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// linear finite element in space</span>
+<span class="n">FeSpace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="n">TrialFunction</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="n">TestFunction</span><span class="w">  </span><span class="nf">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a_D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u_D</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">F_D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">u_D</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="c1">// cubic B-splines in time</span>
+<span class="n">BsSpace</span><span class="w"> </span><span class="nf">Bh</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="n">TrialFunction</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">Bh</span><span class="p">);</span>
+<span class="n">TestFunction</span><span class="w">  </span><span class="nf">w</span><span class="p">(</span><span class="n">Bh</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a_T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="n">dxx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dxx</span><span class="p">(</span><span class="n">w</span><span class="p">));</span><span class="w"> </span><span class="c1">// bilaplacian discretization</span>
+<span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u_T</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">F_T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="n">u_T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">w</span><span class="p">);</span>
+
+<span class="c1">// modeling</span>
+<span class="n">SRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;y ~ x1 + f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_ls_separable_mono</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_D</span><span class="p">,</span><span class="w"> </span><span class="n">F_D</span><span class="p">},</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_T</span><span class="p">,</span><span class="w"> </span><span class="n">F_T</span><span class="p">}));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>regressione spazio-tempo parabolica, risolutore eulero implicito<a class="headerlink" href="#id2" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">vector_t</span><span class="w"> </span><span class="n">ic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ic.csv&quot;</span><span class="p">).</span><span class="n">as_matrix</span><span class="p">();</span>
+<span class="c1">// physics</span>
+<span class="n">FeSpace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="n">TrialFunction</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="n">TestFunction</span><span class="w">  </span><span class="nf">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="c1">// modeling</span>
+<span class="n">SRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;y ~ f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_ls_parabolic_ieul</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">},</span><span class="w"> </span><span class="n">ic</span><span class="p">));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<p>Come noto, SRPDE è solo un caso specifico di regressione spaziale. Altri modelli di regressione si comportano in maniera simile, come mostrato di seguito:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>space-only non-parametric generalized regression model<a class="headerlink" href="#id3" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">GSRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span>
+<span class="w">   </span><span class="s">&quot;y ~ f&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="n">data</span><span class="p">,</span>
+<span class="w">   </span><span class="cm">/* family = */</span><span class="w"> </span><span class="n">poisson_distribution</span><span class="p">{},</span>
+<span class="w">   </span><span class="n">fe_ls_ellitpic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>space-time semi-parametric separable quantile regression model<a class="headerlink" href="#id4" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">QSRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span>
+<span class="w">   </span><span class="s">&quot;y ~ x1 + x2 + f&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="n">data</span><span class="p">,</span>
+<span class="w">   </span><span class="cm">/* alpha = */</span><span class="w"> </span><span class="mf">0.99</span><span class="p">,</span>
+<span class="w">   </span><span class="n">fe_ls_separable_mono</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_D</span><span class="p">,</span><span class="w"> </span><span class="n">F_D</span><span class="p">},</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_T</span><span class="p">,</span><span class="w"> </span><span class="n">F_T</span><span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<p>I modelli della famiglia di stima di densità, non prendono in ingresso una formula, essendo tutta l’informazione contenuta nelle locazioni spaziali. La loro definizione è altrettanto semplice:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>space-only density estimation model<a class="headerlink" href="#id5" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">DEPDE</span><span class="w"> </span><span class="nf">m</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_de_elliptic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>space-time separable density estimation model<a class="headerlink" href="#id6" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">DEPDE</span><span class="w"> </span><span class="nf">m</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_de_separable</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_D</span><span class="p">,</span><span class="w"> </span><span class="n">F_D</span><span class="p">},</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_T</span><span class="p">,</span><span class="w"> </span><span class="n">F_T</span><span class="p">}));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>fit</strong>: definito il modello, il metodo <code class="code docutils literal notranslate"><span class="pre">fit</span></code> performa il ftting effettivo. I parametri ricevuti da <code class="code docutils literal notranslate"><span class="pre">fit</span></code> variano da modello a modello.</p>
+<p>Per i metodi di regressione, <code class="code docutils literal notranslate"><span class="pre">fit</span></code> riceve in input i parametri di smoothing (fissati). Il numero di parametri di smoothing dipende dal solver variazionale scelto (1 per problemi solo spazio, 2 per problemi spazio-tempo).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">QSRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;y ~ f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mf">0.99</span><span class="p">,</span><span class="w"> </span><span class="n">fe_ls_elliptic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">));</span>
+<span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="mf">1e-2</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Modelli di stima di densità prendono in ingresso, oltre ai parametri di smoothing, il punto iniziale dell’ottimizzazione insieme all’algoritmo di ottimizzazione utilizzato per la minimizzazione del funzionale:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">DEPDE</span><span class="w"> </span><span class="nf">m</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_de_elliptic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">));</span>
+<span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span>
+<span class="w">   </span><span class="cm">/* lambda = */</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">   </span><span class="n">g_init</span><span class="p">,</span>
+<span class="w">   </span><span class="cm">/* optimizer = */</span><span class="w"> </span><span class="n">GradientDescent</span><span class="o">&lt;</span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">BacktrackingLineSearch</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-5</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Usare <code class="code docutils literal notranslate"><span class="pre">BFGS&lt;Dynamic&gt;</span></code> come ottimizzatore avrebbe forzato la risoluzione del problema di stima di densità tramite BFGS, etc.etc.</p>
+</li>
+</ol>
+<ol class="arabic" start="7">
+<li><p><strong>export dei risultati</strong>: infine i risultati possono essere scritti su file per poi essere caricati, ad esempio, su R. Per esportare un file in formato csv, è sufficiente utilizzare la seguente linea di codice:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">write_csv</span><span class="p">(</span><span class="s">&quot;log_density.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">log_density</span><span class="p">());</span><span class="w"> </span><span class="c1">// save estimated log density in file log_density.csv</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</li>
+</ol>
+<p>Se sei arrivato fin qui significa che sei ben motivato! Questo mostra un uso molto basic dell’API di fdaPDE. In realtà, puoi sviluppare modelli ben più sofisticati a partire dalla sola API esterna (vale a dire, senza scendere in cantina)!!</p>
+<p><strong>Se hai domande, sai come trovarmi :)</strong></p>
+<p>Di seguito trovate degli script completi di esempio:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>spatial regression with anisotropic diffusion and non-homogeneous neumann BC<a class="headerlink" href="#id7" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/models.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">   </span><span class="c1">// geometry</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// mark left side of square (where we will impose non-homegenous Neumann BCs) with 1</span>
+<span class="w">   </span><span class="n">unit_square</span><span class="p">.</span><span class="n">mark_boundary</span><span class="p">(</span><span class="cm">/* as = */</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="cm">/* where = */</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">edge</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">edge</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">edge</span><span class="p">.</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="p">});</span>
+
+<span class="w">   </span><span class="c1">// data</span>
+<span class="w">   </span><span class="n">GeoFrame</span><span class="w"> </span><span class="n">gf</span><span class="p">(</span><span class="n">unit_square</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gf</span><span class="p">.</span><span class="n">add_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESH_NODES</span><span class="p">);</span>
+<span class="w">   </span><span class="n">l</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;response.csv&quot;</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// physics</span>
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// anysotropic diffusion tensor</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">;</span>
+<span class="w">   </span><span class="n">K</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">// neumann data</span>
+<span class="w">   </span><span class="n">ScalarField</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">   </span><span class="p">})</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g_N</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">// homogeneous forcing field</span>
+<span class="w">   </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">.</span><span class="n">boundary</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="mi">1</span><span class="p">))(</span><span class="n">g_N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// modeling</span>
+<span class="w">   </span><span class="n">SRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;y ~ f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gf</span><span class="p">,</span><span class="w"> </span><span class="n">fe_ls_elliptic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">));</span>
+
+<span class="w">   </span><span class="c1">// calibration</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lambda_grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1e-4</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-3</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-1</span><span class="p">};</span>
+<span class="w">   </span><span class="n">GridOptimizer</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">opt</span><span class="p">;</span>
+<span class="w">   </span><span class="n">opt</span><span class="p">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">gcv</span><span class="p">(),</span><span class="w"> </span><span class="n">lambda_grid</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// fit at optimal smoothing level</span>
+<span class="w">   </span><span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">opt</span><span class="p">.</span><span class="n">optimum</span><span class="p">());</span>
+
+<span class="w">   </span><span class="c1">// export</span>
+<span class="w">   </span><span class="n">write_csv</span><span class="p">(</span><span class="s">&quot;estimate.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">f</span><span class="p">());</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>space-time regression with parabolic regularization with non-constant coefficients on areal data<a class="headerlink" href="#id8" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/models.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">using</span><span class="w"> </span><span class="n">matrix_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">   </span><span class="k">using</span><span class="w"> </span><span class="n">vector_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">   </span><span class="c1">// geometry</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unit_square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;::</span><span class="n">UnitSquare</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// data</span>
+<span class="w">   </span><span class="n">vector_t</span><span class="w"> </span><span class="n">ic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ic.csv&quot;</span><span class="p">).</span><span class="n">as_matrix</span><span class="p">();</span>
+<span class="w">   </span><span class="n">GeoFrame</span><span class="w"> </span><span class="n">gf</span><span class="p">(</span><span class="n">unit_square</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gf</span><span class="p">.</span><span class="n">add_scalar_layer</span><span class="o">&lt;</span><span class="n">POLYGON</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;incidence_mtx.csv&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">l</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;response.csv&quot;</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// physics</span>
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">unit_square</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">// read operator coefficients from file</span>
+<span class="w">   </span><span class="n">FeCoeff</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">matrix_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">(</span><span class="n">read_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;diffusion.csv&quot;</span><span class="p">).</span><span class="n">as_matrix</span><span class="p">());</span>
+<span class="w">   </span><span class="n">FeCoeff</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">matrix_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">read_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;transport.csv&quot;</span><span class="p">).</span><span class="n">as_matrix</span><span class="p">());</span>
+<span class="w">   </span><span class="c1">// homogeneous forcing field</span>
+<span class="w">   </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">unit_square</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// modeling</span>
+<span class="w">   </span><span class="n">SRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;y ~ f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gf</span><span class="p">,</span><span class="w"> </span><span class="n">fe_ls_parabolic_mono</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="p">{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">},</span><span class="w"> </span><span class="n">ic</span><span class="p">));</span>
+
+<span class="w">   </span><span class="c1">// calibration</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lambda_grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1e-4</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-3</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-1</span><span class="p">};</span>
+<span class="w">   </span><span class="n">GridOptimizer</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">opt</span><span class="p">;</span>
+<span class="w">   </span><span class="n">opt</span><span class="p">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">gcv</span><span class="p">(),</span><span class="w"> </span><span class="n">lambda_grid</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// fit at optimal smoothing level</span>
+<span class="w">   </span><span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">opt</span><span class="p">.</span><span class="n">optimum</span><span class="p">());</span>
+
+<span class="w">   </span><span class="c1">// export</span>
+<span class="w">   </span><span class="n">write_csv</span><span class="p">(</span><span class="s">&quot;estimate.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">f</span><span class="p">());</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>space-time density estimation<a class="headerlink" href="#id9" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/models.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">using</span><span class="w"> </span><span class="n">matrix_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">   </span><span class="k">using</span><span class="w"> </span><span class="n">vector_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">   </span><span class="c1">// geometry</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p">;</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">(</span>
+<span class="w">       </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;points.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;elements.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;boundary.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;::</span><span class="n">UnitInterval</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// data</span>
+<span class="w">   </span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">Dynamic</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g_init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;f_init.csv&quot;</span><span class="p">).</span><span class="n">as_matrix</span><span class="p">().</span><span class="n">array</span><span class="p">().</span><span class="n">log</span><span class="p">();</span>
+<span class="w">   </span><span class="n">matrix_t</span><span class="w"> </span><span class="n">locs</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">   </span><span class="n">locs</span><span class="p">.</span><span class="n">leftCols</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">read_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;../data/de/03/data_space.csv&quot;</span><span class="p">).</span><span class="n">as_matrix</span><span class="p">();</span>
+<span class="w">   </span><span class="n">locs</span><span class="p">.</span><span class="n">rightCols</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;../data/de/03/data_time.csv&quot;</span><span class="w"> </span><span class="p">).</span><span class="n">as_matrix</span><span class="p">();</span>
+<span class="w">   </span><span class="n">GeoFrame</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="p">,</span><span class="w"> </span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">locs</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// physics</span>
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span><span class="w">   </span><span class="c1">// linear finite element in space</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a_D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="w">   </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u_D</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F_D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">u_D</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">BsSpace</span><span class="w"> </span><span class="n">Qh</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">   </span><span class="c1">// cubic B-spline in time</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">Qh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">w</span><span class="p">(</span><span class="n">Qh</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a_T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="n">dxx</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dxx</span><span class="p">(</span><span class="n">w</span><span class="p">));</span>
+<span class="w">   </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u_T</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F_T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">T</span><span class="p">)(</span><span class="n">u_T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">w</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// modeling</span>
+<span class="w">   </span><span class="n">DEPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_de_separable</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_D</span><span class="p">,</span><span class="w"> </span><span class="n">F_D</span><span class="p">},</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="w"> </span><span class="p">{</span><span class="n">a_T</span><span class="p">,</span><span class="w"> </span><span class="n">F_T</span><span class="p">}));</span>
+<span class="w">   </span><span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="mf">0.00025</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="n">g_init</span><span class="p">,</span><span class="w"> </span><span class="n">BFGS</span><span class="o">&lt;</span><span class="n">Dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-5</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">});</span>
+
+<span class="w">   </span><span class="c1">// export</span>
+<span class="w">   </span><span class="n">write_csv</span><span class="p">(</span><span class="s">&quot;estimate.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">log_density</span><span class="p">());</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>functional PCA with power iteration solver (UNSTABLE API)<a class="headerlink" href="#id10" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/models.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// geometry</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p">;</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">(</span>
+<span class="w">       </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;points.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;elements.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;boundary.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// data</span>
+<span class="w">   </span><span class="n">GeoFrame</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESH_NODES</span><span class="p">);</span>
+<span class="w">   </span><span class="n">l1</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;data.csv&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">l1</span><span class="p">.</span><span class="n">data</span><span class="p">().</span><span class="n">merge</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// physics (isotropic laplacian)</span>
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="w">   </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// modeling</span>
+<span class="w">   </span><span class="n">fPCA</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_ls_elliptic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">));</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lambda_grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1e-7</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-6</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-5</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-4</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-3</span><span class="p">,</span><span class="w"> </span><span class="mf">1e-2</span><span class="p">};</span>
+<span class="w">   </span><span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span>
+<span class="w">       </span><span class="cm">/* n_comp = */</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">       </span><span class="n">lambda_grid</span><span class="p">,</span>
+<span class="w">       </span><span class="cm">/* options = */</span><span class="w"> </span><span class="n">OptimizeGCV</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ComputeRandSVD</span><span class="p">,</span>
+<span class="w">       </span><span class="n">fpca_power_solver</span><span class="p">()</span>
+<span class="w">   </span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// export</span>
+<span class="w">   </span><span class="n">write_csv</span><span class="p">(</span><span class="s">&quot;scores.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">scores</span><span class="p">());</span>
+<span class="w">   </span><span class="n">write_csv</span><span class="p">(</span><span class="s">&quot;loadings.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">loading</span><span class="p">());</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption highlight"><span class="filename"><span class="caption-text">
+</span>spatial regression with imposed Dirichlet boundary conditions<a class="headerlink" href="#id11" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fdaPDE/models.h&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fdapde</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// geometry</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p">;</span>
+<span class="w">   </span><span class="n">Triangulation</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">(</span>
+<span class="w">       </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;points.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;elements.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mesh_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;boundary.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// data</span>
+<span class="w">   </span><span class="n">GeoFrame</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">insert_scalar_layer</span><span class="o">&lt;</span><span class="n">POINT</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;layer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MESH_NODES</span><span class="p">);</span>
+<span class="w">   </span><span class="n">l1</span><span class="p">.</span><span class="n">load_csv</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;data.csv&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">l1</span><span class="p">.</span><span class="n">data</span><span class="p">().</span><span class="n">merge</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// physics (isotropic laplacian)</span>
+<span class="w">   </span><span class="n">FeSpace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">P1</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// impose zero on domain boundary</span>
+<span class="w">   </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">g_D</span><span class="p">;</span>
+<span class="w">   </span><span class="n">Vh</span><span class="p">.</span><span class="n">impose_dirichlet_constraint</span><span class="p">(</span><span class="cm">/* on = */</span><span class="w"> </span><span class="n">BoundaryAll</span><span class="p">,</span><span class="w"> </span><span class="n">g_D</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">TrialFunction</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TestFunction</span><span class="w">  </span><span class="n">v</span><span class="p">(</span><span class="n">Vh</span><span class="p">);</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)));</span>
+<span class="w">   </span><span class="n">ZeroField</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">integral</span><span class="p">(</span><span class="n">D</span><span class="p">)(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// modeling</span>
+<span class="w">   </span><span class="n">SRPDE</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="s">&quot;y ~ f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">fe_ls_elliptic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">));</span>
+<span class="w">   </span><span class="n">m</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="mf">1.56206e-08</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">// export</span>
+<span class="w">   </span><span class="n">write_csv</span><span class="p">(</span><span class="s">&quot;field.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">f</span><span class="p">());</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2024, fdaPDE.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.sections"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script id="MathJax-script" src="../_static/mathjax/tex-mml-chtml.js?v=cadf963e"></script>
+    
+  </body>
+</html>
