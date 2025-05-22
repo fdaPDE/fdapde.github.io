@@ -653,7 +653,7 @@ Di seguito trovate degli script completi di esempio:
 
 .. code-block:: cpp
    :linenos:
-   :caption: functional PCA with power iteration solver
+   :caption: functional PCA with power iteration solver (UNSTABLE API)
 
    #include <fdaPDE/models.h>
    using namespace fdapde;
@@ -691,6 +691,48 @@ Di seguito trovate degli script completi di esempio:
       // export
       write_csv("scores.csv", m.scores());
       write_csv("loadings.csv", m.loading());
+
+      return 0;
+   }
+
+.. code-block:: cpp
+   :linenos:
+   :caption: spatial regression with imposed Dirichlet boundary conditions
+
+   #include <fdaPDE/models.h>
+   using namespace fdapde;
+
+   int main() {
+      // geometry
+      std::string mesh_path = "...";
+      Triangulation<2, 2> D(
+          mesh_path + "points.csv", mesh_path + "elements.csv", mesh_path + "boundary.csv", true, true);
+
+      // data
+      GeoFrame data(D);
+      auto& l = data.insert_scalar_layer<POINT>("layer", MESH_NODES);
+      l1.load_csv<double>("data.csv");
+      l1.data().merge<double>("X");
+      
+      // physics (isotropic laplacian)
+      FeSpace Vh(D, P1<1>);
+      
+      // impose zero on domain boundary
+      ZeroField<2> g_D;
+      Vh.impose_dirichlet_constraint(/* on = */ BoundaryAll, g_D);
+
+      TrialFunction f(Vh);
+      TestFunction  v(Vh);
+      auto a = integral(D)(dot(grad(f), grad(v)));
+      ZeroField<2> u;
+      auto F = integral(D)(u * v);
+    
+      // modeling
+      SRPDE m("y ~ f", data, fe_ls_elliptic(a, F));
+      m.fit(1.56206e-08);
+
+      // export
+      write_csv("field.csv", m.f());
 
       return 0;
    }
